@@ -1,7 +1,7 @@
 ---
 name: ccc-debug
 description: 专项分析CCC CarKey数字钥匙配对失败日志，精准定位手机端/车端/车企后台/苹果后台故障根因
-version: 4.0
+version: 4.7
 author: 组内共享
 ---
 
@@ -29,6 +29,7 @@ python "C:\Users\WP6KCF2\.config\opencode\skills\ccc-debug\scripts\analyze.py" V
 - 关键词匹配 + 故障模式分类
 - DBC 信号参考预解析（225 条 CAN 消息）
 - AI 深度分析（调用 opencode AI）
+- 知识库摘要自动注入（6 个故障域 ~12KB 摘要，AI 每次分析均可参考）
 
 ---
 

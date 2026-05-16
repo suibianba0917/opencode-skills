@@ -935,6 +935,40 @@ def load_dbc_info():
     except Exception:
         return ""
 
+def load_knowledge_summaries():
+    summaries_file = os.path.join(os.path.dirname(__file__), 'cache', 'knowledge_summaries.json')
+    if not os.path.exists(summaries_file):
+        return ""
+    try:
+        with open(summaries_file, 'r', encoding='utf-8') as f:
+            summaries = json.load(f)
+    except Exception:
+        return ""
+
+    reliability_note = {
+        "high": "【官方/权威】",
+        "medium": "【经验/参考】",
+        "low": "【待验证】"
+    }
+
+    lines = ["## 故障域知识库摘要"]
+    lines.append("")
+    lines.append("> 重要提示：以下知识库摘要中，reliability=high 的内容可作为权威依据；reliability=medium 的内容仅供参考，需结合日志验证；reliability=low 的内容为待验证信息，请谨慎使用。")
+    lines.append("")
+    for key, info in summaries.items():
+        rel = reliability_note.get(info.get('reliability', 'medium'), "【参考】")
+        source = info.get('source', '未知来源')
+        lines.append(f"### {info['title']} (`{info['file']}`) {rel}")
+        lines.append(f"*来源: {source}*")
+        lines.append("")
+        lines.append(info['summary'])
+        lines.append("")
+        for sec in info.get('sections', []):
+            sec_rel = reliability_note.get(sec.get('reliability', 'medium'), "【参考】")
+            lines.append(f"- **章节: {sec['id']}** {sec_rel} - {sec['content']}")
+        lines.append("")
+    return '\n'.join(lines)
+
 def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context=None, log_snippets=None, fault_info=None, no_logs=False):
     print("[AI] 开始 opencode AI 深度分析...")
     t_ai_total = time.time()
@@ -1053,6 +1087,8 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 
     prompt_text = '\n'.join(prompt_lines)
 
+    knowledge_section = load_knowledge_summaries()
+
     knowledge_context = """## 报告输出要求
 
 ### 格式约束（必须遵守）
@@ -1098,9 +1134,13 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 5. 禁止复制模板中的占位符文字（如"（报告中未包含...）"、"（见上方...）"、"待补充"等）
 6. 基于提供的日志内容给出真实分析结论，不要输出"无日志无法分析"等放弃性结论
 7. 日志片段必须填入第三章，禁止省略或用"无日志"跳过
+8. 分析时如需参考知识库中的特定章节，可在报告中注明"参考 {文件} {章节}"，供工程师深入查阅
 
 """
-    full_prompt = header + jira_section + "\n\n---\n\n" + knowledge_context + "\n\n---\n\n" + "## 日志文件内容\n\n" + prompt_text
+    full_prompt = header + jira_section + "\n\n---\n\n"
+    if knowledge_section:
+        full_prompt += knowledge_section + "\n\n---\n\n"
+    full_prompt += knowledge_context + "\n\n---\n\n" + "## 日志文件内容\n\n" + prompt_text
 
     try:
         MAX_TOKENS = 160000
@@ -1116,11 +1156,11 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         with open(prompt_file, 'w', encoding='utf-8-sig') as f:
             f.write(full_prompt)
 
-        node_exe = os.path.join(os.environ.get('APPDATA', ''), 'npm', 'node_modules', 'opencode-ai', 'bin', 'opencode')
-        if not os.path.exists(node_exe):
-            node_exe = 'opencode'
+        node_exe = os.path.join(os.environ.get('APPDATA', ''), 'npm', 'node_modules', 'opencode-ai', 'bin', 'opencode.exe')
+        fallback = 'opencode'
+        exe_path = node_exe if os.path.exists(node_exe) else fallback
         with open(ps_script_file, 'w', encoding='utf-8-sig') as f:
-            f.write(f'Get-Content -LiteralPath "{prompt_file}" -Raw -Encoding UTF8 | & node "{node_exe}" run --format json 2>$null')
+            f.write(f'Get-Content -LiteralPath "{prompt_file}" -Raw -Encoding UTF8 | & "{exe_path}" run --format json 2>$null')
 
         print(f"    [调用 opencode] prompt_size={len(full_prompt)/1024:.0f}KB")
         t_opencode = time.time()

@@ -1,0 +1,77 @@
+{
+  "nfc_ecp": {
+    "file": "nfc_ecp.md",
+    "title": "NFC 刷卡 / ECP 配置问题",
+    "reliability": "high",
+    "source": "Apple Spec R4 Chapter 2 (NFC)",
+    "summary": "本知识域覆盖 NFC 刷卡无弹窗和 ECP 配置问题的全链路排查。核心知识：1) NFC Polling 序列为 REQA→VASUPA→Reset，间隔要求 REQA→REQA<30ms、REQA→VASUP 5~10ms，超时表示轮询失败；2) ECP (Enhanced Contactless Polling) 由 Apple 定制用于车端轮询，根据设备位置不同 TCI 值不同（B柱=010676，门把手=010671，WLC=010673）；3) NFC 交易结构为 SELECT→Auth0→Exchange→Control Flow，对应 OP Phase 2~3；4) AID 轮询中不合适 AID 返回 6A82 为正常行为非故障；5) 车端收到 ISO 7816 成功状态码 9000 才解锁。故障特征：刷卡无响应、sw=0x6400、cccop=2 只读模式、nfcKeyFunState=-1 SE未配置ECP。",
+    "sections": [
+      {"id": "官方定义", "content": "NFC Polling Sequence、ECP TCI 值、NFC 读卡器工作范围、交易结构", "reliability": "high"},
+      {"id": "内部补充", "content": "ECP TCI 实际配置、NFC_SE_Applet 返回码、cccop=2 只读模式场景", "reliability": "medium"},
+      {"id": "CAN日志分析", "content": "NFC_iN 消息、sw=0x6400 定位、NFC SysSt 状态", "reliability": "medium"}
+    ]
+  },
+  "uwb_ranging": {
+    "file": "uwb_ranging.md",
+    "title": "UWB 测距 / PE 被动进入不解锁",
+    "reliability": "medium",
+    "source": "Apple Spec R4 Ch3.6/Ch3.9 + 内部调试经验",
+    "summary": "本知识域覆盖 UWB 测距原理、PE 被动进入不解锁的故障排查。核心知识：1) 多边测距法（Classic Multilateration）使用 2~3 个锚点交叉定位，iPhone 指向方向影响精度；2) Device Intent 三级接近意图：Low(031100020300)、Medium(031100020301)、High(031100020302)，车端收到后开启 UWB 定位；3) UWB 定位值 uwbkey1=1~8 车内、9 远距离/定位失败、10 解锁圈(4m内)、11 闭锁圈(4~8m)、12 迎宾圈(8~10m)；4) 锚点编号：1=主锚点、2=左前、3=右前、6=左后、7=右后；5) CAN 日志中 UWBKey/PEUnlockreq 信号含义。故障特征：走近不解锁、CAN消息停止、UWB定位值异常、乒乓问题。",
+    "sections": [
+      {"id": "官方定义", "content": "定位原理、UWB系统级要求、Device Intent、用户接近任务流程", "reliability": "high"},
+      {"id": "内部补充", "content": "UWB定位值(1-12)含义、锚点编号、PE启停策略、乒乓问题", "reliability": "medium"},
+      {"id": "CAN日志分析", "content": "ASC/BLF/DBC格式、关键CAN ID(0x283/0x629/0x21C/0x224)", "reliability": "medium"}
+    ]
+  },
+  "ccc_pairing": {
+    "file": "ccc_pairing.md",
+    "title": "CCC 配对流程 / 钥匙分享",
+    "reliability": "high",
+    "source": "Apple Spec R4 Ch3.2/Ch4.6/Ch5/Ch6/Ch7",
+    "summary": "本知识域覆盖 CCC CarKey 配对5阶段和钥匙分享全流程。核心知识：1) Owner Pairing 5阶段：Phase1初始化/检测→Phase2设备认证(SPAKE2+)→Phase3证书交换→Phase4 KTS注册→Phase5钥匙写入SE；2) Key Sharing 5阶段：发起分享→邀请发送→接收端处理→KTS注册→首次车辆交易(First Friend Approach)；3) 车端关键日志标记：803C1001=Phase2完成、803C1111=Phase2→3、803C0181=Phase3完成、803C0190=Phase4成功配对完成；4) Pairstatus 0~4 对应 Phase 1~5；5) KTS 超时/Certificate链校验失败/CheckIDSRegistration失败分别对应不同阶段故障。故障特征：配对失败、分享失败、KTS超时、证书校验失败(-365/TrustResult 4/5)。",
+    "sections": [
+      {"id": "基础知识", "content": "OP 5阶段、Key Sharing 5阶段、First Friend Approach、密钥生命周期", "reliability": "high"},
+      {"id": "车端日志标记", "content": "OP Phase 日志标记(803C系列)、配对阶段状态机(Pairstatus)", "reliability": "medium"},
+      {"id": "iOS证书问题", "content": "证书链校验、TrustResult、CheckIDS、Profile签名", "reliability": "medium"},
+      {"id": "钥匙分享故障模式", "content": "Pretrack检查要点、90000008解绑、99990004、分享钥匙keyId未下发", "reliability": "medium"}
+    ]
+  },
+  "mdk_ops": {
+    "file": "mdk_ops.md",
+    "title": "MDK 操作手册 / 车端联调 / 大屏注销",
+    "reliability": "low",
+    "source": "内部操作文档 + Apple Spec R4 Ch10",
+    "summary": "本知识域为辅助工具域，覆盖 MDK 联调操作和大屏注销故障排查。核心知识：1) 大屏一键注销流程：大屏→TBOX→One Backend→数字钥匙管理平台→JVSP/手机厂商后台，涉及4位验证码短信校验；2) 常见故障场景：弹窗显示手机号与实际不符、验证码发送失败(目标手机号错误/TBOX短信服务异常)、验证码校验失败(超时/密钥验证异常)；3) TBOX 环境配置：车端测试需配置正确的 TBOX 环境(DEV/UAT/PROD)；4) CAN 日志分析基础：ASC/BLF 格式读取、DBC 信号解析。注：本域主要是操作层面的辅助知识，配对/分享/车控的核心故障排查以其他域为准。",
+    "sections": [
+      {"id": "大屏注销流程", "content": "注销流程概述、关键步骤、账号服务API调用", "reliability": "low"},
+      {"id": "常见故障场景", "content": "手机号不符、验证码发送失败、验证码校验失败", "reliability": "medium"},
+      {"id": "MDK联调操作", "content": "TBOX环境配置、大屏注销/删除钥匙操作流程", "reliability": "low"},
+      {"id": "CAN日志分析", "content": "ASC/BLF格式读取、DBC信号解析基础", "reliability": "medium"}
+    ]
+  },
+  "ble_connection": {
+    "file": "ble_connection.md",
+    "title": "BLE 连接问题 / Polling 策略 / 车控链路",
+    "reliability": "medium",
+    "source": "Apple Spec R4 Ch3.2/Ch3.5 + 内部调试经验",
+    "summary": "本知识域覆盖 BLE 数字钥匙配对蓝牙连接问题和车控 BLE 功能两条链路。Section A-配对BLE：1) iOS UUID 缓存失效：iOS 不获取真实 MAC，而是分配 UUID 缓存，重置网络设置/开关蓝牙/升级系统会导致缓存失效重连失败；2) CBError Code=14 Peer removed pairing information：删除钥匙后 iOS 系统缓存旧配对信息，携带旧信息请求配对失败；3) 配对 BLE 流程：扫描广播→发现缓存→连接→鉴权(Auth0→Auth1)；4) reason=62 BLE 连接未建立/同步超时非车端故障。Section B-车控BLE：BLE Polling 启停策略、车控链路(BLE车控 vs CCC CarKey配对为不同链路)、BLE MAC RKE-PEPS 功能路由。故障特征：蓝牙断连、BLE连接失败reason=62、一键注销未清理BLE通道、CarKeyErrorCode 0。",
+    "sections": [
+      {"id": "Section A-配对BLE", "content": "iOS UUID缓存失效、CBError Code=14、配对BLE鉴权流程", "reliability": "medium"},
+      {"id": "Section B-车控BLE", "content": "Polling启停策略、车控链路、BLE MAC RKE-PEPS", "reliability": "low"},
+      {"id": "常见故障模式", "content": "reason=62、CarKeyErrorCode 0、recv_cb error", "reliability": "medium"}
+    ]
+  },
+  "backend": {
+    "file": "backend.md",
+    "title": "数字钥匙后端服务配置问题",
+    "reliability": "medium",
+    "source": "内部调试经验 + 后台API文档",
+    "summary": "本知识域覆盖非 CCC 协议层、影响配对/分享流程的车企后台配置问题。核心知识：1) Profile 问题：VIN 对应数字钥匙 Profile 未创建/下发导致 startPairing 返回 HTTP 605；苹果更换测试 Profile 导致签名校验失败(Profile签名验证失败)；一键注销后 Profile 未重建；2) Pretrack/KTS 问题：Pretrack 404(URL配置错误/服务未部署/nginx路径遗漏)、Pretrack DEFAULT_ERROR(99990004, data:false)、Pretrack keyId 未下发到车端、KTS receipt 不匹配、ABR路由配置错误；3) 车辆关系解绑：errorCode=90000008，user与vehicle绑定关系已解绑；4) OAuth鉴权失败：errorCode=90000011，90000004 DEFAULT_ERROR；5) 短信/激活链接：短信被运营商拦截/延迟、nginx路径配置遗漏导致 404。故障特征：HTTP 404/401/605、90000008、99990004、90000011、KTS Timeout。",
+    "sections": [
+      {"id": "Profile相关", "content": "Profile未创建/下发、Profile签名验证失败、一键注销后未重建", "reliability": "medium"},
+      {"id": "Pretrack/KTS相关", "content": "404/DEFAULT_ERROR/keyId未下发/KTS receipt不匹配/ABR配置", "reliability": "medium"},
+      {"id": "车辆关系/解绑", "content": "90000008解绑、90000011 OAuth失败、90000004 DEFAULT_ERROR", "reliability": "high"},
+      {"id": "短信/激活链接", "content": "短信延迟、nginx配置遗漏404", "reliability": "low"}
+    ]
+  }
+}

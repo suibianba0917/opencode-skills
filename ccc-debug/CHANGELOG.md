@@ -4,12 +4,13 @@
 
 ---
 
-## 当前状态（v4.6）
+## 当前状态（v4.7）
 
-- **版本**：v4.6（2026-05-15）
-- **前版本**：v4.4（2026-05-12）
+- **版本**：v4.7（2026-05-16）
+- **前版本**：v4.6（2026-05-15）
 - **核心脚本**：`scripts/analyze.py` / `scripts/analyze_debug.py`
 - **知识库**：`knowledge/` 目录（6 个故障域文档）
+- **知识摘要**：`scripts/cache/knowledge_summaries.json`（6 文件 ~5KB 摘要，标注 reliability+source，每次分析自动注入 AI prompt）
 - **DBC 缓存**：`scripts/cache/dbc_cache.json`（225 条 CAN 消息）
 - **性能**：规则报告生成 ~4-5s，AI 分析 ~12-55s（网络波动），总耗时 ~19-60s
 
@@ -19,6 +20,8 @@
 
 | 版本 | 日期 | 里程碑 |
 |------|------|--------|
+| v4.7 | 2026-05-16 | 新增知识库摘要自动注入：6个 knowledge 文件生成 ~4KB 摘要（`cache/knowledge_summaries.json`），每次分析时注入 AI prompt，AI 可自主引用知识域；每个知识域/章节标注 reliability (high/medium/low) + source 来源；AI prompt 新增约束第8条（引用知识库章节）+ 可信度提示；`analyze.py` 新增 `load_knowledge_summaries()` 函数；**BugFix**：`analyze.py` opencode 路径错误修复（`node opencode` → `opencode.exe`），修复后 AI 分析正常返回报告；`analyze_debug.py` debug 输出 `jira_context_str` 参数名修正 |
+| v4.6 | 2026-05-15 | 根因分布修正：配对失败26个重跑（车企后台12/车端7/手机端3/苹果后台1/双重2）；修正4个根因（6549/10825/14482/20667）；重跑后7章完整 |
 | v4.5 | 2026-05-14 | 修复二进制 VW 文件导致乱码（排除 .vw）；扩展跳章节修复；批量验证钥匙分享失败 9 个（8 OK / 1 WARN）；知识库更新：新增 90000008/99990004 错误码、车端脏数据、LocalPassNotFound、nginx 配置遗漏；细化 Pretrack keyId 未下发/BLE MAC RKE-PEPS/短信延迟；修复 knowledge-platform debug.py 路径（analyze_debug.py 从 Jira_access 改为 ccc-debug/scripts）；增强 AI header 禁止 think 输出；新增后处理过滤 Chinese think 文本（"让我先查看"等）；批量下载配对/创建失败 26 个 tickets |
 | v4.4 | 2026-05-14 | 修复 AI 跳过"一、JIRA 信息"章节：检测到 AI 报告以"## 二、分析结论"开头时，自动前置 JIRA 上下文；验证 VCTCEM-22690 + VCTCEM-19212（无日志模式） |
 | v4.3 | 2026-05-12 | Ticket 全量分类（66条/13类）；`ccc_pairing.md` 重构为6章结构；新增 ECP cccop/bindkeyid2mac 知识点；新增 `backend.md`（数字钥匙后端服务配置问题）；路径 `原始Attachments` 统一改为 `Attachments`；AI prompt 加格式强制约束（7章节+日志路径必须带原始日志+完整路径）；验证 VCTCEM-6549 + VCTCEM-16673 + VCTCEM-35791；`customfield_20765` Issue Analysis 字段名待确认 |
@@ -163,4 +166,4 @@
 
 ---
 
-*更新日期：2026-05-14*
+*更新日期：2026-05-16*
