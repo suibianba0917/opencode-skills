@@ -1,0 +1,3702 @@
+[
+  {
+    "id": "VEEA-12210",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12209",
+    "title": "引用文档和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12208",
+    "title": "缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12230",
+    "title": "输出需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12211",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12205",
+    "title": "介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12258",
+    "title": "To 充放电控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12253",
+    "title": "To上下电子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12279",
+    "title": "To  CDCU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12277",
+    "title": "To 座椅控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12285",
+    "title": "To  自动驾驶子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12216",
+    "title": "ECU间CAN信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12215",
+    "title": "交互信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12214",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12213",
+    "title": "功能电气原理框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12212",
+    "title": "功能逻辑框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12207",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12206",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12269",
+    "title": "To 防盗报警子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12267",
+    "title": "To 尾翼控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-73813",
+    "title": "To 天窗遮阳帘控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12273",
+    "title": "To 外部灯光系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12217",
+    "title": "ECU内部信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12264",
+    "title": "To 尾门控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12260",
+    "title": "To 车窗控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12255",
+    "title": "To充电口盖控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12251",
+    "title": "To 门把手控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12247",
+    "title": "To 门锁子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12231",
+    "title": "To 蓝牙数字钥匙子系统BLE",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12218",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-12237",
+    "title": "To 蓝牙数字钥匙子系统TBOX",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-123136",
+    "title": "To SOA引擎",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-124547",
+    "title": "To CDCU MCU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104505",
+    "title": "To 手机APP SDK",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-124549",
+    "title": "To OTA Master",
+    "description": "",
+    "functions": [
+      {
+        "id": "VEEA-FuncR-12256",
+        "title": "充电口盖控制子系统执行蓝牙开闭口盖动作",
+        "desc": "充电口盖控制子系统在收到蓝牙开启充电口盖控制请求： TBOX_RDCU_BLEChargePortCmd ==Open，检测到车辆条件满足时，响应执行开启充电口盖动作； 充电口盖控制子系统在收到蓝牙关闭充电口盖控制请求： TBOX_RDCU_BLEChargePortCmd ==Close，检测到车辆条件满足时，响应执行关闭充电口盖动作；"
+      },
+      {
+        "id": "CEA-104507",
+        "title": "CDCU驱动AVAS播放寻车音效",
+        "desc": "CDCU的安卓分区收到TBOX分区发来的AVAS寻车指令，需要播放用户预设的寻车音效。 （AVAS寻车音效和迎宾音效可以互相打断，后激活的功能打断当前功能）"
+      },
+      {
+        "id": "CEA-114016",
+        "title": "TBOX 反馈标定设备类型",
+        "desc": "TBOX在反馈APP标定结果时，需要反馈结果对应的设备类型FOB/Phone"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-UC-129067",
+        "title": "NFC 钥匙学习",
+        "desc": "前置条件 1. CDCU 4G网络可用 2. 证书已经预置 （需要哪些种类的证书？） 3. CDCU VIN号已经写入 4. Powermode = local on ? 5. CDCU 时间同步正常？ 6. 车辆没有在ready状态 7. CDCU冷启动完成 (KL30重新上电后等待大于90s) 基本事件流 诊断序列 异常事件流： 前置条件1不满足： 前置条件2不满足： 前置条件3不满足： 内部"
+      },
+      {
+        "id": "CEA-108708",
+        "title": "手机标定APP启用FOB钥匙标定（使用万能钥匙证书方案）",
+        "desc": "前置条件 OB 数字钥匙云端基于 虚拟VIN 生成万能报文和万能证书 车端完成万能证书预置（目前为 线上接口 ，在T-BOX零部件工厂完成预置） 标定App手机端输入需要 标定车辆 的主蓝牙mac地址 标定人员进入标定车辆手机蓝牙钥匙连接范围 标定App手机端点击连接完成身份校验和车辆连接 标定App手机端设置标定参数，打开FOB标定选项 待标定的FOB与车辆完成连接 激活条件 标定App检测到标"
+      },
+      {
+        "id": "CEA-104592",
+        "title": "整车功能实现方案文档首先用于定义某个或某类整车功能，通过对功能的场景描述来确定功能的前置和激活条件，以及功能激活后的执行和异常处理。在此基础上，给出整车功能的架...",
+        "desc": "整车功能实现方案文档首先用于定义某个或某类整车功能，通过对功能的场景描述来确定功能的前置和激活条件，以及功能激活后的执行和异常处理。在此基础上，给出整车功能的架构实现方案，确定参与实现该功能的所有零部件/子系统之间的交互接口和功能分配。本文档的输出需求将作为零部件/子系统的设计需求."
+      }
+    ],
+    "others": []
+  },
+  {
+    "id": "CEA-104591",
+    "title": "功能实现方案书_数字钥匙",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104598",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104597",
+    "title": "术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104588",
+    "title": ". 介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104678",
+    "title": "输出需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104593",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104595",
+    "title": "缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104594",
+    "title": "引用文档和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104596",
+    "title": "引用文件和标准",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-115382",
+        "title": "失效和冻结ICCOA钱包钥匙",
+        "desc": "失效和冻结ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 冻结车钥匙和恢复车钥匙相关说明"
+      },
+      {
+        "id": "CEA-FuncR-115392",
+        "title": "冻结和恢复ICCOA钥匙",
+        "desc": "冻结和恢复ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 冻结车钥匙和恢复车钥匙相关说明"
+      },
+      {
+        "id": "CEA-104627",
+        "title": "7.3.1 创建钥匙",
+        "desc": "7.3.1 创建钥匙 功能描述： SDK在检测到用户创建私有钥匙请求后，向数字钥匙平台发起创建私有钥匙请求，数字钥匙平台在鉴权后响应SDK请求并下发秘钥。支持创建私有BLE钥匙，HCE钥匙，ICCOA钥匙和CCC钥匙。 前置条件： 车辆合法性校验通过"
+      },
+      {
+        "id": "CEA-FuncR-115378",
+        "title": "中止和删除ICCOA钱包钥匙",
+        "desc": "中止和删除ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供验证相关证书与存储证书的能力"
+      },
+      {
+        "id": "CEA-FuncR-115394",
+        "title": "冻结和恢复ICCOA钥匙",
+        "desc": "冻结和恢复ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 冻结车钥匙和恢复车钥匙相关说明 提供与设备厂商后台对接通信的能力 提供相关请求的有效性验证 提供状态通知的能力"
+      },
+      {
+        "id": "CEA-FuncR-115386",
+        "title": "失效和冻结ICCOA钱包钥匙",
+        "desc": "失效和冻结ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 冻结车钥匙和恢复车钥匙相关说明"
+      },
+      {
+        "id": "CEA-FuncR-115353",
+        "title": "分享ICCOA钥匙",
+        "desc": "分享ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供验证相关证书与存储证书的能力"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-104670",
+        "title": "基本事件3：钱包钥匙激活，私有钥匙置为失效",
+        "desc": "基本事件3：钱包钥匙激活，私有钥匙置为失效 激活钱包钥匙(当前支持：小米/VIVO创建ICCOA钱包钥匙，苹果创建CCC钱包钥匙) 数字钥匙平台同步钱包钥匙KeyID-UID关系，并将对应UID下的私有钥匙KeyID设置为已失效 数字钥匙平台同步新的KeyID-UID状态至SDK，车端，账号中心"
+      }
+    ],
+    "others": []
+  },
+  {
+    "id": "CEA-104681",
+    "title": "To ONE Backend",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-124962",
+    "title": "8.5 To NFC",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104677",
+    "title": "To ONE SDK",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104601",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104599",
+    "title": "功能逻辑框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104589",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104600",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-104590",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-111519",
+    "title": "To 大屏",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-106560",
+    "title": "To TBOX",
+    "description": "",
+    "functions": [
+      {
+        "id": "VEEA-FuncR-12252",
+        "title": "门把手控制子系统反馈门把手状态",
+        "desc": "车把手控制子系统在CAN总线上被TBOX唤醒，则反馈当前的门把手状态信息： 1.左前门锁或把手：LDCU_DriveLockOrHandleSt； 2.左后门把手：LDCU_RLHandleSt； 3.右前门把手：RDCU_PsngrHandleSt； 4.右后门把手：RDCU_RRHandleSt；"
+      },
+      {
+        "id": "CEA-FuncR-74056",
+        "title": "TBOX获取车辆状态透传车辆状态至APP",
+        "desc": "1. TMCU在CAN总线上获取到车辆状态后通过串口协议将车辆状态给到T4G_SDK； 2. T4G_SDK业务解析后将车辆状态通过串口协议反馈给到TMCU； 3. TMCU在BLCAN上通过3C/3D/3E/3F透传车辆数据给到BLE; 4. BLE通过蓝牙协议将车辆状态信息给到APP做UI显示； 5. 以下为车辆状态透传列表： https://volkswagen.feishu.cn/shee"
+      },
+      {
+        "id": "VEEA-FuncR-12272",
+        "title": "防盗报警子系统执行防盗认证",
+        "desc": "1.TMCU在TPCAN上唤醒后，则向LDCU发起防盗认证请求： TBOX_SecurityAccessReq =0x1:Request; 2.TMCU收到T4G_SDK串口协议交互的手机蓝牙解锁指令后，判断防盗认证是否通过： - 若防盗认证通过： LDCU_TBOX_AuthentSt =Pass，则TMCU无需动作； - 若防盗认证未通过， LDCU_TBOX_AuthentSt ！ =Pas"
+      },
+      {
+        "id": "VEEA-FuncR-12271",
+        "title": "防盗报警子系统反馈设防状态",
+        "desc": "防盗认证子系统在CAN总线上被TBOX唤醒，则反馈： 1.设防状态： LDCU_AlarmSt ;"
+      },
+      {
+        "id": "VEEA-FuncR-12254",
+        "title": "上下电子系统反馈电源状态信息",
+        "desc": "上下电子系统在CAN总线上被TBOX唤醒，则反馈电源状态及扫钥匙请求信息： 电源模式 ： LDCU_PowerMode ； 蓝牙扫钥匙请求： LDCU_BLEKeySeachReq ；"
+      },
+      {
+        "id": "VEEA-FuncR-12282",
+        "title": "CDCU反馈里程信息",
+        "desc": "CDCU在CAN总线上被TBOX唤醒，则反馈模式信息： 总里程有效： CDCU_TotalOdometerVD ； 总里程： CDCU_TotalOdometer ；"
+      },
+      {
+        "id": "VEEA-FuncR-12265",
+        "title": "尾门控制子系统执行开闭尾门动作",
+        "desc": "尾门控制子系统收到蓝牙控制尾门开启指令： TBOX_TrunkReq ==open，检测到车辆条件满足时，则响应执行尾门开启动作； 尾门控制子系统收到蓝牙控制尾门关闭指令： TBOX_TrunkReq ==Close，检测到车辆条件满足时，则响应执行尾门关闭动作；"
+      },
+      {
+        "id": "VEEA-FuncR-12234",
+        "title": "BLE透传车辆状态至APP",
+        "desc": "①车辆状态透传实现链路为：TMCU获取到车辆状态信息后通过CAN ID:3C/3D/3E/3F（TBOX_BLEControl_Sig1~TBOX_BLEControl_Sig4）在BLCAN上发送给到BLE; ②BLE通过蓝牙协议上行透传至APP，APP做按键状态显示； ③BLE透传车辆状态列表，包含手机APP蓝牙车控功能状态返回、车辆状态反馈，车端兜底功能所需状态；（以互联网最终输入状态为准）"
+      },
+      {
+        "id": "VEEA-FuncR-12284",
+        "title": "智慧场景设置闭锁禁用Polling状态",
+        "desc": "CDCU将CDCU_PollingUnlockDisableReq（智慧场景闭锁禁用polling状态）发送至TBOX；"
+      },
+      {
+        "id": "VEEA-FuncR-12259",
+        "title": "充放电控制子系统反馈状态信息",
+        "desc": "充放电控制子系统在CAN总线上唤醒后，反馈如下相关信息给至TBOX： 动力电池充电状态：LDCU_BatChrgSt_Disp； 充电枪插入状态：LDCU_ChrgConnSt_Disp； VCU里程模式记忆值：LDCU_RanDis_Mode； 续驶里程：LDCU_dstBatDisp ；"
+      },
+      {
+        "id": "VEEA-FuncR-12235",
+        "title": "大屏点击断开蓝牙请求BLE断开10s",
+        "desc": "BLE在BLCAN上收到CDCU_BLE_DisconnetReq=0x1:Active大屏请求蓝牙断连信号后立刻做断连处理（断开10s）同时将此信号上行透传至手机APP； APP在收到车端传递的断连信号后，立即执行断连，10秒内不再发起自动连接；"
+      },
+      {
+        "id": "VEEA-FuncR-12278",
+        "title": "座椅控制子系统反馈座椅占位信息及安全带信息",
+        "desc": "座椅控制子系统在CAN总线上被TBOX唤醒，则反馈座椅占位信息及安全带信息： 主驾占位： DrvSeatOccupancySt ； 副驾座椅占位汇总状态： PsngrSeatOccupancySt ； 二排左侧座椅占位汇总状态： SecRowLtSeatOccupancySt ； 二排中间座椅占位汇总状态： SecRowMidSeatOccupancySt ； 二排右侧座椅占位汇总状态： SecR"
+      },
+      {
+        "id": "VEEA-FuncR-12275",
+        "title": "外部灯光子系统反馈转向灯状态",
+        "desc": "外部灯光子系统在CAN总线上被TBOX唤醒，则反馈转向灯状态信息： 左转向灯输出稳定状态： RDCU_LTurnLampOutputActiveSt ； 左转向灯输出稳定状态： RDCU_LTurnLampOutputActiveSt ；"
+      },
+      {
+        "id": "VEEA-FuncR-12262",
+        "title": "车窗控制子系统执行一键通风动作",
+        "desc": "车窗控制子系统收到蓝牙控制一键通风指令：TBOX_FLWinPos=11%& TBOX_FRWinPos=11%& TBOX_RLWinPos=20%& TBOX_RRWinPos=20%，检测到车辆条件满足时，则响应执行四车窗一键通风动作；"
+      },
+      {
+        "id": "VEEA-FuncR-12257",
+        "title": "充电口盖控制子系统反馈充电口盖状态",
+        "desc": "充电口盖控制子系统在CAN总线上被TBOX唤醒，则反馈充电口盖位置信息： 充电口盖位置 RDCU_ChargePortPos ； 充电口盖动作状态： RDCU_ChargePortActSt ； 充电口盖锁状态： RDCU_ChrgPortLockSt ； 充电口微动开关状态： RDCU_ChargePortMicroSwSt ；"
+      },
+      {
+        "id": "VEEA-FuncR-12268",
+        "title": "尾翼控制子系统反馈尾翼状态",
+        "desc": "尾翼控制子系统在CAN总线上被TBOX唤醒，则反馈尾翼状态信息： 尾翼状态： ARSMoveSt ; 尾翼当前位置开度： ARSPstValu ;"
+      },
+      {
+        "id": "VEEA-FuncR-12250",
+        "title": "车门锁子系统执行反馈车门锁状态",
+        "desc": "车门锁子系统在CAN总线上被TBOX唤醒，则反馈当前的门锁状态信息： 1. 门锁逻辑状态： LDCU_LockLogicSt ； 2. 主驾门开关状态： LDCU_DriverDoorAjarSt ； 3. 副驾车门开关状态： RDCU_PsngrDoorAjarSt ； 4. 左后车门开关状态： LDCU_RLDoorAjarSt ； 5. 右后车门开关状态： RDCU_RRDoorAjarSt"
+      },
+      {
+        "id": "VEEA-FuncR-12263",
+        "title": "车窗控制子系统反馈车窗位置状态",
+        "desc": "车窗控制子系统在CAN总线上被TBOX唤醒，则反馈车窗状态信息： LDCU_FLWinPosStFB、RDCU_FRWinPosStFB、LDCU_RLWinPosStFB、RDCU_RRWinPosStFB"
+      },
+      {
+        "id": "VEEA-FuncR-12266",
+        "title": "尾门控制子系统反馈尾门状态",
+        "desc": "尾门控制子系统在CAN总线上被TBOX唤醒，则反馈尾门状态信息： 尾门状态： TrOpenerSts ； 后尾门状态： LDCU_PLGSts ； 尾门外开关状态： LDCU_TrunkReleaseSW ；"
+      },
+      {
+        "id": "VEEA-FuncR-12261",
+        "title": "车窗控制子系统执行一键升窗动作",
+        "desc": "车窗控制子系统收到蓝牙控制一键升窗指令： TBOX_AllWinUp =AutoUp ，检测到车辆条件满足时，则响应执行四车窗一键升窗动作；"
+      },
+      {
+        "id": "VEEA-FuncR-12274",
+        "title": "外部灯光子系统执行闪灯动作",
+        "desc": "外部灯光子系统接收到蓝牙控制闪灯指令: TBOX_LightSw =active后，检测到车辆条件满足，则执行闪灯动作，同时激活灯语动作；（F57无灯语配置）"
+      },
+      {
+        "id": "VEEA-FuncR-12276",
+        "title": "灯语控制子系统反馈灯语状态",
+        "desc": "灯语控制子系统在CAN总线上被TBOX唤醒，则反馈灯语状态信息： MCU 灯语功能： CDCU_MCULLFunctionSt"
+      },
+      {
+        "id": "VEEA-FuncR-12249",
+        "title": "车门锁子系统执行蓝牙临停锁动作",
+        "desc": "车门子系统收到蓝牙临停锁指令： TBOX_LDCU_DoorLockReq == BLE Tmpy lock 后，检测到车辆条件满足时，执行响应临停锁动作；"
+      },
+      {
+        "id": "VEEA-FuncR-12248",
+        "title": "车门锁子系统执行蓝牙解闭锁动作",
+        "desc": "车门子系统收到蓝牙控制解锁请求: TBOX_LDCU_DoorLockReq == BLE Door UnLock 后，检测到车辆条件满足时，执行响应解锁动作； 车门子系统收到蓝牙控制闭锁请求: TBOX_LDCU_DoorLockReq == BLE Door Lock 后，检测到车辆条件满足时，执行响应闭锁动作；"
+      },
+      {
+        "id": "VEEA-FuncR-12270",
+        "title": "防盗报警子系统执行鸣笛动作",
+        "desc": "鸣笛喇叭控制子系统接收到蓝牙控制寻车鸣笛指令: TBOX_RDCU_HornSw =active后，执行喇叭鸣笛动作，鸣笛三次后停止鸣笛；"
+      },
+      {
+        "id": "VEEA-FuncR-12242",
+        "title": "TBOX发出控制充电口盖指令请求",
+        "desc": "前置条件( （T4G_SDK判断） ) 开启充电口盖：1&&2&&3 关闭充电口盖：1&&2 1. 完成蓝牙连接； 2. 合法性认证通过； 3. LDCU_GearLev ==P gear /Invalid ； 激活条件 ①||② ① 用户在手机APP上点击蓝牙控制开启充电口盖，BLE在BLCAN上 通过CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLECo"
+      },
+      {
+        "id": "CEA-104511",
+        "title": "TBOX发出AVAS寻车控制指令",
+        "desc": "前置条件 1&amp;&amp;2 &amp;&amp; （3 || （4&amp;&amp;（5||6））） 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 3. 车辆已下电，PowerMode==off； 4. 车辆已上电，PowerMode==local on/remote on； 5. 车辆在P档，GearLev==P； 6. VehSpd&lt;3km/h &amp;&am"
+      },
+      {
+        "id": "CEA-FuncR-122789",
+        "title": "Tbox 基于私有BLE钥匙 支持BLE RSSI 标定数据采集功能",
+        "desc": "Tbox 需要基于私有BLE钥匙 支持BLE RSSI 标定数据采集功能"
+      },
+      {
+        "id": "CEA-FuncR-73812",
+        "title": "天窗遮阳帘控制子系统执行天窗动作",
+        "desc": "天窗子系统收到蓝牙控制天窗请求: BLTCtrlRoofMov = Tilt 后，检测到车辆条件满足时，执行响应天窗起翘动作； 天窗子系统收到蓝牙控制天窗请求: BLTCtrlRoofMov = Fully Close 后，检测到车辆条件满足时，执行响应天窗关闭动作；"
+      },
+      {
+        "id": "CEA-FuncR-122846",
+        "title": "手机标定APP支持私有BLE钥匙(IOS)",
+        "desc": "手机标定APP需要支持私有BLE钥匙证书 手机系统需要支持IOS"
+      },
+      {
+        "id": "CEA-FuncR-123137",
+        "title": "蓝牙钥匙解闭锁对SOA引擎的需求",
+        "desc": "前置条件 无 激活条件 接收消费Veh_DoorLockService服务请求 基本事件流 1.收到Veh_SetDoorOriUnlockStCmd=BLE UnLock || Veh_SetDoorOriLockStCmdBLE=BLE Lock操作请求，服务引擎向域控发出BLE解锁车门||BLE闭锁车门原子服务请求； 2.SOA场景引擎通过event订阅服务返回最终执行结果Veh_DoorL"
+      },
+      {
+        "id": "CEA-FuncR-124546",
+        "title": "有感OTA期间通过诊断服务使能BLCAN总线通讯确保解闭锁功能可用",
+        "desc": "CDCU MCU需要支持诊断服务 28，在收到诊断请求28 01 71的时候使能BLCAN上的报文接收。"
+      },
+      {
+        "id": "CEA-FuncR-124548",
+        "title": "有感OTA期间打开CDCU MCU的BLCAN通讯使能",
+        "desc": "有感OTA阶段OTA Master在发送总线禁言诊断命令后，给CDCU MCU再发一条28 01 71使能CDCU MCU在BLCAN上的报文接收。"
+      },
+      {
+        "id": "CEA-FuncR-126707",
+        "title": "手机标定APP支持私有BLE钥匙(鸿蒙)",
+        "desc": "手机标定APP需要支持私有BLE钥匙证书 手机系统需要支持鸿蒙"
+      },
+      {
+        "id": "CEA-FuncR-126706",
+        "title": "手机标定APP支持私有BLE钥匙(Android)",
+        "desc": "手机标定APP需要支持私有BLE钥匙证书 手机系统需要支持Android"
+      },
+      {
+        "id": "CEA-104506",
+        "title": "手机APP SDK提供AVAS寻车功能",
+        "desc": "JV 上层应用调用APP SDK的AVAS寻车功能，APP SDK需要通过蓝牙协议发送AVAS寻车指令给TBOX。（蓝牙协议中需要新增AVAS寻车指令） APP 发送蓝牙指令后需要接收TBOX的执行成功/失败的结果并反馈给JV 上层应用。"
+      },
+      {
+        "id": "CEA-108709",
+        "title": "TBOX FOB钥匙标定",
+        "desc": "TBOX需要能够接收APP发来的标定请求，判断是否为FOB标定，如果是，则在标定数据采集过程中采集FOB的RSSI。 TBOX给APP返回成功/失败。"
+      },
+      {
+        "id": "CEA-108629",
+        "title": "TBOX获取APP Polling 开关设置",
+        "desc": "TBOX需要根据APP发送的polling开关状态，分别控制解锁和闭锁的Polling使能。 未收到就按照默认状态处理。 TBOX需要根据APP发送的设置状态： 控制是否采用蓝牙自标定参数 设置自动解锁距离，解锁距离调节颗粒度为整数"
+      },
+      {
+        "id": "CEA-FuncR-115352",
+        "title": "创建ICCOA钥匙",
+        "desc": "创建ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 开通车主钥匙 相关说明 提供验证相关证书与存储证书的能力 车需具备车公钥证书、车服务器CA 证书、蓝牙广播密钥、IRK(从车服务器获"
+      },
+      {
+        "id": "VEEA-FuncR-12281",
+        "title": "大屏反馈模式信息",
+        "desc": "CDCU在CAN总线上被唤醒，则反馈模式信息： 睡眠模式： XSleepModeSt ；(石岩和PO确认 CMP21D 上不需要 ) 大屏冥想模式状态： XMeditationModeSt ；(石岩和PO确认 CMP21D 上不需要 ) 洗车模式： CDCU_WashCarSt ； 如果没有相关模式，默认发0x0: not active"
+      },
+      {
+        "id": "VEEA-FuncR-12243",
+        "title": "TBOX发出控制寻车指令",
+        "desc": "前置条件 （T4G_SDK判断） 1&&2 1. 完成蓝牙连接； 2. 合法性认证通过; 激活条件 ①||② ① 用户在手机APP上点击蓝牙控制寻车鸣笛，BLE在BLCAN上 通过CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLEControl_Sig4） 将寻车鸣笛发送至TMCU-&gt;T4G_SDK ； ② 用户在手机APP上点击蓝牙控制寻车鸣笛，BL"
+      },
+      {
+        "id": "VEEA-FuncR-12286",
+        "title": "自动驾驶子系统反馈泊车状态信息",
+        "desc": "XPU在CAN总线上被TBOX唤醒，则反馈泊车相关信息： 泊车失败或暂停的原因： XPU_BLE_OperationalSt ； 泊车进度信号： XPU_BLE_ProgressRate ； 泊车动画信号： XPU_BLE_ParkingGif ； 档位信号： XPU_BLE_GearLev ； 泊车过程实时车速信号： XPU_BLE_VehSpd ； 泊车状态反馈信号 ： XPU_BLE_PkS"
+      },
+      {
+        "id": "VEEA-FuncR-12241",
+        "title": "TBOX发出控制车窗指令请求",
+        "desc": "前置条件 （T4G_SDK判断） 1&&2（一键通风和一键升窗前置条件一致） 1. 完成蓝牙与鉴权； 2. 蓝牙连接； 激活条件 ①||② ① 用户在手机APP上点击蓝牙控制 一键升窗 ，BLE在BLCAN上 通过CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLEControl_Sig4）将一键升窗 发送至TMCU-&gt;T4G_SDK ； ② 用户在手机"
+      },
+      {
+        "id": "VEEA-FuncR-12240",
+        "title": "TBOX发出控制尾门指令请求",
+        "desc": "前置条件 （T4G_SDK判断） 开启尾门条件：1&amp;&amp;2&amp;&amp;3； 关闭尾门条件：1&amp;&amp;2 1. 完成蓝牙连接； 2. 合法性认证通过； 3. 车速/挡位满足以下条件： （IPB_Vehspd&lt;3km/h &amp; IPB_VehSpdVD=0x1:valid）|| IPB_VehSpdVD=0x0:Not Initialized || LDC"
+      },
+      {
+        "id": "CEA-FuncR-73835",
+        "title": "天窗遮阳帘子系统反馈天窗状态",
+        "desc": "天窗控制子系统在CAN总线上被TBOX唤醒，则反馈当前的天窗状态信息： 1 天窗位置：RoofPosLevl"
+      },
+      {
+        "id": "CEA-FuncR-120112",
+        "title": "手机APP SDK提供蓝牙控天窗功能",
+        "desc": "APP SDK需要接收JV APP 的蓝牙天窗通风和蓝牙关闭天窗的请求, 并通过蓝牙协议发送相应的控制天窗指令给TBOX。 APP SDK需要透传天窗状态给JV APP，包括天窗位置和天窗开度，详细透传信息见 ‌﻿⁠﻿⁠⁠‌⁠‍﻿‌‬⁠⁠﻿⁠‍‌‍‬‌‬车辆透传列表_蓝牙数字钥匙3.0 - 飞书云文档 APP 发送蓝牙指令后需要接收TBOX的执行成功/失败的结果并反馈给JV 上层应用。可能的返回结"
+      },
+      {
+        "id": "CEA-FuncR-123216",
+        "title": "钥匙重启终止蓝牙进程",
+        "desc": "SDK提供终止蓝牙进程(Android Only)的方法： VehicleExt.createBleCheckManager.rebootBleProcess 终止后，手机操作系统会自动重启蓝牙进程，受限于具体手机系统，实现效果可能会有差异"
+      },
+      {
+        "id": "CEA-FuncR-73799",
+        "title": "TBOX发送天窗通风/关闭指令请求",
+        "desc": "前置条件（T4G_SDK判断） 1&amp;&amp;2 完成蓝牙连接； 手机APP与车辆合法性认证通过； 激活条件 ①||② ① 用户在手机蓝牙数字钥匙APP操作天窗通风 (起翘) ② 用户在手机蓝牙数字钥匙APP操作关闭天窗 基本事件流 APP检测用户行为为蓝牙数字钥匙开启||关闭天窗，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送天窗开启||关闭指令给到BLE，BLE再通过C"
+      },
+      {
+        "id": "CEA-114012",
+        "title": "手机标定APP显示标定结果的对应设备类型",
+        "desc": "手机标定APP需要接收来自TBOX的标定完成结果，根据结果中的设备类型字段，在界面展示当前标定完成的设备类型是FOB还是PHONE。 如下界面供参考 当TBOX返回的设备类型为FOB时： 当TBOX返回的设备类型为手机时："
+      },
+      {
+        "id": "CEA-108662",
+        "title": "手机APP 提供Polling开关设置功能",
+        "desc": "手机APP 需要能够提供用户设置Polling开关，和Polling距离和校准的功能，并保存用户设置(在JV宿主程序保存)。在有蓝牙连接时传输设置项到TBOX。 具体包括 靠近自动解锁开关 离开自动闭锁开关 蓝牙信号校准（自标定） 设置自动解锁距离 自标定参数配置由JV宿主APP保存 默认3米自动解锁（具体数值在标定阶段确定），可手动调整解锁距离（可调范围由JV宿主APP自主定义，建议0~6m），"
+      },
+      {
+        "id": "VEEA-FuncR-12283",
+        "title": "CDCU请求蓝牙断开连接",
+        "desc": "描述： 用户踩刹车挂挡时，未检测到钥匙且有手机蓝牙钥匙在连接，此时大屏会出现弹窗提示（UI文案由大屏端设计，弹窗触发逻辑见 ），点击弹窗上的“重新检测”按钮后，通过车端发送断连指令到APP执行断连逻辑； 功能交互： 用户在大屏上点击“重新检测”，此时CDCU发送请求蓝牙断开指令CDCU_BLE_DisconnetReq=0x1:Active(发3帧回0x0)给到TMCU； 大屏出现弹窗由CDCU设"
+      },
+      {
+        "id": "VEEA-FuncR-12233",
+        "title": "手机APP控制车辆",
+        "desc": "BLE收到APP发来的蓝牙车控指令后，转成CANFD报文发到BLCAN上（ID:1C/1D/1E/1F）给到TBOX接收；"
+      },
+      {
+        "id": "VEEA-FuncR-12232",
+        "title": "APP<->BLE连接",
+        "desc": "当用户（包括数字钥匙被授权任）携带手机APP进入蓝牙连接范围内，手机会自动发起对蓝牙主模块的连接请求，如果此时蓝牙连接有空闲通道就可以响应手机的蓝牙连接请求，进而建立蓝牙连接；BLE会往CAN上发出连接状态；"
+      },
+      {
+        "id": "CEA-108728",
+        "title": "手机标定APP提供FOB钥匙标定选项",
+        "desc": "手机标定APP提供如下图所示的选项。选项激活时，用户点击开始标定按钮，APP需要发送选项参数给TBOX。 MAC由后台提供，并在APP端显示，如果没有获取到MAC地址，提示错误。 其中，方向选项需要支持如下几种："
+      },
+      {
+        "id": "CEA-FuncR-124961",
+        "title": "NFC选卡",
+        "desc": "NFC选卡 门把手传感器对选卡交易进行白名单管理，增加SAK 0x20 和0x08进白名单。"
+      },
+      {
+        "id": "CEA-FuncR-115385",
+        "title": "分享ICCOA钱包钥匙",
+        "desc": "分享ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供验证相关证书与存储证书的能力"
+      },
+      {
+        "id": "CEA-FuncR-115384",
+        "title": "中止和删除ICCOA钱包钥匙",
+        "desc": "中止和删除ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供验证相关证书与存储证书的能力"
+      },
+      {
+        "id": "CEA-FuncR-114660",
+        "title": "大屏注销数字钥匙",
+        "desc": "大屏注销数字钥匙 提供查询对应VIN是否有数字钥匙接口，收到大屏注销钥匙请求后，TBOX查看对应VIN是否有存在的数字钥匙，并向大屏返回结果 提供删除所有数字钥匙接口，大屏校验验证码通过后，收到大屏注销钥匙请求后，TBOX删除对应VIN的所有钥匙 删除对应VIN的所有钥匙后，TBOX向数字钥匙平台同步删除结果"
+      },
+      {
+        "id": "CEA-FuncR-114655",
+        "title": "创建安卓HCE钥匙",
+        "desc": "创建安卓HCE钥匙 安卓HCE钥匙创建完成后，TBOX从One Backend同步获取KeyID-VIN状态, 接收并存储钥匙信息（包含钥匙类型等基础信息），同时反馈one backend"
+      },
+      {
+        "id": "CEA-FuncR-114657",
+        "title": "分享私有协议钥匙",
+        "desc": "分享私有协议钥匙 被授权用户创建钥匙私有BLE钥匙或安卓HCE钥匙完成后，从One Backend同步获取KeyID-VIN状态, 接收并存储钥匙信息（包含钥匙类型等基础信息），同时反馈one backend"
+      },
+      {
+        "id": "CEA-FuncR-114654",
+        "title": "创建私有BLE钥匙",
+        "desc": "创建私有BLE钥匙 私有BLE钥匙创建完成后，TBOX从One Backend同步获取KeyID-VIN状态, 接收并存储钥匙信息（包含钥匙类型等基础信息），同时反馈one backend"
+      },
+      {
+        "id": "CEA-FuncR-126756",
+        "title": "删除万能钥匙证书",
+        "desc": "删除万能钥匙证书 兼容One Backend预置证书V1及V2接口"
+      },
+      {
+        "id": "VEEA-FuncR-12236",
+        "title": "BLE反馈车控执行结果至APP进行提示",
+        "desc": "①BLE在BLCAN上接收到TBOX发来的CAN ID:3C/3D/3E/3F的信号定义后，返回至APP; ②APP基于BLE返回的结果做按键状态显示； 功能名称 APP提示（具体以APP文案为准） 执行成功（通用） 成功 执行失败（通用） 失败 蓝牙解闭锁控制/临停锁控制 合法性认证未通过，失败 【BLE解锁】超时，解锁失败 【BLE闭锁】超时，，闭锁失败 （锁车指令下发后、其他未归类原因的失败"
+      },
+      {
+        "id": "VEEA-FuncR-12238",
+        "title": "TSOC合法性认证策略（APP->TSOC）",
+        "desc": "1. TMCU接收到BLCAN上的CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLEControl_Sig4），通过串口协议给到T4G_SDK; 2. T4G_SDK做内部的合法性认证，将合法性认证的结果通过串口协议给到TMCU; 3. TMCU在BLCAN上发送CANID:3C/3D/3E/3F（TBOX_BLEControl_Sig1~TBOX_BLEC"
+      },
+      {
+        "id": "VEEA-FuncR-12245",
+        "title": "TBOX错误返回码判断策略",
+        "desc": "T4G（SDK）收到APP发来的车控指令（ 蓝牙手机钥匙控制解闭锁| | 蓝牙手机钥匙控制电动尾门 | | 蓝牙手机钥匙控制充电口盖 | | 蓝牙手机钥匙控制车窗 | | 蓝牙手机钥匙控制寻车请求指令 | | 蓝牙手机钥匙控制天窗指令 || 蓝牙手机钥匙控制AVAS寻车 ）后，判断前置条件是否满足，若满足，则反馈车控指令控制成功，若不满足，则反馈具体的原因； T4G(SDK)通过串口协议将执行结果"
+      },
+      {
+        "id": "VEEA-FuncR-12280",
+        "title": "大屏执行账号联登",
+        "desc": "大屏收到T4G MQTT发来的KeyID： - 大屏发送KeyID给JV Accout APP - JV Accout APP查询本地缓存或者JV云数据，如果KeyID有关联的用户且用户的账号同步开关为打开，则直接登录；（info: 账号同步开关状态由JV手机APP通过4G网络同步给JV backend） - JV Accout APP未能找到KeyID关联的用户或者用户的账号同步开关为关闭，则不"
+      },
+      {
+        "id": "CEA-FuncR-115399",
+        "title": "创建ICCOA钥匙",
+        "desc": "创建ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 开通车主钥匙 相关说明 提供与设备厂商后台对接通信的能力 提供合法性身份校验的能力 提供状态通知的能力 提供签发车主钥匙证书的能力"
+      },
+      {
+        "id": "CEA-FuncR-115383",
+        "title": "创建ICCOA钱包钥匙",
+        "desc": "创建ICCOA钱包钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 开通车主钥匙 相关说明 提供验证相关证书与存储证书的能力 车需具备车公钥证书、车服务器CA 证书、蓝牙广播密钥、IRK(从车服务器获"
+      },
+      {
+        "id": "CEA-FuncR-115396",
+        "title": "分享ICCOA钥匙",
+        "desc": "分享ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供分享配置的能力 提供与设备厂商DKF服务通信的能力 提供与车服务器通信的能力"
+      },
+      {
+        "id": "CEA-FuncR-115395",
+        "title": "终止和删除ICCOA钥匙",
+        "desc": "终止和删除ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 注销车钥匙和撤销车钥匙相关说明 提供与设备厂商后台对接通信的能力 提供相关请求的有效性验证 提供状态通知的能力"
+      },
+      {
+        "id": "CEA-FuncR-115398",
+        "title": "分享ICCOA钥匙",
+        "desc": "分享ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 分享钥匙相关说明 提供与设备厂商后台对接通信的能力 提供状态通知的能力 提供签发分享证书以及好友数字证书的能力"
+      },
+      {
+        "id": "CEA-FuncR-133246",
+        "title": "大屏一键注销数字钥匙(针对JV新需求修改版本)",
+        "desc": "大屏一键注销数字钥匙(针对JV新需求修改版本)"
+      },
+      {
+        "id": "CEA-FuncR-127592",
+        "title": "解绑时回传解绑理由",
+        "desc": "解绑时回传解绑理由 OB新增OP(解绑理由)字段，JV在调用钥匙解绑/删除钥匙接口时，向OB传入OP信息，OB执行完钥匙解绑/删除后回传OB给JV 根据JV需求，新增OP枚举值"
+      },
+      {
+        "id": "CEA-FuncR-139918",
+        "title": "ICCOA钥匙支持穿戴设备",
+        "desc": "ICCOA钥匙支持穿戴设备 数字钥匙后台新增device type类型wearble OB Acount去除设备类型校验"
+      },
+      {
+        "id": "CEA-FuncR-139917",
+        "title": "ICCOA钥匙支持穿戴设备",
+        "desc": "ICCOA钥匙支持穿戴设备 SDK新增device type类型wearble"
+      },
+      {
+        "id": "CEA-FuncR-114659",
+        "title": "中止和删除私有钥匙",
+        "desc": "中止和删除私有钥匙 私有BLE钥匙或安卓HCE钥匙删除完成后，从One Backend同步获取KeyID-VIN状态, 删除对应钥匙信息，同时反馈one backend"
+      },
+      {
+        "id": "CEA-FuncR-114662",
+        "title": "人车关系失效钥匙失效",
+        "desc": "人车关系失效钥匙失效 同步JV SP获取UID-VIN-KeyID绑定关系解除信息 删除对应KeyID 同步删除KeyID状态至车端"
+      },
+      {
+        "id": "CEA-FuncR-114656",
+        "title": "创建CCC CarKey钱包钥匙",
+        "desc": "创建CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》 支持NFC和BLE钥匙配对，同时兼容WCC1&amp;WCC3"
+      },
+      {
+        "id": "CEA-FuncR-114677",
+        "title": "大屏注销数字钥匙",
+        "desc": "大屏注销数字钥匙 判断大屏是否有主账户登录 如果是：在&quot;设置&quot;-“通用”-“安全与隐私”显示“注销数字车钥匙”入口 如果不是：&quot;设置&quot;-“通用”-“安全与隐私”不显示“注销数字车钥匙” 用户点击&quot;注销数字车钥匙&quot;按钮后，调用TBOX接口，查询对应VIN是否有激活的数字钥匙 如果有：弹窗&quot;确认发送短信&quot; 如果没有：Toa"
+      },
+      {
+        "id": "CEA-FuncR-114648",
+        "title": "创建安卓HCE钥匙",
+        "desc": "创建安卓HCE钥匙 提供接口，响应SDK创建HCE钥匙请求 如果UID, VIN, Device Type已存在，向车端下发删除指令，将之前的钥匙删除，再执行创建操作 提供上报写卡结果接口，接收SDK写卡结果上报 收到SDK写卡失败上报时，10分钟后删除未激活的HCE钥匙 成功创建钥匙时，向SDK反馈成功执行结果 异常场景时，根据接口定义错误码向SDK返回反馈执行结果 保存VIN-KeyID关系 "
+      },
+      {
+        "id": "CEA-FuncR-114647",
+        "title": "创建私有BLE钥匙",
+        "desc": "创建私有BLE钥匙 提供创建私有BLE钥匙接口，响应SDK创建私有BLE钥匙请求 成功创建钥匙时，向SDK反馈成功执行结果 异常场景时，根据接口定义错误码向SDK返回反馈执行结果 保存VIN-KeyID关系 同步VIN-KeyID-UID关系至账号中心 下发钥匙至车端"
+      },
+      {
+        "id": "CEA-FuncR-114449",
+        "title": "创建私有BLE钥匙",
+        "desc": "创建私有BLE钥匙 One SDK与One Backend建立连接，携带Token, UID, VIN，调用One Backend创建私有BLE钥匙接口: ，请求创建私有BLE钥匙 One SDK保存KeyID-UID关系 成功创建时，One SDK反馈成功执行结果，并提供KeyID信息给OEM APP 异常场景时，One SDK根据接口定义错误码返回反馈执行结果"
+      },
+      {
+        "id": "CEA-FuncR-114658",
+        "title": "分享CCC CarKey钱包钥匙",
+        "desc": "分享CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》"
+      },
+      {
+        "id": "CEA-FuncR-126757",
+        "title": "数字钥匙证书预置接口",
+        "desc": "数字钥匙证书预置接口 现有(CEA1.0&amp;1.1)V1接口包含证书：私有BLE钥匙证书，ICCOA证书，CCC证书，万能钥匙证书 在CEA1.3提供V2接口，包含证书：私有BLE钥匙证书，ICCOA证书，CCC证书"
+      },
+      {
+        "id": "CEA-FuncR-114661",
+        "title": "中止和删除CCC CarKey钱包钥匙",
+        "desc": "中止和删除CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》"
+      },
+      {
+        "id": "CEA-FuncR-114464",
+        "title": "大屏注销数字钥匙",
+        "desc": "大屏注销数字钥匙 数字钥匙平台提供发送验证码短信接口，接收大屏发送验证码请求 数字钥匙平台向消息中心请求发送验证码 消息中心生成验证码并向JV SP请求发送短信 数字钥匙平台提供校验验证码接口，接收大屏输入验证码结果 数字钥匙平台转发大屏输入验证码结果至消息中心 消息中心校验验证码结果，并返回判断结果至数字钥匙平台，数字钥匙平台返回校验结果至大屏 收到TBOX注销所有数字钥匙结果后，同步注销状态至"
+      },
+      {
+        "id": "CEA-FuncR-115393",
+        "title": "终止和删除ICCOA钥匙",
+        "desc": "终止和删除ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 注销车钥匙和撤销车钥匙相关说明"
+      },
+      {
+        "id": "CEA-FuncR-114607",
+        "title": "创建安卓HCE钥匙",
+        "desc": "创建安卓HCE钥匙 One SDK与One Backend建立连接，携带Token, UID, VIN，调用One Backend创建HCE钥匙接口,请求创建安卓HCE钥匙 One SDK保存KeyID-UID关系 One SDK将钥匙数据写入手机NFC, 调用One Backend反馈写卡结果接口并反馈写卡结果 手机写卡失败时，One SDK调用删除钥匙接口删除未激活的钥匙 成功创建时，One "
+      },
+      {
+        "id": "VEEA-FuncR-12239",
+        "title": "TBOX发送蓝牙解锁/蓝牙闭锁/蓝牙临停锁指令请求",
+        "desc": "前置条件 （T4G_SDK判断） 蓝牙解锁前置条件：1&amp;&amp;2； 蓝牙闭锁前置条件：1&amp;&amp;2&amp;&amp;3&amp;&amp; 5 &amp;&amp;6； (在有感OTA情况下，即CDCU_DiagnosticSt==0x5:Normal OTA 时，仅判断：1&amp;&amp;2) 蓝牙临停锁前置条件：1&amp;&amp;2&amp;&amp;3&am"
+      },
+      {
+        "id": "CEA-FuncR-114615",
+        "title": "创建CCC CarKey钱包钥匙",
+        "desc": "创建CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 5. OWNER PAIRING COMMANDS [WCC1/WCC2/WCC3] 6. Owner Pairing 19. BLUETOOTH LOW ENERGY (LE) INTERFACE2 [WCC2/WCC3]"
+      },
+      {
+        "id": "CEA-FuncR-132335",
+        "title": "P用户人车关系解绑删除所有钥匙",
+        "desc": "P用户人车关系解绑删除所有钥匙 OB Account提供接口，接收JV SP解除钥匙绑定关系请求，入参(VIN, uid, OP，KeyIDList(KeyIDList非必传项)) OB Account校验VIN和UID关系，VIN和UID有合法车主关系，进行后续流程 OB Account请求OB 数字钥匙平台批量删除VIN下所有数字钥匙 OB 数字钥匙平台根据VIN删除所有数字钥匙 OB 数字钥"
+      },
+      {
+        "id": "CEA-FuncR-132334",
+        "title": "S用户人车关系解绑删除S用户钥匙",
+        "desc": "S用户人车关系解绑删除S用户钥匙 OB Account提供接口，接收JV SP解除钥匙绑定关系请求，入参(VIN, UID, KeyIdList, OP) OB Account请求OB 数字钥匙平台批量删除对应S用户数字钥匙 OB 数字钥匙平台校验VIN KeyID合法关系 OB 数字钥匙平台根据VIN KeyIdList删除对应S用户数字钥匙 OB 数字钥匙平台向OB Account返回删除钥匙"
+      },
+      {
+        "id": "CEA-FuncR-123678",
+        "title": "HCE钥匙AID配置",
+        "desc": "HCE钥匙AID配置 配置描述 JV AID配置 OneApp 包名 AID VWA AID-VWA = F49445544F6E65A1B2 DSSO One App国内版：com.dssomobile.oneApp FVW AID-FVW = F49445544F6E65A2B2 一汽大众超级App 国内版：com.timanetworks.android.faw.vw.aftermarket"
+      },
+      {
+        "id": "CEA-FuncR-114629",
+        "title": "分享CCC CarKey钱包钥匙",
+        "desc": "分享CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 11. DIGITAL KEY SHARING [WCC1/WCC2]"
+      },
+      {
+        "id": "CEA-FuncR-114652",
+        "title": "删除私有协议钥匙",
+        "desc": "删除私有协议钥匙 提供删除钥匙接口，响应SDK获取钥匙列表请求 收到删除钥匙请求后，解除UID-KeyID绑定关系 同步UID-KeyID关系至账号中心和车端 成功执行时，向SDK反馈成功执行结果 异常场景时，向SDK根据接口定义错误码返回反馈执行结果"
+      },
+      {
+        "id": "CEA-FuncR-114637",
+        "title": "删除私有协议钥匙",
+        "desc": "删除私有协议钥匙 One SDK与One Backend建立连接，携带Token, UID, KeyID，调用删除钥匙接口，请求删除钥匙 One SDK需根据账号服务逻辑定义，支持主用户解除被授权用户人车关系 One SDK需根据账号服务逻辑定义，支持用户解除对应UID的人车关系 删除成功后，One SDK删除保存的KeyID-UID关系 成功获取时，One SDK反馈成功执行结果 异常场景时，O"
+      },
+      {
+        "id": "CEA-FuncR-114651",
+        "title": "分享CCC CarKey钱包钥匙",
+        "desc": "分享CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 11. DIGITAL KEY SHARING [WCC1/WCC2]"
+      },
+      {
+        "id": "CEA-FuncR-114653",
+        "title": "中止和删除CCC CarKey钱包钥匙",
+        "desc": "中止和删除CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 13. KEY TERMINATION AND DELETION [WCC1/WCC2]"
+      },
+      {
+        "id": "CEA-FuncR-115397",
+        "title": "创建ICCOA钥匙",
+        "desc": "创建ICCOA钥匙 详细内容请参考ICCOA联盟官方文档 ICCOA DK 2.0 开通车主钥匙 相关说明 提供合法性身份校验的能力 提供与设备厂商DKF服务通信的能力 提供与车服务器通信的能力 安卓SDK提供接口：APP跳转到钱包钥匙(当前仅支持小米和VIVO) IccoaApiManager.showDigitalKeyInNativeApp"
+      },
+      {
+        "id": "VEEA-FuncR-12244",
+        "title": "TBOX报文路由解锁账号联登信息",
+        "desc": "前置条件 （T4G_SDK判断） 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 激活条件 1&amp;&amp;2 1. 用户通过手机点击蓝牙解锁/Polling解锁/ 手机NFC解锁 已成功 ; 2.APP通过蓝牙3.0协议向BLE发送KID; 基本事件流 1. BLE在BLCAN上发送CAN ID:1C/1D/1F/1E(BLE_BLEControl_Sig1~BLE_BLEC"
+      },
+      {
+        "id": "CEA-FuncR-114636",
+        "title": "OEM APP查看钥匙列表",
+        "desc": "OEM APP查看钥匙列表 One SDK与One Backend建立连接，携带Token, VIN 调用获取钥匙列表接口，请求获取当前对应VIN的钥匙列表 成功获取时，One SDK反馈成功执行结果 异常场景时，One SDK根据接口定义错误码返回反馈执行结果 安卓SDK提供接口, 获取所有钥匙列表(当前用户的钥匙列表+分享出去的钥匙列表): 如果是P用户，会返回P用户的所有钥匙和被分享人的钱包"
+      },
+      {
+        "id": "CEA-FuncR-114650",
+        "title": "OEM APP获取钥匙列表",
+        "desc": "OEM APP获取钥匙列表 提供获取钥匙列表接口，响应SDK获取钥匙列表请求 依赖JV SP提供查询接口，获取当前UID下VIN的KeyList 成功获取时，向SDK反馈成功执行结果 异常场景时，向SDK根据接口定义错误码返回反馈执行结果 现有支持的查询钥匙列表方式 通过VIN查询 通过UserID查询 通过KeyID+VIN查询 新增查询钥匙列表方式 通过UserID+VIN查询：数字钥匙后台和"
+      },
+      {
+        "id": "CEA-FuncR-114649",
+        "title": "创建CCC CarKey钱包钥匙",
+        "desc": "创建CCC CarKey钱包钥匙 支持生成CCC的配对密码，并把包含密码的消息推送给JV SP 请参考《Car Connectivity Consortium Digital Key Release 3》： 5. OWNER PAIRING COMMANDS [WCC1/WCC2/WCC3] 6. Owner Pairing 19. BLUETOOTH LOW ENERGY (LE) INTERF"
+      },
+      {
+        "id": "CEA-FuncR-114616",
+        "title": "分享私有协议钥匙",
+        "desc": "分享私有协议钥匙 One SDK需根据账号服务逻辑定义，支持主用户授权副用户 One SDK支持副用户执行创建钥匙流程，包括创建私有BLE钥匙，HCE钥匙"
+      },
+      {
+        "id": "CEA-FuncR-124958",
+        "title": "数字钥匙消息推送",
+        "desc": "数字钥匙消息推送 序号 标题 （JV SP） 发送场景 (OB) 场景ID (OB生成唯一标识) 是否 静默消息 备注 消息类型 (JV SP) 推送对象 （JV SP） 内容(文言内容供参考，具体文言内容由JV定义) （JV SP） 动态占位字段 (OB) 是否需要送达结果回执 1 数字钥匙配对 创建CCC钥匙需要向车主发送一条钥匙配对短信 CCCPairPassSmsTpl SMS_46567"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "VEEA-UC-12229",
+        "title": "车辆状态透传给TBOX钥匙服务SDK",
+        "desc": "TBOX在总线上被唤醒后，获取到车辆相关信息给到TMCU，TMCU将车辆状态通过串口协议给到T4G_SDK，T4G_SDK将车辆状态、车控结果处理后发送给手机APP，手机APP进行车辆状态显示及车控结果提示； 透传至SDK车辆状态信息如下： 1. 四门两盖的状态信息； 2. 尾翼状态信息； 3. 门锁状态信息； 4. 车窗位置信息； 5. 转向灯及灯语状态信息； 6. 整车解闭锁源状态信息； 7."
+      },
+      {
+        "id": "VEEA-UC-12226",
+        "title": "蓝牙手机钥匙控制寻车车辆鸣笛",
+        "desc": "前置条件 1&&2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 激活条件 用户在手机蓝牙数字钥匙点击寻车鸣笛； 基本事件流 1. APP检测用户行为为寻车鸣笛，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送解锁指令给到BLE，BLE再通过CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLEControl_Sig4）将蓝牙鸣笛指"
+      },
+      {
+        "id": "VEEA-UC-12227",
+        "title": "蓝牙手机钥匙控制寻车车辆闪灯",
+        "desc": "前置条件 （T4G_SDK判断） 1&&2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过激活条件； 触发条件 用户在APP端点击寻车闪灯； 基本事件流 1. APP检测用户行为为寻车闪灯，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送闪灯指令给到BLE，BLE再通过CANID:1C/1D/1E/1F（BLE_BLEControl_Sig1~BLE_BLEControl"
+      },
+      {
+        "id": "CEA-UC-61720",
+        "title": "蓝牙手机钥匙天窗通风/关闭天窗",
+        "desc": "前置条件（T4G_SDK判断） 1&amp;&amp;2 完成蓝牙连接； 手机APP与车辆合法性认证通过； 激活条件 ①||② ① 用户在手机蓝牙数字钥匙APP操作天窗通风 (起翘) ② 用户在手机蓝牙数字钥匙APP操作关闭天窗 基本事件流 APP检测用户行为为蓝牙数字钥匙开启||关闭天窗，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送天窗开启||关闭指令给到BLE，BLE再通过C"
+      },
+      {
+        "id": "CEA-UC-98874",
+        "title": "蓝牙手机钥匙控制寻车AVAS发声",
+        "desc": "前置条件 1&amp;&amp;2 &amp;&amp; （3 || （4&amp;&amp;（5||6））） 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 3. 车辆已下电，PowerMode==off； 4. 车辆已上电，PowerMode==local on/remote on； 5. 车辆在P档，GearLev==P； 6. VehSpd&lt;3km/h &amp;&am"
+      },
+      {
+        "id": "CEA-108628",
+        "title": "手机APP设置蓝牙钥匙Polling解闭锁参数",
+        "desc": "前置条件 1 &amp;&amp; 2 手机蓝牙连接 合法性认证通过 激活条件 1 || 2 || 3 || 4 || 5 用户 操作APP打开或者关闭Polling解锁开关 用户 操作APP打开或者关闭Polling闭锁开关 用户操作APP设置Polling距离 用户操作APP设置Polling自学习参数是否启用 手机蓝牙从未连接-&gt;连接 基本事件流 激活条件 1，2，3，4满足， 则AP"
+      },
+      {
+        "id": "CEA-104650",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-UC-12223",
+        "title": "蓝牙手机钥匙控制开关充电口盖",
+        "desc": "前置条件 （T4G_SDK判断） 开启充电口盖：1&&2&&3 关闭充电口盖：1&&2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过 ； 3. LDCU_GearLev ==P gear /Invalid ； 激活条件 用户在手机蓝牙数字钥匙APP点击蓝牙开启 || 关闭充电口盖 基本事件流 1. APP检测用户行为为蓝牙开启充电口盖||关闭充电口盖，与T4G_SDK做合法性认证，认"
+      },
+      {
+        "id": "VEEA-UC-12219",
+        "title": "蓝牙手机钥匙解锁",
+        "desc": "前置条件 （T4G_SDK判断） 1&amp;&amp;2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过 ； 激活条件 用户在手机APP蓝牙数字钥匙上点击解锁按键 基本事件流 1. APP检测用户行为为蓝牙数字钥匙解锁，与T4G_SDK 做合法性认证，认证通过后APP通过蓝牙协议发送解锁指令给到 BLE，BLE再通过CANID:1C/1D/1E/1F（BLE_BLEControl_S"
+      },
+      {
+        "id": "VEEA-UC-12225",
+        "title": "蓝牙手机钥匙控制车窗通风",
+        "desc": "前置条件 （T4G_SDK判断） 1&amp;&amp;2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 激活条件 用户在手机蓝牙数字钥匙APP点击一键通风按键 基本事件流 1. APP检测用户行为为蓝牙数字钥匙一键通风 ，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送 一键通风指令给到BLE，BLE再通过CANID:1C/1D/1E/1F（BLE_BLEContr"
+      },
+      {
+        "id": "VEEA-UC-12224",
+        "title": "蓝牙手机钥匙控制一键升窗",
+        "desc": "前置条件 （T4G_SDK判断） 1&amp;&amp;2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 1.防盗认证通过； 激活条件 用户在手机蓝牙数字钥匙APP点击一键升窗按键 基本事件流 1. APP检测用户行为为蓝牙数字钥匙一键升窗，与T4G_SDK做合法性认证，认证通过后APP通过蓝牙协议发送一键升窗指令给到BLE，BLE再通过CANID:1C/1D/1E/1F（BLE_"
+      },
+      {
+        "id": "CEA-104644",
+        "title": "基本事件2：用户人车关系解除，私有钥匙变为失效",
+        "desc": "基本事件2：用户人车关系解除，私有钥匙变为失效 用户通过SDK发起人车关系解除请求，账号中心解除人车关系 账号中心同步人车关系变化至数字钥匙平台 数字钥匙平台解除UID-KeyID绑定关系，对应KeyID状态变为已失效 数字钥匙平台同步对应状态至数字钥匙平台, 车端，账号中心 注：支持以下人车关系解除方式： 车主主动解除被授权人人车关系 被授权人主动解除人车关系 车主解除主用户人车关系，导致被授权"
+      },
+      {
+        "id": "CEA-104618",
+        "title": "基本事件3：删除或停用激活的钱包钥匙后，私有钥匙重新激活",
+        "desc": "基本事件3：删除或停用激活的钱包钥匙后，私有钥匙重新激活 前置条件： 用户有已激活的私有钥匙，此钥匙在用户激活钱包钥匙后停用 用户删除或停用已激活的钱包钥匙 SDK激活已停用的私有协议钥匙 SDK同步状态至数字钥匙平台 数字钥匙平台将对应的KeyID私有钥匙从不可用变为激活"
+      },
+      {
+        "id": "CEA-104603",
+        "title": "基本事件1：创建私有BLE钥匙",
+        "desc": "基本事件1：创建私有BLE钥匙 SDK检测到用户创建钥匙请求 SDK向数字钥匙管理平台发送创建BLE私有钥匙请求 数字钥匙平台判断创建钥匙的前置条件 数字钥匙平台生成KeyID 数字钥匙平台储存KeyID-UID-VIN关系 JV SP同步KeyID-UID-VIN关系并存储 数字钥匙平台将对应的KeyID的钥匙状态变为已激活 数字钥匙平台下发钥匙至车端和SDK 异常事件： 异常事件1：数字钥匙平"
+      },
+      {
+        "id": "CEA-104653",
+        "title": "基本事件2：用户人车关系解除，私有钥匙变为失效",
+        "desc": "基本事件2：用户人车关系解除，私有钥匙变为失效 用户通过OEM APP发起人车关系解除请求，JV SP解除人车关系 JV SP同步人车关系变化至OB账号代理中心 OB账号代理中心调用数字钥匙平台删除钥匙接口发起删除要是请求 数字钥匙平台解除VIN-KeyID绑定关系，删除对应KeyID 数字钥匙平台同步对应状态至车端 注：支持以下人车关系解除方式 车主主动解除被授权人人车关系 被授权人主动解除人车"
+      },
+      {
+        "id": "CEA-104619",
+        "title": "基本事件4：创建CCC CarKey钱包钥匙",
+        "desc": "基本事件4：创建CCC CarKey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 5. OWNER PAIRING COMMANDS [WCC1] 6. Owner Pairing 19. BLUETOOTH LOW ENERGY (LE) INTERFACE2 [WCC2/WCC3]"
+      },
+      {
+        "id": "CEA-104679",
+        "title": "基本事件6：中止和删除CCC Carkey钱包钥匙",
+        "desc": "基本事件6：中止和删除CCC Carkey钱包钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 13. KEY TERMINATION AND DELETION [WCC1/WCC2]"
+      },
+      {
+        "id": "CEA-UC-114676",
+        "title": "基本事件1：创建私有BLE钥匙",
+        "desc": "基本事件1：创建私有BLE钥匙 SDK检测到用户创建钥匙请求 SDK向数字钥匙管理平台发送创建BLE私有钥匙请求 数字钥匙平台判断创建钥匙的前置条件 数字钥匙平台生成KeyID 数字钥匙平台储存KeyID-UID-VIN关系 JV SP同步KeyID-UID-VIN关系并存储 数字钥匙平台将对应的KeyID的钥匙状态变为已激活 数字钥匙平台下发钥匙至车端和SDK 异常事件： 异常事件1：数字钥匙平"
+      },
+      {
+        "id": "CEA-104641",
+        "title": "基本事件3: 钱包中获取CCC钥匙列表",
+        "desc": "基本事件3: 钱包中获取CCC钥匙列表 请参考《Car Connectivity Consortium Digital Key Release 3》： 17. SERVER-TO-SERVER COMMUNICATIONS AND API"
+      },
+      {
+        "id": "CEA-104620",
+        "title": "基本事件2：分享CCC CarKey钥匙",
+        "desc": "基本事件2：分享CCC CarKey钥匙 请参考《Car Connectivity Consortium Digital Key Release 3》： 11. DIGITAL KEY SHARING [WCC1/WCC2]"
+      },
+      {
+        "id": "CEA-104642",
+        "title": "基本事件1：被授权用户的账号权限到期，私有钥匙失效",
+        "desc": "基本事件1：被授权用户的账号权限到期，私有钥匙失效 被授权用户权限时间到期，JV SP解除人车关系，通知OB账号代理中心 OB账号代理中心调用数字钥匙平台删除钥匙接口发起删除钥匙请求 数字钥匙平台解除VIN-KeyID绑定关系，删除对应KeyID 数字钥匙平台同步对应状态至车端"
+      },
+      {
+        "id": "VEEA-UC-12222",
+        "title": "蓝牙手机钥匙控制开关电动尾门",
+        "desc": "前置条件 （T4G_SDK判断） 开启尾门条件：1&amp;&amp;2&amp;&amp;3； 关闭尾门条件：1&amp;&amp;2 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过 ； 3. 车辆处于P档： （IPB_Vehspd&lt;3km/h &amp; IPB_VehSpdVD=0x1:valid）|| IPB_VehSpdVD=0x0:Not Initialized ||"
+      },
+      {
+        "id": "CEA-104643",
+        "title": "基本事件1：SDK主动获取钥匙列表",
+        "desc": "基本事件1： SDK主动获取钥匙列表 SDK检测到用户获取钥匙列表请求 SDK向数字钥匙平台发起获取钥匙列表请求 数字钥匙平台校验人车关系 数字钥匙平台响应对应UID的钥匙列表给SDK 基本事件2： 钥匙列表更新，数字钥匙平台主动下发最新钥匙列表给对应UID用户 数字钥匙平台检测到钥匙列表状态更新 数字平台同步钥匙列表给对应UID用户，及对应VIN的主账户 注： 车主用户可以查询到对应VIN下的所"
+      },
+      {
+        "id": "CEA-104669",
+        "title": "基本事件4：用户主动删除私有钥匙，私有钥匙失效",
+        "desc": "基本事件4：用户主动删除私有钥匙，私有钥匙失效 SDK检测到用户删除钥匙操作 SDK向数字钥匙平台发起删除钥匙请求 数字钥匙平台通过OB账号代理服务向JV SP确认钥匙删除 数字钥匙平台解除对应KeyID-VIN关系，删除对应KeyID 数字钥匙平台同步新的KeyID-VIN状态至车端 注：支持以下删除钥匙方式 车主用户主动删除自己的车主钥匙 车主删除分享的钥匙 被分享的用户主动删除自己的被分享钥"
+      },
+      {
+        "id": "CEA-104602",
+        "title": "基本事件2：创建HCE钥匙",
+        "desc": "基本事件2：创建HCE钥匙 SDK检测到用户创建HCE钥匙请求(引导用户创建钥匙交互流程由JV APP定义) SDK向数字钥匙管理平台发送创建HCE钥匙请求 数字钥匙平台判断创建HCE钥匙前置条件 数字钥匙平台生成cardSeID，cardATC, KeyID, CardID 数字钥匙平台存储KeyID-UID-VIN关系 数字钥匙平台同步KeyID-UID-VIN至JV SP和车端 数字钥匙平台"
+      },
+      {
+        "id": "CEA-104621",
+        "title": "基本事件1：主用户授权副用户，副用户激活私有钥匙",
+        "desc": "基本事件1：主用户授权副用户，副用户激活私有钥匙 主用户授权副用户(同账户授权逻辑) 数字钥匙平台从JV SP获取授权账户有效时间 副用户创建BLE私有钥匙(同4.1创建BLE私有钥匙) 副用户创建HCE私有钥匙(同4.2创建HCE私有钥匙) 注：副用户创建私有钥匙，私有钥匙的有效时间和副用户权限的有效时间相同 异常事件 同账号授权事件 同创建私有BLE钥匙异常事件 同创建HCE钥匙异常事件 功能"
+      },
+      {
+        "id": "VEEA-UC-12221",
+        "title": "蓝牙手机钥匙临停闭锁",
+        "desc": "前置条件 （T4G_SDK判断） 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过 ； 3. 本地上电： LDCU_PowerMode =Local ON； 4. 车辆处于P档： （IPB_Vehspd&lt;3km/h &amp; IPB_VehSpdVD=0x1:valid）|| IPB_VehSpdVD=0x0:Not Initialized || LDCU_GearLev==P "
+      },
+      {
+        "id": "VEEA-UC-12220",
+        "title": "蓝牙手机钥匙闭锁",
+        "desc": "前置条件 （T4G_SDK判断） 1&amp;&amp;2&amp;&amp;3&amp;&amp;4&amp;&amp;5 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过 ； 3. 四门两盖关闭： LDCU_DriverDoorAjarSt =Closed&amp;&amp; RDCU_PsngrDoorAjarSt= Closed&amp;&amp; LDCU_RLDoorAjar"
+      },
+      {
+        "id": "VEEA-UC-12228",
+        "title": "蓝牙手机钥匙解锁账号切换",
+        "desc": "前置条件 （T4G_SDK判断） 1. 完成蓝牙连接； 2. 手机APP与车辆合法性认证通过； 3. 手机通过数字钥匙3.0协议向TBOX发送了KEYID; 激活条件 1 or 2 1. 用户通过手机点击蓝牙解锁/Polling解锁 2. 手机NFC解锁成功 ; 基本事件流 激活条件1 ：T4G 判断前置条件满足，通过MQTT协议将KID发给CDCU SoC; 激活条件2： T4G 通过MQTT协"
+      },
+      {
+        "id": "CEA-104668",
+        "title": "基本事件5：用户大屏注销所有钥匙，私有钥匙失效",
+        "desc": "基本事件5：用户大屏注销所有钥匙，私有钥匙失效 前置条件: 大屏登录主账户 大屏点击&quot;设置&quot;-“通用”-“安全与隐私”-“注销数字车钥匙” 用户点击大屏注销数字钥匙 TBOX判断车辆是否有数字钥匙 是: 弹窗&quot;确认发送短信&quot; 否: Toast&quot;暂无数车钥匙，无需注销&quot; 车辆有数字钥匙，弹窗&quot;确认发送短信&quot;，获取车主手机"
+      }
+    ],
+    "others": [
+      {
+        "id": "CEA-ITC-129119",
+        "type": "functionREQTestCase",
+        "title": "蓝牙手机钥匙天窗通风",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "VEEA-6201",
+    "title": "介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6207",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6204",
+    "title": "缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6205",
+    "title": "引用文档和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6206",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6225",
+    "title": "输出需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6212",
+    "title": "ECU间CAN信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6213",
+    "title": "ECU内部信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-31702",
+    "title": "To 防盗子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6236",
+    "title": "To 尾门控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6233",
+    "title": "To 锁控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6250",
+    "title": "To 休眠唤醒子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6208",
+    "title": "功能逻辑框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6209",
+    "title": "功能电气原理框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6203",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6202",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6239",
+    "title": "To 充电口盖控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6210",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6211",
+    "title": "交互信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-31727",
+    "title": "To 外灯子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6226",
+    "title": "To RKE遥控钥匙子系统/LDCU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-6214",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-119753",
+    "title": "To 天窗遮阳帘控制",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-119754",
+    "title": "To 车窗控制系统",
+    "description": "",
+    "functions": [
+      {
+        "id": "VEEA-FuncR-6251",
+        "title": "钥匙遥控指令唤醒整车",
+        "desc": "整车休眠状态，有钥匙遥控指令时，RF模块应能通过LIN总线唤醒整车"
+      },
+      {
+        "id": "VEEA-FuncR-6240",
+        "title": "响应遥控充电口盖控制请求打开充电口盖",
+        "desc": "接收到RKE子系统发出的遥控充电口盖控制请求 RKEChargePort==0x1（RKE Req）时，判断以下条件均满足： 车辆在P档，GearLev==P； 当前充电口盖关闭状态； 当前没有对外放电，ChargePortActSt==no output， 应执行打开充电口盖动作。"
+      },
+      {
+        "id": "VEEA-FuncR-6231",
+        "title": "遥控开关滑移门",
+        "desc": "*注：该需求依赖于电动滑移门配置。 如果自动泊车功能当前不在主动模式下， XPU_LDCU_CurMode != 0x1 || 0x2， 检测到遥控钥匙左侧滑移门按键被双击，应发出遥控钥匙左侧滑移门控制请求，发出一次 RKELtPSDReq=0x1（RKE Req）。 如果自动泊车功能当前不在主动模式下， XPU_LDCU_CurMode != 0x1 || 0x2， 检测到遥控钥匙右侧滑移门按键"
+      },
+      {
+        "id": "VEEA-FuncR-6241",
+        "title": "响应遥控充电口盖控制请求关闭充电口盖",
+        "desc": "接收到RKE子系统发出的遥控充电口盖控制请求 RKEChargePort==0x1（RKE Req）时，判断以下条件均满足： 当前没有插枪充电，ACConectSt==inactive&&DCConectSt==inactive； 当前充电口盖打开状态； 当前没有对外放电，ChargePortActSt==no output， 应执行关闭充电口盖动作。"
+      },
+      {
+        "id": "CEA-FuncR-31703",
+        "title": "响应遥控寻车鸣笛动作",
+        "desc": "防盗子系统接收到钥匙控制鸣笛指令RKE_RDCU_HornSw=not active-&gt;active后，执行寻车鸣笛动作。（执行逻辑与响应 TBOX_RDCU_HornSw=active的效果相同 ） 域控唤醒后收到的第一帧信号可能就是RKE_RDCU_HornSw=active，此时无需判断not active-&gt;active的跳变，立即执行寻车鸣笛动作。"
+      },
+      {
+        "id": "CEA-FuncR-31726",
+        "title": "响应遥控寻车闪灯动作",
+        "desc": "外部灯光子系统接收到钥匙控制闪灯指令RKE_LightSw=not active-&gt;active,执行寻车闪灯(双闪3个周期)和灯语动作。（钥匙靠近车辆时可能会有迎宾灯效果，此时应优先响应按键寻车功能，打断迎宾灯效） 域控唤醒后收到的第一帧信号可能就是RKE_LightSw=active，此时无需判断not active-&gt;active的跳变，立即执行寻车闪灯和灯语动作。"
+      },
+      {
+        "id": "CEA-FuncR-132516",
+        "title": "有感OTA期间门锁子系统需要能够完成解锁闭锁动作",
+        "desc": "有感OTA期间，门锁子系统在CAN总线静默的时候LDCU收到任何解锁闭锁请求时能够正常执行整车解锁闭锁动作"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "VEEA-UC-6222",
+        "title": "自动泊车激活后禁用钥匙遥控",
+        "desc": "前置条件 1 &amp;&amp; 2 自动泊车功能当前在主动模式下， NGX_LDCU_LockSourceDisable_req == 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &lt; 5 min 激活条件 通过钥匙遥控解闭锁、遥控开关尾门、遥控开关充电口盖、遥控开关滑移门 基本事件流 RKE子系统检测到满足前置条件时，不"
+      },
+      {
+        "id": "CEA-UC-117904",
+        "title": "遥控钥匙暂停尾门",
+        "desc": "前置条件 1 &amp;&amp; (2 || 3) 配置字 尾门控制方式 ==长按 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min 激活条件 检测到有效遥控钥匙的尾门按键被单击 基本事件流 RKE子系统检测到遥控"
+      }
+    ],
+    "others": []
+  },
+  {
+    "id": "CEA-45197",
+    "title": "平台化_功能实现方案书_遥控钥匙_测试用例",
+    "description": "",
+    "functions": [
+      {
+        "id": "VEEA-FuncR-6237",
+        "title": "响应遥控尾门请求开启尾门",
+        "desc": "接收到RKE子系统发出的尾门请求 RKETrunkReq==0x1（RKE Req）时，判断满足（1||2）&&（3||4）时 车辆在P档，GearLev==P； 车速小于3km/h，VehSpd&lt;3km/h && VehSpdVd==valid 尾门在关闭状态； 尾门停止在半开位置且上一次动作为关闭； 应执行尾门打开"
+      },
+      {
+        "id": "VEEA-FuncR-6238",
+        "title": "响应遥控尾门请求关闭尾门",
+        "desc": "接收到RKE子系统发出的尾门请求 RKETrunkReq==0x1（RKE Req）时，判断满足 1||2 时 尾门在全开状态； 尾门停止在半开位置且上一次动作为 打开 ； 应执行尾门关闭"
+      },
+      {
+        "id": "VEEA-FuncR-6230",
+        "title": "遥控开关充电口盖",
+        "desc": "如果以下条件满足： ( 1 || 2) &amp;&amp; 3 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min RKE子系统检测到遥控钥匙泊车按键被双击 发出遥控充电口盖请求，发出一次 RKEChargePort"
+      },
+      {
+        "id": "CEA-FuncR-119747",
+        "title": "响应遥控升窗闪灯动作",
+        "desc": "外部灯光子系统接收到钥匙升窗闪灯指令RKEWinLightSw=not active-&gt;active , 执行一次双闪动作。"
+      },
+      {
+        "id": "CEA-FuncR-119757",
+        "title": "响应遥控尾门请求暂停尾门",
+        "desc": "尾门接收到内部信号 RKETrunkStopReq= RKE req， 立即暂停尾门动作 RKETrunkStopReq枚举值有0x0: no cmd 0x1: RKE req"
+      },
+      {
+        "id": "CEA-FuncR-119752",
+        "title": "响应遥控钥匙升窗和降窗请求",
+        "desc": "收到LDCU内部信号RKEAllWinCtrlReq= open ，则执行所有窗降窗动作，信号持续为 open, 则持续降窗，直到四窗全开|| 信号=no command。 收到LDCU内部信号 RKEAllWinCtrlReq= close，则执行所有窗升窗动作，信号持续为 close, 则持续升窗，当达到 ( 四窗全关 || 信号==no command || 触发防夹) 则停止执行动作 信号"
+      },
+      {
+        "id": "CEA-FuncR-119751",
+        "title": "响应遥控钥匙天窗起翘和关闭请求",
+        "desc": "收到内部信号RKERoofReq =no req -&gt; tilt 执行起翘动作，如果天窗当前开度大于起翘位置，也控制天窗关闭到起翘位置 收到内部信号RKERoofReq= no req -&gt;Fully Close执行关闭动作直到全关 如果天窗未初始化，则忽略本次请求"
+      },
+      {
+        "id": "VEEA-FuncR-6234",
+        "title": "响应遥控解锁请求",
+        "desc": "接收到RKE子系统发出的遥控解闭锁请求RKEDoorLockReq==unlock时，判断以下条件满足： 1 || （2&amp;&amp;（3||4） 车辆已下电，PowerMode==off / convenience(MQB ICE) ； 车辆已上电，PowerMode==local on/remote on； 车辆在P档，GearLev==P； VehSpd&lt;3km/h； 应执行解锁"
+      },
+      {
+        "id": "VEEA-FuncR-6235",
+        "title": "响应遥控闭锁请求",
+        "desc": "接收到RKE子系统发出的遥控解闭锁请求RKEDoorLockReq==lock时，判断以下条件满足： （1 || （2&amp;&amp;3&amp;&amp;4）） &amp;&amp; 5 MQB车型判断( ( 1 &amp;&amp;4) || （2&amp;&amp;3&amp;&amp;4）) &amp;&amp; 5 车辆已下电或在convenience模式，PowerMode==of"
+      },
+      {
+        "id": "CEA-FuncR-119756",
+        "title": "遥控暂停尾门",
+        "desc": "前置条件 1 &amp;&amp; (2 || 3) 配置字 ==长按 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min RKE子系统检测到遥控钥匙尾门按键被单击，判断前置条件满足，发出尾门暂停请求，发出一次内部信号"
+      },
+      {
+        "id": "CEA-FuncR-119746",
+        "title": "钥匙解锁降窗",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3||4））） &amp;&amp; (5 || 6）&amp;&amp; 7 1. 车辆已下电，PowerMode==off (MQB ICE：PowerMode==off/convenience)； 2. 车辆已上电，PowerMode==local on/remote on； 3. 车辆在P档，GearLev==P；(MQB ICE: GE_F"
+      },
+      {
+        "id": "CEA-FuncR-31704",
+        "title": "遥控寻车鸣笛和闪灯",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3|| 4 ）））&amp;&amp; （ 5 || 6 ) 1. 车辆已下电，PowerMode==off； 2. 车辆已上电，PowerMode==local on/remote on； 3. 车辆在P档，GearLev==P； 4. VehSpd&lt;3km/h &amp;&amp; VehSpdVD== valid 5. 自动泊车功能当前不"
+      },
+      {
+        "id": "VEEA-FuncR-6229",
+        "title": "遥控开关尾门",
+        "desc": "如果以下条件均满足： ( 1 || 2) &amp;&amp; 3 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min RKE子系统检测到遥控钥匙尾门按键被双击/ 长按 （根据配置字 判断是双击还是长按触发） 发出尾门"
+      },
+      {
+        "id": "CEA-FuncR-119745",
+        "title": "遥控闭锁升窗",
+        "desc": "前置条件 1 &amp;&amp; (2 || 3) &amp;&amp; 4 &amp;&amp; ( 5 || 6 &amp;&amp; (7||8) ) 车辆已闭锁LDCU_LockLogicSt== Lock； 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_"
+      },
+      {
+        "id": "VEEA-FuncR-6228",
+        "title": "遥控解闭锁",
+        "desc": "如果以下条件满足： ( 1 || 2) &amp;&amp; 3 自动泊车功能当前不在主动模式下， NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min RKE子系统检测到遥控钥匙解锁按键被 双击/单击/长按 （如果配置字 ==启用， 仅单击和长按触发"
+      },
+      {
+        "id": "VEEA-FuncR-6227",
+        "title": "遥控钥匙按键状态检测",
+        "desc": "应能检测遥控钥匙按键的状态，并通过按键状态信号实时发出： 如果检测到上锁按键被点击，发出一次 RKEDoorLock KeySt=0x1（signal click）； 如果检测到上锁按键被双击，发出一次 RKEDoorLock KeySt=0x2（double click）； 如果检测到上锁按键被长按，发出 RKEDoorLock KeySt=0x3（long press）直至按键被送开； 如果检"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-UC-31700",
+        "title": "遥控钥匙寻车闪灯",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3||4））） &amp;&amp; (5 || 6) 1. 车辆已下电，PowerMode==off； 2. 车辆已上电，PowerMode==local on/remote on； 3. 车辆在P档，GearLev==P； 4. VehSpd&lt;3km/h； 5. 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisa"
+      },
+      {
+        "id": "VEEA-UC-6219",
+        "title": "钥匙遥控开充电口盖",
+        "desc": "前置条件 1&&2&&3&&4 车辆在P档，GearLev==P； 当前充电口盖关闭状态； 当前没有对外放电，ChargePortActSt==no output； 自动泊车功能当前不在主动模式下， XPU_LDCU_CurMode != 0x1 || 0x2 激活条件 检测到有效遥控钥匙的泊车按键被双击 基本事件流 RKE子系统检测到遥控钥匙泊车按键被双击； RKE子系统判断前置条件4满足，发出"
+      },
+      {
+        "id": "VEEA-UC-6220",
+        "title": "钥匙遥控关充电口盖",
+        "desc": "前置条件 1&&2&&3&&4 当前没有插枪充电，ACConectSt==inactive&&DCConectSt==inactive； 当前充电口盖打开状态； 当前没有对外放电，ChargePortActSt==no output； 自动泊车功能当前不在主动模式下， XPU_LDCU_CurMode != 0x1 || 0x2 激活条件 检测到有效遥控钥匙的泊车按键被双击 基本事件流 RKE子系"
+      },
+      {
+        "id": "VEEA-UC-6215",
+        "title": "钥匙遥控解锁",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3||4））） &amp;&amp; (5 || 6） 车辆已下电，PowerMode==off/ convenience(MQB ICE) ； 车辆已上电，PowerMode==local on/remote on； 车辆在P档，GearLev==P； VehSpd&lt;3km/h； 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSo"
+      },
+      {
+        "id": "VEEA-UC-6218",
+        "title": "钥匙遥控关闭尾门",
+        "desc": "前置条件 1 &amp;&amp; 2 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x1 持续时间 &gt; 5 min 激活条件 检测到有效遥控钥匙的尾门按键被双击 /长按 (由配置字控制是双击还是长按触发， info： A COSe line1"
+      },
+      {
+        "id": "CEA-UC-101684",
+        "title": "长按解锁键降窗",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3||4））） &amp;&amp; (5 || 6）&amp;&amp; 7 1. 车辆已下电，PowerMode==off ( MQB ICE ：PowerMode==off/convenience)； 2. 车辆已上电，PowerMode==local on/remote on； 3. 车辆在P档，GearLev==P； ( MQB ICE :"
+      },
+      {
+        "id": "CEA-UC-31701",
+        "title": "遥控钥匙寻车鸣笛",
+        "desc": "前置条件 （1 || （2&amp;&amp;（3||4）））&amp;&amp; ( 5||6) 1. 车辆已下电，PowerMode==off； 2. 车辆已上电，PowerMode==local on/remote on； 3. 车辆在P档，GearLev==P； 4. VehSpd&lt;3km/h； 5. 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisabl"
+      },
+      {
+        "id": "VEEA-UC-6216",
+        "title": "钥匙遥控闭锁",
+        "desc": "前置条件 （1 || （2&amp;&amp;3&amp;&amp;4）） &amp;&amp; 5 &amp;&amp; (6 || 7) MQB ICE车型: ( ( 1 &amp;&amp;4) || （2&amp;&amp;3&amp;&amp;4）) &amp;&amp; 5 &amp;&amp; (6 || 7) 车辆已下电，PowerMode==off/ convenience(MQ"
+      },
+      {
+        "id": "VEEA-UC-6217",
+        "title": "钥匙遥控开启尾门",
+        "desc": "前置条件 （1||2）&amp;&amp; (3||4) 车辆在P档，GearLev==P； 车速小于3km/h，VehSpd&lt;3km/h &amp;&amp; VehSpdVd==valid； 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_req == 0x"
+      },
+      {
+        "id": "CEA-UC-101685",
+        "title": "长按闭锁键升窗",
+        "desc": "前置条件 1 &amp;&amp; (2 || 3) &amp;&amp; 4 &amp;&amp; ( 5 || 6 &amp;&amp; (7||8) ) 车辆已闭锁LDCU_LockLogicSt== Lock； 自动泊车功能当前不在主动模式下，NGX_LDCU_LockSourceDisable_req != 0x1: request NGX_LDCU_LockSourceDisable_"
+      }
+    ],
+    "others": [
+      {
+        "id": "CEA-123383",
+        "type": "info",
+        "title": "信号名称",
+        "desc": "信号名称 信号描述 信号解析 发送方 接收方 RKEDoorLockReq RKE钥匙遥控解闭锁请求 0x0：no command 0x1：unlock 0x2：lock RKE 门锁控制 RKETrunkReq RKE钥匙遥控尾门请求 0x0：no command 0x1：RKE Req RKE 进入管理 RKEChargePortReq RKE钥匙遥控充电口盖请求 0x0：no command"
+      },
+      {
+        "id": "CEA-ITC-55829",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-行驶中-双击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55850",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-车速大于3km/h-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55855",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电车速小于3km/h-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55842",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-下电-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55843",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-下电-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55844",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-主驾车门打开-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55845",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-副驾车门未关-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55856",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电车速小于3km/h-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55846",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-左后车门未关-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55848",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-车速大于3km/h-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55849",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-车速大于3km/h-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-89103",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-前机盖打开-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-89104",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-尾门打开-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55861",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档上电-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55862",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档上电-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55864",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-已下电-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131485",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-尾门开启或者关闭过程中",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55858",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档远程上电-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55821",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控关闭尾门-基本事件流-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55822",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控关闭尾门-基本事件流",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55823",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-尾门开启或者关闭过程中",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55847",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-右后车门未关-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55830",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-行驶中-长按闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55831",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-行驶中-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-123378",
+        "type": "info",
+        "title": "信号名称",
+        "desc": "信号名称 信号描述 信号解析 发送方 接收方 报文类型 备注 RKEDoorUnlockKeySt RKE钥匙车门解锁按键状态 0x0:not active 0x1:single click 0x2:double click 0x3:long press LDCU XPU 周期事件 RKEDoorLockKeySt RKE钥匙车门上锁按键状态 0x0:not active 0x1:single c"
+      },
+      {
+        "id": "CEA-ITC-55854",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电车速小于3km/h-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55840",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电P档主驾无人-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55841",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-下电-双击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55835",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-远程上电P档主驾无人-双击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55836",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-远程上电P档主驾无人-长按闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55837",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-远程上电P档主驾无人-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55838",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电P档主驾无人-双击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55839",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-上电P档主驾无人-长按闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55860",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档上电-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55863",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-已下电-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129516",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-长按闭锁键升窗过程中触发防夹",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-134509",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-车速大于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131498",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-P档",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131499",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控关闭尾门-基本事件流-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131497",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-P档-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129164",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129163",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆下电-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129166",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129168",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129167",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆下电-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129161",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131235",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车速>3km/h-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131487",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-车速小于3km/h-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131500",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控关闭尾门-基本事件流",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131506",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-P档",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131504",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-车速小于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131505",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-已下电",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131489",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-车速小于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131232",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-车速>3km/h-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129134",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆下电-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129122",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆上电P档-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129121",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆下电-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129124",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆上电车速<3km/h-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55857",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档远程上电-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55859",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-P档远程上电-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87109",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车闪灯-异常事件流-自动泊车在主动模式",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-134510",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙暂停尾门-基本事件流-尾门开启或者关闭过程中",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-134512",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙暂停尾门-基本事件流-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87108",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车闪灯-基本事件流-车速小于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87107",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车闪灯-基本事件流-P档",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-134505",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-车速大于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87110",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-已下电",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87112",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-车速小于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87111",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-基本事件流-P档",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55824",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-自动泊车在主动模式",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55825",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-车速小于3km/h",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55826",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-车速小于3km/h-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55827",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-P档-尾门半开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55828",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-基本事件流-P档",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55833",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车功能开启-长按闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55834",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车功能开启-单击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55832",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车功能开启-双击闭锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131237",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-双击解锁键",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129515",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-车窗在降窗运动过程中-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55851",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车激活-双击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55852",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车激活-长按解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-55853",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-异常事件流-自动泊车激活-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131236",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-自动泊车在主动模式下-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129141",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129175",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆上电P档-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129174",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆上电车速<3km/h-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129176",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆下电-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129345",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-长按闭锁键升窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131507",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-异常事件流-自动泊车在主动模式",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129513",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-长按闭锁键升窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131233",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-自动泊车在主动模式下-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129512",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-用户已设置闭锁自动升窗-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129129",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129170",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档(信号模拟)-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-131234",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-双击闭锁键",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129158",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆下电(信号模拟)-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129142",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆下电(信号模拟)-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129130",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h(信号模拟)-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129245",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆下电(信号模拟)-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129135",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆下电(信号模拟)-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129137",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆上电车速<3km/h(信号模拟)-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129169",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h(信号模拟)-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129136",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-基本事件流-车辆上电P档(信号模拟)-长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129171",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h(信号模拟)-升窗运动过程中长按解锁键降窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129140",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档(信号模拟)-长按解锁键降窗过程中按钮松开",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129173",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆上电车速<3km/h(信号模拟)-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129172",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-基本事件流-车辆上电P档(信号模拟)-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129426",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙升窗并闭锁-异常事件流-车窗已处于全关状态-长按闭锁键升窗",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129160",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电车速<3km/h(信号模拟)-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-129159",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙降窗并开锁-异常事件流-车辆上电P档(信号模拟)-长按解锁键降窗过程中收到其他控窗请求",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-41298",
+        "type": "functionREQTestCase",
+        "title": "手机APP寻车双闪提示",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87113",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车鸣笛-异常事件流-自动泊车在主动模式",
+        "desc": ""
+      },
+      {
+        "id": "CEA-114167",
+        "type": "functionREQTestCase",
+        "title": "中止和删除CCC Carkey钥匙 CCC Carkey Termination and Deletion in Apple's wallet",
+        "desc": ""
+      },
+      {
+        "id": "CEA-ITC-87105",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙寻车闪灯-基本事件流-下电",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "VEEA-9784",
+    "title": "子功能vs功能定义用例",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9770",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9768",
+    "title": "From 互联网",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9767",
+    "title": "需求输入",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9753",
+    "title": "引用文件和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9752",
+    "title": "缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9751",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9750",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9754",
+    "title": "功能概述",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-9749",
+    "title": "介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [
+      {
+        "id": "CEA-UC-73790",
+        "title": "蓝牙数字钥匙天窗通风",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，控制天窗通风。 前置条件 1&amp;&amp;2 完成蓝牙连接； 完成合法性认证； 激活条件 车主通过手机蓝牙数字钥匙APP触发天窗通风(起翘)； 基本事件流 1.车辆收到手机蓝牙数字钥匙APP天窗通风请求后判断前置条件是否满足； 2.车辆天窗起翘并反馈APP天窗一键通风成功结果； 3.手机APP提示天窗通风成功； 4.用例结束； "
+      },
+      {
+        "id": "CEA-UC-73792",
+        "title": "蓝牙数字钥匙关闭天窗",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，控制天窗关闭。 前置条件 1&amp;&amp;2 完成蓝牙连接； 完成合法性认证； 激活条件 车主通过手机蓝牙数字钥匙APP触发关闭天窗； 基本事件流 1.车辆收到手机蓝牙数字钥匙APP关闭天窗请求后判断前置条件是否满足； 2.车辆天窗关闭并反馈APP天窗关闭成功结果； 3.手机APP提示天窗关闭成功； 4.用例结束； 异常事件流 "
+      }
+    ],
+    "others": [
+      {
+        "id": "VEEA-VehR-9769",
+        "type": "vehicleRequirement",
+        "title": "手机蓝牙数字钥匙车控功能需求",
+        "desc": "互联网关于手机蓝牙数字钥匙控制功能需求如下： ①手机APP蓝牙数字钥匙车控功能； ②车辆状态信息透传至手机APP；"
+      },
+      {
+        "id": "CEA-ITC-55865",
+        "type": "functionREQTestCase",
+        "title": "遥控钥匙解闭锁-基本事件流-已下电-单击解锁",
+        "desc": ""
+      },
+      {
+        "id": "CEA-SubF-61670",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙关闭天窗roof close with Bluetooth mobile key (仅MEB31支持天窗)",
+        "desc": ""
+      },
+      {
+        "id": "CEA-SubF-61669",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙天窗通风Bluetooth mobile key opening roof for ventilation (仅MEB31支持天窗)",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "CEA-114675",
+    "title": "功能定义规范_数字钥匙",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114664",
+    "title": "引用文档和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114672",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114674",
+    "title": "引用文件和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114673",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114671",
+    "title": "功能逻辑框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114663",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114669",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114668",
+    "title": "缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114667",
+    "title": ". 介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114666",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114665",
+    "title": "术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114670",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [
+      {
+        "id": "VEEA-UC-9781",
+        "title": "蓝牙手机钥匙控制寻车车辆闪灯",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆寻车闪灯控制。 前置条件 完成蓝牙连接； 合法性认证通过； 激活条件 车主通过手机蓝牙数字钥匙APP触发寻车闪灯按键； 基本事件流 车辆判断寻车指令执行条件是否满足，满足即执行闪灯功能； 车辆基于执行结果发送闪灯指令成功反馈给APP，同时APP基于车辆功能状态做相应显示变化； 如有灯语配置则先执行闪灯3次再执行灯语动作，若无灯"
+      },
+      {
+        "id": "VEEA-UC-9780",
+        "title": "蓝牙手机钥匙控制寻车车辆鸣笛",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆寻车鸣笛控制。 前置条件 完成蓝牙连接； 完成合法性认证； 激活条件 车主通过手机蓝牙数字钥匙APP触发寻车鸣笛按键； 基本事件流 车辆判断寻车指令执行条件是否满足，满足即鸣笛功能； 车辆基于执行结果发送鸣笛指令成功反馈给APP，同时APP基于车辆功能状态做相应显示变化； 用例结束 异常事件流 异常事件1 触发条件： 合法性认"
+      },
+      {
+        "id": "CEA-UC-98869",
+        "title": "蓝牙手机钥匙控制寻车AVAS发声",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆寻车鸣笛AVAS控制。 前置条件 1&amp;&amp;2&amp;&amp;3 1. 完成蓝牙连接； 2. 完成合法性认证； 3. 车辆下电状态，或车辆上电状态且车辆静止（P档或车速小于3km/h） 激活条件 车主通过手机蓝牙数字钥匙APP触发寻车AVAS鸣笛； 基本事件流 车辆判断寻车指令执行条件是否满足，满足即播放用户预"
+      },
+      {
+        "id": "CEA-108617",
+        "title": "手机APP设置蓝牙钥匙Polling功能开关",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，设置是否启用Polling 解闭锁。 前置条件 无 激活条件 无 基本事件流 用户通过APP操作设置Polling 相关功能，包括Polling解锁闭锁使能，解锁闭锁距离, 自标定参数使能 用户持有手机靠近车辆 车辆根据用户设置变更Polling功能表现"
+      },
+      {
+        "id": "VEEA-UC-9776",
+        "title": "蓝牙手机钥匙控制充电口盖",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机APP，进行车辆手机蓝牙数字钥匙APP开启充电口盖控制。 前置条件 1&&2 完成蓝牙连接 P档； 激活条件 车主触发手机APP远程开启充电口盖 基本事件流 1.车辆收到APP远程开启充电口盖请求后判断远程开启充电口盖条件是否满足； 2.车辆开启充电充电口盖并反馈APP开启充电口盖成功结果； 3.手机APP提示车主开启充电口盖成功； 4.用例结束； 异常"
+      },
+      {
+        "id": "VEEA-UC-9779",
+        "title": "蓝牙手机钥匙控制车窗一键通风",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆一键通风控制。 前置条件 1&&2&&3 完成蓝牙连接； 完成合法性认证； 完成防盗认证； 激活条件 车主通过手机蓝牙数字钥匙APP触发一键通风按键； 基本事件流 1.车辆收到手机蓝牙数字钥匙APP触发一键升窗请求后判断前置条件是否满足； 2.车辆车窗一键通风并反馈APP车窗一键通风成功结果； 3.手机APP提示车窗一键通风成"
+      },
+      {
+        "id": "VEEA-UC-9783",
+        "title": "车辆状态透传给TBOX钥匙服务SDK",
+        "desc": "车辆状态信息通过TBOX透传至SDK，SDK解析后透传至手机APP; 车辆状态信息如下： 四门两盖的状态信息； 尾翼状态信息； 门锁状态信息； 车窗位置信息； 转向灯及灯语状态信息； 整车解闭锁源状态信息； 目标档位信息； 设防状态信息； 座椅占位信息（主副驾/二排/三排）； 安全带状态信息（主副驾/二排/三排）； 模式信息（睡眠模式/大屏冥想模式/洗车模式）； 充电口盖状态信息（充电口盖位置信息"
+      },
+      {
+        "id": "VEEA-UC-9775",
+        "title": "蓝牙手机钥匙控制关闭尾门",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机APP，进行手机蓝牙数字钥匙关闭尾门控制。 前置条件 1&&2 完成蓝牙连接； 合法性认证通过； 激活条件 车主通过手机蓝牙数字钥匙APP触发关闭尾门按键 基本事件流 1.车辆收到手机蓝牙数字钥匙APP关闭尾门请求后判断远程关闭尾门条件是否满足； 2.车辆关闭尾门并反馈APP关闭尾门成功结果； 3.手机APP提示车主尾门成功； 4.用例结束； 异常事件流"
+      },
+      {
+        "id": "VEEA-UC-9773",
+        "title": "蓝牙手机钥匙临停闭锁",
+        "desc": "描述 车辆本地上电时，当车辆四门两盖关闭，车辆处于静止P档状态且主驾驶座无人时，车辆续航足够的情况下，车主(包括数字钥匙被授权人)可以通过手机APP进行远程临停锁控制； 前置条件 1&&2&&3&&4&&5&&6&&7 完成蓝牙连接； 合法性认证通过 车辆上电IG ON; 车速小于3km/h&&车速有效&&P档； CLTC模式下续航≥60KM||WLTP模式下续航≥60KM||Dynamic模式下"
+      },
+      {
+        "id": "VEEA-UC-9777",
+        "title": "蓝牙手机钥匙控制关闭充电口盖",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行关闭充电口盖控制。 前置条件 1&&2 完成蓝牙连接； 合法认证通过 激活条件 车主通过手机蓝牙数字钥匙APP触发关闭充电口盖按键 基本事件流 1.车辆收到APP蓝牙数字钥匙关闭充电口盖请求后判断远程关闭充电口盖条件是否满足； 2.车辆开启充电充电口盖并反馈APP开启充电口盖成功结果； 3.手机APP提示车主开启充电口盖成功； 4"
+      },
+      {
+        "id": "VEEA-UC-9774",
+        "title": "蓝牙手机钥匙控制开启电动尾门",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机APP，进行车辆手机蓝牙数字钥匙控制开启尾门。 前置条件 1&&2 完成蓝牙连接； 合法性认证通过； 防盗认证通过； P档 激活条件 车主通过手机蓝牙数字钥匙APP触发开启尾门按键 基本事件流 1.车辆收手机蓝牙数字钥匙开启尾门请求后判断远程开启尾门条件是否满足； 2.车辆开启尾门并反馈APP开尾门成功结果； 3.手机APP提示车主尾门成功； 4.用例结"
+      },
+      {
+        "id": "VEEA-UC-9778",
+        "title": "蓝牙手机钥匙一键升窗",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆一键升窗控制。 前置条件 1&&2&&3 完成蓝牙连接； 完成合法性认证； 防盗认证通过； 激活条件 车主通过手机蓝牙数字钥匙APP触发一键升窗按键； 基本事件流 1.车辆收到手机蓝牙数字钥匙APP一键升窗请求后判断前置条件是否满足； 2.车辆车窗一键升窗并反馈APP车窗一键升窗成功结果； 3.手机APP提示车窗一键升窗成功；"
+      },
+      {
+        "id": "VEEA-UC-9782",
+        "title": "蓝牙/NFC解锁切换账号",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP解锁成功||Polling解锁成功||手机NFC解锁成功后，若账号同步开关开启，则手机APP的账号同步切换到大屏上。 前置条件 （1&amp;&amp;2） || 3 完成蓝牙连接； 完成合法性认证； 手机NFC 钥匙合法 激活条件 车主通过手机蓝牙数字钥匙APP||手机NFC解锁成功，此时“账号同步开关”开启 基本事件流 车端收集到解"
+      },
+      {
+        "id": "VEEA-UC-9771",
+        "title": "蓝牙手机钥匙解锁启动",
+        "desc": "描述 车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆解锁控制。 前置条件 完成蓝牙连接 合法性认证通过 激活条件 车主触发手机蓝牙数字钥匙APP解锁按键 基本事件流 1.车辆收到蓝牙数字钥匙APP解锁请求后判断解锁条件是否满足； 2.车辆解锁并反馈APP解锁成功结果； 3.手机APP提示车主解锁成功； 4.用例结束； 异常事件流 异常事件1 触发条件： 车辆在一定时间内未反馈任"
+      },
+      {
+        "id": "VEEA-UC-9772",
+        "title": "蓝牙手机钥匙闭锁",
+        "desc": "描述 车主(包括数 字 钥匙被授权人)可通过手机蓝牙数字钥匙APP，进行车辆闭锁控制。 前置条件 1&amp;&amp;2&amp;&amp;3&amp;&amp;4&amp;&amp;5 完成蓝牙连接 合法性认证通过 四门两盖关闭； P档； 主驾无人 激活条件 车主触发手机蓝牙数字钥匙APP闭锁按键 基本事件流 1.车辆收到手机蓝牙数字钥匙APP闭锁请求后判断闭锁条件是否满足； 2.车辆闭锁并反"
+      }
+    ],
+    "others": [
+      {
+        "id": "VEEA-SubF-9761",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙单充电口盖开启关闭（快慢充为一个充电口盖）",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-SubF-9759",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙车窗通风Bluetooth mobile key window ventilation",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-SubF-9756",
+        "type": "subFunction",
+        "title": "蓝牙钥匙整车解锁场景切换账号Switch account with Bluetooth key for vehicle unlocking scenario",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-SubF-9755",
+        "type": "subFunction",
+        "title": "蓝牙钥匙Polling整车解锁场景切换账号Switch account with Bluetooth key Polling for vehicle unlocking scenario",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-SubF-9766",
+        "type": "subFunction",
+        "title": "车辆状态透传给T-BOX钥匙服务SDKVehicle status transparently transmitted to T-BOX key service SDK",
+        "desc": ""
+      },
+      {
+        "id": "CEA-SubF-65353",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙控制寻车外部音频 Bluetooth mobile key is used to control the honking of vehicle locating",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆鸣笛控制。The owner (including authorized digital key users) can control the vehicle AVAS within the Bluetooth connection range through the mobile Bluetooth digit"
+      },
+      {
+        "id": "CEA-SubF-31982",
+        "type": "subFunction",
+        "title": "NFC钥匙账户 NFC key account",
+        "desc": "NFC钥匙账户 NFC key account"
+      },
+      {
+        "id": "CEA-SubF-32531",
+        "type": "subFunction",
+        "title": "手机APP设置蓝牙钥匙Polling功能开关Set Bluetooth key Polling function switch on mobile APP",
+        "desc": "在手机上，通过App设开启或关闭蓝牙钥匙polling功能Set the Bluetooth key polling function on/off through mobile App"
+      },
+      {
+        "id": "VEEA-SubF-9764",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙闭锁Bluetooth mobile key locking",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆闭锁控制。The owner (including authorized digital key users) can lock the vehicle within the Bluetooth connection range through the mobile Bluetooth digital key A"
+      },
+      {
+        "id": "VEEA-SubF-9760",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙一键升车窗 One-button window raising with Bluetooth mobile key",
+        "desc": ""
+      },
+      {
+        "id": "VEEA-SubF-9762",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙电动尾门开启关闭Bluetooth mobile key electric liftgate opening/closing",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行开启关闭尾门控制。The owner (including authorized digital key users) can open and close the liftgate within the Bluetooth connection range through the mobile Bluetooth "
+      },
+      {
+        "id": "VEEA-SubF-9763",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙临停闭锁Bluetooth mobile key temporary stop locking",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆临停锁控制。The owner (including authorized digital key users) can control the temporary stop locking of the vehicle within the Bluetooth connection range through "
+      },
+      {
+        "id": "VEEA-SubF-9765",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙解锁启动Bluetooth mobile key unlocking enabled",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆解锁控制。The owner (including authorized digital key users) can unlock the vehicle within the Bluetooth connection range through the mobile Bluetooth digital key"
+      }
+    ]
+  },
+  {
+    "id": "CEA-92300",
+    "title": "5功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92298",
+    "title": "4功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92301",
+    "title": "2缩略语和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92304",
+    "title": "3 引用文件和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-93581",
+    "title": "交互信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92322",
+    "title": "6功能定义",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-93605",
+        "title": "后雾灯故障",
+        "desc": "外部灯光子系统检测到后雾灯故障时，发送RDCU_RearFogFailure== 0x1:Active给CDCU； 外部灯光子系统检测到后雾灯无故障或故障消除时，发送RDCU_RearFogFailure== 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-93599",
+        "title": "制动液液位不足",
+        "desc": "智能集成制动系统检测到制动液液位不足时，需要周期性发送IPB_BrakeFluid_Warning==0x1：BrakeFluid_Empty给CDCU侧；智能集成制动系统制动液液位恢复时，需要周期性发送IPB_BrakeFluid_Warning==0x0：BrakeFluid_Normal_Init_Default给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93598",
+        "title": "制动系统故障",
+        "desc": "智能集成制动系统检测到制动系统故障时，需要周期性发送：IPB_EBDFault == 0x1：Fault给CDCU侧；制动系统故障解除时，需要周期性发送：IPB_EBDFault == 0x0:Not fault给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93600",
+        "title": "制动系统检测传感器异常",
+        "desc": "智能集成制动系统检测到传感器异常时，需要周期性发送IPB_BrakeFluid_Warning==0x2:BrakeFluid_Electric_error给CDCU侧；智能集成制动系统制传感器异常消除时，需要周期性发送IPB_BrakeFluid_Warning==0x0：BrakeFluid_Normal_Init_Default给CDCU侧。"
+      }
+    ],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-114309",
+    "title": "1介绍",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-93604",
+        "title": "远光灯故障",
+        "desc": "外部灯光子系统检测到远光灯故障时，发送RDCU_HighBeamFailure== 0x1:Active给CDCU； 外部灯光子系统检测到远光灯无故障或故障消除时，发送RDCU_HighBeamFailure== 0x0:Not active给CDCU。"
+      }
+    ],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-94551",
+    "title": "To IBRS ECU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-94563",
+    "title": "To 三电人机显示",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-94559",
+    "title": "To 外部灯光控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-94553",
+    "title": "To 座椅控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92325",
+    "title": "To 遥控钥匙控制子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-94560",
+    "title": "To 电源模式管理子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-92316",
+    "title": "To CDCU",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-93602",
+        "title": "右转向灯故障",
+        "desc": "外部灯光子系统检测到右转向灯故障时，发送RDCU_RTurnLampFailure == 0x1:Active给CDCU。 外部灯光子系统检测到右转向灯无故障或故障消除时，发送RDCU_RTurnLampFailure == 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-93603",
+        "title": "近光灯故障",
+        "desc": "外部灯光子系统检测到近光灯故障时，发送RDCU_LowBeamFailure == 0x1:Active给CDCU； 外部灯光子系统检测到近光灯无故障或故障消除时，发送RDCU_LowBeamFailure == 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-93601",
+        "title": "左转向灯故障",
+        "desc": "外部灯光子系统检测到左转向灯故障时，发送RDCU_LTurnLampFailure == 0x1:Active给CDCU； 外部灯光子系统检测到左转向灯无故障或故障消除时，发送RDCU_LTurnLampFailure == 0x0:Not active给CDCU。"
+      }
+    ],
+    "usecases": [],
+    "others": [
+      {
+        "id": "VEEA-SubF-9757",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙控制寻车车辆鸣笛Bluetooth mobile key is used to control the honking of vehicle locating",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆鸣笛控制。The owner (including authorized digital key users) can control the vehicle honking within the Bluetooth connection range through the mobile Bluetooth di"
+      },
+      {
+        "id": "VEEA-SubF-9758",
+        "type": "subFunction",
+        "title": "蓝牙手机钥匙控制寻车车辆闪灯Bluetooth mobile key is used to control the flashing of vehicle locating",
+        "desc": "车主(包括数字钥匙被授权人)可通过手机蓝牙数字钥匙APP在蓝牙连接范围内可操作进行车辆闪灯控制。The owner (including authorized digital key users) can control the vehicle flashing within the Bluetooth connection range through the mobile Bluetooth d"
+      }
+    ]
+  },
+  {
+    "id": "CEA-129534",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-122952",
+    "title": "To VDP",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-122946",
+    "title": "To 胎压子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-116930",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-129651",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-93609",
+        "title": "轮胎信息显示",
+        "desc": "大屏胎压值显示车辆上电后， LDCU需以周期500s发送以下信号给CDCU用于显示大屏胎压胎压值，胎压温度异常提醒，轮胎压力过高过低提醒，胎压监测系统故障提示，胎压传感器异常提示的内容。 TPMSService.Event.TPMSSt.TPMSStStruct { uint8:TPMSFaultWarn uint8:TPMSAbnormalPrWarn uint8:TPMSSensorReset"
+      },
+      {
+        "id": "CEA-FuncR-116934",
+        "title": "前置条件：",
+        "desc": "前置条件： 1.大屏处于正常亮屏工作状态； 2.读取AVAS配置字信息值为0x3 （AVAS_15W）； 3.音效清单条目不为空； 激活条件： 打开大屏车控车设“自定义音效库”区域。 基本事件流： 1.用户选择各个槽位，可从音效清单中进行选择各个场景需要播放的音效文件； 2.在选择后各槽位显示出文件名称，以示选择情况，同时在各功能区域显示出可操作的槽位； 3.用户点击再次选择需要更改的匹配音效，随"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-UC-129646",
+        "title": "手动检测",
+        "desc": "手动检测 1. 手动自检开关 1) 点击“车辆检测”按钮，执行手动检测。点击触发后≤3秒内开始检测显示进度条。 2. 手动自检功能开启 1) 手动自检的检测范围包括：上电自检故障项。 2) Diagnose app提供相应的自检进度和自检结果，HMI显示进度条（进度条与实际自检进度绑定）和自检结果。 3) 车控_车辆状态页，车模显示“自检动图”，自检完成后停止播放动图。 3. 结束自检功能 1) "
+      }
+    ],
+    "others": []
+  },
+  {
+    "id": "CEA-116931",
+    "title": "To CDCU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-129652",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39376",
+    "title": "To Tbox",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38609",
+    "title": "介绍",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38610",
+    "title": "目的",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38611",
+    "title": "范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38612",
+    "title": "术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38613",
+    "title": "功能概述",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38614",
+    "title": "功能定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38619",
+    "title": "功能实现方案",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38620",
+    "title": "功能逻辑框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38621",
+    "title": "功能电气原理框图",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38622",
+    "title": "AFS 自适应前照灯光系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38623",
+    "title": "AFS 自适应前照灯光系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38624",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38625",
+    "title": "交互信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-38626",
+    "title": "功能交互",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39101",
+    "title": "需求输出",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39164",
+    "title": "To 外灯子系统",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39166",
+    "title": "To ESP",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39167",
+    "title": "To 三电子系统/ LDCU",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "CEA-39168",
+    "title": "To 电源模式",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-113602",
+        "title": "多语言适配",
+        "desc": "1. 涉及到的显示需要根据当前的系统语言进行语言切换及相应的界面显示。 2.异常场景： 1) 如因数据来源方（VDP）未提供系统语言对应的文本内容，则使用可用文本显示（无需对应系统语言）。"
+      },
+      {
+        "id": "CEA-FuncR-94598",
+        "title": "脚本管理",
+        "desc": "通过VDP云诊断平台下发，智能自检功能单独隔离配置，配置内容为故障知识库中的组件，完成脚本下发。"
+      },
+      {
+        "id": "CEA-113600",
+        "title": "多语言适配",
+        "desc": "1. 涉及到的显示需要根据当前的系统语言进行语言切换及相应的界面显示。 2.异常场景： 1) 如因数据来源方（VDP）未提供系统语言对应的文本内容，则使用可用文本显示（无需对应系统语言）。"
+      },
+      {
+        "id": "CEA-FuncR-92341",
+        "title": "预约专家",
+        "desc": "VDP提供一个接收车端回传的用户联系方式和诊断结果的接口，VDP拿到CDCU回传的用户联系方式和诊断结果，同步给JV售后平台。"
+      },
+      {
+        "id": "CEA-FuncR-92339",
+        "title": "上电自检脚本任务",
+        "desc": "VDP提供上电自检脚本下载接口，便于车端执行上电自检任务。"
+      },
+      {
+        "id": "CEA-FuncR-92336",
+        "title": "故障管理",
+        "desc": "VDP提供故障知识库查询接口，便于车端获取故障的详细信息。"
+      },
+      {
+        "id": "CEA-FuncR-122945",
+        "title": "Release包实时更新",
+        "desc": "VDP提供单独的发布管理，可创建单独的release包，同时满足release包更新状态车端可以实时接收并获取。"
+      },
+      {
+        "id": "CEA-FuncR-122951",
+        "title": "Release包实时更新",
+        "desc": "CDCU需要支持从云端获取更新release包"
+      },
+      {
+        "id": "CEA-FuncR-93608",
+        "title": "乘客座椅记忆失效",
+        "desc": "乘客座椅记忆失效周期发送RDCU_PsngrSeatDenormalizeSt == 0x0给CDCU侧；乘客座椅初始化完后，需要周期发送RDCU_PsngrSeatDenormalizeSt == 0x1给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93610",
+        "title": "制动系统检测传感器异常",
+        "desc": "智能集成制动系统检测到传感器异常时，需要周期性发送IPB_BrakeFluid_Warning==0x2:BrakeFluid_Electric_error给CDCU侧；智能集成制动系统制传感器异常消除时，需要周期性发送IPB_BrakeFluid_Warning==0x0：BrakeFluid_Normal_Init_Default给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93612",
+        "title": "制动系统故障",
+        "desc": "智能集成制动系统检测到制动系统故障时，需要周期性发送：IPB_EBDFault == 0x1：Fault给CDCU侧；制动系统故障解除时，需要周期性发送：IPB_EBDFault == 0x0:Not fault给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93611",
+        "title": "制动液液位不足",
+        "desc": "智能集成制动系统检测到制动液液位不足时，需要周期性发送IPB_BrakeFluid_Warning==0x1：BrakeFluid_Empty给CDCU侧；智能集成制动系统制动液液位恢复时，需要周期性发送IPB_BrakeFluid_Warning==0x0：BrakeFluid_Normal_Init_Default给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93606",
+        "title": "驾驶座椅记忆失效",
+        "desc": "驾驶座椅记忆失效周期发送LDCU_DrvSeatDenormalizeSt == 0x0给CDCU侧；驾驶座椅初始化完后，需要周期发送LDCU_DrvSeatDenormalizeSt == 0x1给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93582",
+        "title": "上电自检",
+        "desc": "1. 车辆上电自动健康检测开关 1) 支持开启/关闭，默认值：开启。 2) 支持本地记忆。 2. 车辆上电自动健康检测功能开启 前置条件： 车机上电； 激活条件：1 1.车辆上电自检健康检测开关上次下电前打开； 基本事件流： 1.满足激活条件后，车载诊断app执行自检诊断（诊断知识库中的上电自检故障项）； 2.若上次下电时，车辆上电自检健康检测开关关闭，车载诊断app不执行自检诊断。 3.上电自动"
+      },
+      {
+        "id": "CEA-FuncR-93585",
+        "title": "上电自检故障项",
+        "desc": "1. 上电自检故障项为：DTC诊断仪故障码。Diagnose app从VDP下载相应的脚本，执行引擎将脚本转化为实际的UDS命令去读取回DTC，再返回到Diagnose app中。（故障模块名称最终以故障知识库为准） 故障ID 故障模块名称 B1A0700 电池寿命不足或接触不良 B1A0C09 GPS部件出错 B1A0D09 GPS配置错误 B1A1300 GPS升级错误 B1A1813 ECA"
+      },
+      {
+        "id": "CEA-FuncR-93583",
+        "title": "手动自检",
+        "desc": "1. 手动自检开关 1) 点击“车辆检测”按钮，执行手动检测。点击触发后≤3秒内开始检测显示进度条。 2. 手动自检功能开启 1) 手动自检的检测范围包括：上电自检故障项。 2) Diagnose app提供相应的自检进度和自检结果，HMI显示进度条（进度条与实际自检进度绑定）和自检结果。 3) 车控_车辆状态页，车模显示“自检动图”，自检完成后停止播放动图。 3. 结束自检功能 1) 检测进度条"
+      },
+      {
+        "id": "CEA-FuncR-93591",
+        "title": "热管理系统异常提示",
+        "desc": "检测到热管理系统异常时，需要周期性发送LDCU_ThermMngFaultSt == 0x1:Error给CDCU侧；如果热管理系统异常修复后，需要周期性发送LDCU_ThermMngFaultSt == 0x0:No Error给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-93595",
+        "title": "动力电池接触器粘连显示",
+        "desc": "LDCU收到以下三个信号之一满足如下条件时，发送LDCU_HVRlyAdhesionStDisp=0x1 (adhesion)： BMS_PosRlyFaultSt (正极继电器故障状态)=0x2:Adhesion fault BMS_NegRlyFaultSt (负极继电器故障状态)=0x2:Adhesion fault BMS_DCChrgPosRlyFaultSt (直流正极继电器故障状态)"
+      },
+      {
+        "id": "CEA-FuncR-93592",
+        "title": "电池温度极低显示",
+        "desc": "LDCU收到该报文BMS_HVONAllowCmd (是否允许高压上电指令)=0x1 (Low temp not allow HV ON)，发送LDCU_HVONAllowCmdLT=0x1至CDCU侧； LDCU判断BMS_HVONAllowCmd信号丢失或者无效，则保持BMS_HVONAllowCmd信号丢失前一时刻的状态值进行发送。"
+      },
+      {
+        "id": "CEA-FuncR-94555",
+        "title": "右转向灯故障",
+        "desc": "外部灯光子系统检测到右转向灯故障时，发送RDCU_RTurnLampFailure == 0x1:Active给CDCU。 外部灯光子系统检测到右转向灯无故障或故障消除时，发送RDCU_RTurnLampFailure == 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-94554",
+        "title": "近光灯故障",
+        "desc": "外部灯光子系统检测到近光灯故障时，发送RDCU_LowBeamFailure == 0x1:Active给CDCU； 外部灯光子系统检测到近光灯无故障或故障消除时，发送RDCU_LowBeamFailure == 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-94558",
+        "title": "左转向灯故障",
+        "desc": "外部灯光子系统检测到左转向灯故障时，发送RDCU_LTurnLampFailure == 0x1:Active给CDCU； 外部灯光子系统检测到左转向灯无故障或故障消除时，发送RDCU_LTurnLampFailure == 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-94557",
+        "title": "远光灯故障",
+        "desc": "外部灯光子系统检测到远光灯故障时，发送RDCU_HighBeamFailure== 0x1:Active给CDCU； 外部灯光子系统检测到远光灯无故障或故障消除时，发送RDCU_HighBeamFailure== 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-94561",
+        "title": "紧急下电开关故障",
+        "desc": "紧急下电开关故障发生故障时，电源模式系统周期性发出EmergencyPowerOffSwSt ==0x2：invalid给CDCU侧；如果紧急下点故障解除时，电源模式系统周期性发出EmergencyPowerOffSwSt ！= 0x2给CDCU侧。"
+      },
+      {
+        "id": "CEA-FuncR-94556",
+        "title": "后雾灯故障",
+        "desc": "外部灯光子系统检测到后雾灯故障时，发送RDCU_RearFogFailure== 0x1:Active给CDCU； 外部灯光子系统检测到后雾灯无故障或故障消除时，发送RDCU_RearFogFailure== 0x0:Not active给CDCU。"
+      },
+      {
+        "id": "CEA-FuncR-93589",
+        "title": "预约专家",
+        "desc": "1. 预约专家 1) 点击“预约技术专家”按钮，弹窗确认信息 a. 用户手动输入手机号码。车控 App 通过调用 Diagnose App 的接口提交手机号；Diagnose App 通过调用 VDP 的接口转发该手机号至VDP。 2) 预约交互 a. 用户提交手机号后，控件状态显示状态从“预约技术专家”变为“预约中” b. 车控 App 在收到 Diagnose App 预约成功（返回true）"
+      },
+      {
+        "id": "CEA-FuncR-39170",
+        "title": "车速、方向盘转向状态、方向反转角发送",
+        "desc": "当满足PowerMode == Local On/Remote on条件时： 1.ESP将车速 IPB_VehSpd、方向盘转向状态及 方向盘转角 EPS_SteeringAngle 发送给CDCU； 2.CDCU将车速 IPB_VehSpd、方向盘转向状态及 方向盘转角 EPS_SteeringAngle 发送给HCM。"
+      },
+      {
+        "id": "CEA-FuncR-116935",
+        "title": "自定义音效选择",
+        "desc": "自定义音效选择 前置条件： 1.大屏处于正常亮屏工作状态； 2.读取AVAS配置字信息值为0x3 （AVAS_15W）； 3.音效清单条目不为空； 激活条件： 打开大屏车控车设“自定义音效库”区域。 基本事件流： 1.用户选择各个槽位，可从音效清单中进行选择各个场景需要播放的音效文件； 2.在选择后各槽位显示出文件名称，以示选择情况，同时在各功能区域显示出可操作的槽位； 3.用户点击再次选择需要更"
+      },
+      {
+        "id": "CEA-FuncR-94550",
+        "title": "轮胎信息显示",
+        "desc": "大屏胎压值显示车辆上电后， LDCU需以周期500s发送以下信号给CDCU用于显示大屏胎压胎压值，胎压温度异常提醒，轮胎压力过高过低提醒，胎压监测系统故障提示，胎压传感器异常提示的内容。 TPMSService.Event.TPMSSt.TPMSStStruct { uint8:TPMSFaultWarn uint8:TPMSAbnormalPrWarn uint8:TPMSSensorReset"
+      },
+      {
+        "id": "CEA-FuncR-93593",
+        "title": "电动系统故障信息显示",
+        "desc": "LDCU_FIM_u16_ErrInhibitDrv bit0, bit2-bit9每个位均为0，发送LDCU_EVErrMsgDisp=0x0给CDCU侧； 两驱车型： a. LDCU_FIM_u16_ErrInhibitDrv bit0=0x1、bit7=0x1、bit8=0x1、bit9=0x1； b. BMS故障等级：1级或2级 c. BMS限制放电功率小于10kw d. 电机故障等级1级"
+      },
+      {
+        "id": "CEA-FuncR-93594",
+        "title": "蓄电池电流传感器故障显示",
+        "desc": "LDCU通过LIN线检测到EBS状态满足如下之一者，发送LDCU_EBS_Error_Dsp (EBS故障)=0x1 (Fault) a、Status_Current (current status)=0x1 (Error Open circuit)，持续8个周期； b、Status_Current=0x2 (HW defect (out of range or ADC defect))，持续8个"
+      },
+      {
+        "id": "CEA-FuncR-39171",
+        "title": "电源模式发送",
+        "desc": "1.LDCU将电源模式LDCU_PowerMode发送给CDCU； 2.CDCU将电源模式LDCU_PowerMode发送给HCM。"
+      },
+      {
+        "id": "CEA-FuncR-39172",
+        "title": "档位状态发送",
+        "desc": "当满足PowerMode == Local On/Remote on条件时： 1.LDCU将档位状态LDCU_CurrentGearLev发送给CDCU； 2.CDCU将档位状态LDCU_CurrentGearLev发送给HCM。"
+      },
+      {
+        "id": "CEA-FuncR-116932",
+        "title": "自定义音效文件传输",
+        "desc": "自定义音效文件传输 前置条件： 1.大屏处于正常亮屏工作状态； 2.读取AVAS配置字信息值为0x3 （AVAS_15W）； 3.WIFI AP可正常使用； 激活条件： 打开大屏车控车设“自定义音效库”区域。 基本事件流： 1.车机端可根据WIFI AP的名称和密码生成二维码图像； 2.手机APP扫码与车机建立WiFi传输，BYOD SDK将音频文件传输至CDCU指定存储路径（ 权限需求：车控车设"
+      },
+      {
+        "id": "CEA-FuncR-39375",
+        "title": "时间、里程信息发送",
+        "desc": "1. Tbox将TBOX_CDCU_RTCDate_Second、TBOX_CDCU_RTCDate_Minute、TBOX_CDCU_RTCDate_Hour、TBOX_CDCU_RTCDate_Day、TBOX_CDCU_RTCDate_Month、TBOX_CDCU_RTCDate_Year、CDCU_TotalOdometer发送到LP CAN的所有ECU（LHCM, RHCM, FSL,"
+      },
+      {
+        "id": "CEA-FuncR-39169",
+        "title": "灯光档位控制及转向灯状态发送",
+        "desc": "灯光档位控制及转向灯状态发送 1.RDCU将外部灯光档位控制 CDCU_RDCU_LightCtrlSWSt 及转向灯状态 LDCU_LTurnLampReq/ RDCU_LTurnLampReq 发送给CDCU； 2.CDCU将灯光档位控制 CDCU_RDCU_LightCtrlSWSt 及转向灯状态 LDCU_LTurnLampReq/ RDCU_LTurnLampReq 透传给HCM。"
+      },
+      {
+        "id": "CEA-FuncR-93586",
+        "title": "故障消息通知",
+        "desc": "1. Diagnose app调用消息中心的接口并将相关信息传递给消息中心进行显示以及播放相应的音频和TTS。 2. 故障推送时机 1) 当诊断仪诊断结束后存在 &quot;上电自检故障项&quot; 时推送。 2) 上电后等待1分钟后，被动接收 “仪表故障项” 时立即推送。 3) 手动检测发现故障时推送 3. 故障推送副标题&amp;TTS播报文言优先级 1) 多个故障时，消息通知副标题&amp"
+      },
+      {
+        "id": "CEA-FuncR-96713",
+        "title": "静音模式",
+        "desc": "1||2||3 1. 点击前排媒体静音，CDCU通过内部信号下发控制关闭方位0、方位1扬声器媒体通道 ，大屏正确显示当前所设置的前排媒体静音状态 2. 点击后排媒体静音，CDCU通过内部信号下发控制关闭方位2、方位3扬声器媒体通道 ，大屏正确显示当前所设置的后排媒体静音状态 3. 同时点击前、后排媒体静音，所有扬声器媒体通道关闭， 大屏正确显示当前所设置的前、后排媒体静音状态 默认都不选中，不记忆"
+      },
+      {
+        "id": "CEA-FuncR-96722",
+        "title": "倒车降音量开关",
+        "desc": "打开倒车降音量开关，当挂R挡时，导航、媒体降音至1播放 ，语音降音至3播报，大屏正确显示当前倒车时降音量开关状态 默认开，本地记忆和账号记忆"
+      },
+      {
+        "id": "CEA-FuncR-96714",
+        "title": "系统提示音开关",
+        "desc": "打开系统提示音开关，前排播放播放系统提示音， 大屏正确显示当前系统提示音开关状态，默认开，本地记"
+      },
+      {
+        "id": "CEA-FuncR-96721",
+        "title": "主驾开门媒体降音量",
+        "desc": "打开开门降音量开关，播放媒体音过程中打开主驾车门，媒体音降音至1播放， 大屏正确显示当前主驾开门降音量开关状态"
+      },
+      {
+        "id": "CEA-FuncR-96712",
+        "title": "方向盘音量调节",
+        "desc": "1.有“调节当前音量”和“只调媒体音量”两个设置项 2.当用户选择当前声音，滚动方向盘音量滚轮，按如下逻辑调节音量： 操作示意： 3.当用户选择媒体声音，滚动方向盘音量滚轮，只调节媒体、通话音量大小 默认选中当前声音，本地记忆和账号记忆 若中控屏和方向盘滚轮同时调节某种音源的音量，以中控屏调节为准"
+      },
+      {
+        "id": "CEA-FuncR-93587",
+        "title": "SR-P故障通知",
+        "desc": "1. 故障文言提醒 1) 故障信息文言，Diagnose app需要结合故障知识库中的故障模块名称拼一段话告知SR，SR做显示 。 a. 单个故障：{故障标题} b. 多个故障：{故障标题}...，故障模块名称选取逻辑：最高等级第1个故障 2) 显示规则 a. Toast显示5s，如果5s内检测到新故障，立即显示最新检测出的故障。 2. 车体故障可视 1) 范围 故障模块名称 故障信号 左前轮胎压"
+      },
+      {
+        "id": "CEA-FuncR-45788",
+        "title": "系统提示音开关",
+        "desc": "中控屏选择打开或关闭系统提示音，CDCU通过内部系统开关信号控制系统提示音开关。按键音、换挡提示音、充电枪拔插均可在子页面单独控制开关。 CDCU根据内部反馈的系统开关状态信号显示开关状态。 记忆模式为本地记忆，上下电后恢复记忆。 默认打开。"
+      },
+      {
+        "id": "CEA-FuncR-45789",
+        "title": "安全提示音音量大小设置",
+        "desc": "中控屏选择安全提示音大小，可选择小、中、大3种音量挡位。CDCU通过内部安全提示音音量信号调节音量挡位。 CDCU根据内部反馈的安全提示音音量状态信号显示已选择的音量挡位。 记忆模式为本地记忆，上下电后恢复记忆。 默认音量为中。"
+      },
+      {
+        "id": "CEA-FuncR-96710",
+        "title": "语音音量调节",
+        "desc": "语音音量调节范围1-30，默认音量10，本地记忆 语音音量最低为1，若拖动音量条调节语音音量到最小值时，会弹出提示文本 “语音音量最小值为1“"
+      },
+      {
+        "id": "CEA-FuncR-96720",
+        "title": "通话时媒体静音",
+        "desc": "通话时，CDCU通过内部信号控制并实现媒体静音；通话结束后，CDCU通过内部信号解除媒体静音 通话时媒体静音在设置界面中无开关，强制开启"
+      },
+      {
+        "id": "CEA-FuncR-96711",
+        "title": "蓝牙通话音量调节",
+        "desc": "通话音量调节范围1-30，默认音量10，本地记忆 通话音量有范围限制，拖动音量条或滚动方向盘音量滚轮调节超出音量范围时，按其最大或最小音量输出。 通话 音量最低为1，若拖动音量条调节语音音量到最小值时，会弹出提示文本 “通话音量最小值为1“ 通话音量策略：在来电/呼出过程中判断通话音量大小，若数值为0，接通后将通话音量调整为10，挂断后保持10；若非0，则不做调整"
+      },
+      {
+        "id": "CEA-FuncR-96709",
+        "title": "媒体音量调节",
+        "desc": "媒体音量调节范围0-30，默认音量10，本地记忆"
+      },
+      {
+        "id": "CEA-FuncR-92071",
+        "title": "提示音主题",
+        "desc": "提示音主题：默认，音乐厅，天空之境 切换主题时播放音效 提示音主题音效范围 模块 音效 触发条件 仪表 转向 打转向灯或开双闪时 安全带未系 安全带未系触发报警时 雷达 泊车时 通用提示音 -"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-UC-129644",
+        "title": "预约专家",
+        "desc": "预约专家 1. 预约专家 1) 点击“预约技术专家”按钮，弹窗确认信息 a. 用户手动输入手机号码。车控 App 通过调用 Diagnose App 的接口提交手机号；Diagnose App 通过调用 VDP 的接口转发该手机号至VDP。 同时Diagnose app需要将VIN、vehiclemodecode、故障数据给到VDP，VDP再将相关信息传输给JV相关平台。 2) 预约交互 a. 用"
+      },
+      {
+        "id": "CEA-UC-129647",
+        "title": "上电自检",
+        "desc": "上电自检 前置条件： 车机上电； 激活条件：1 1.车辆上电自检健康检测开关上次下电前打开； 基本事件流： 1.满足激活条件后，车载诊断app执行自检诊断（诊断知识库中的上电自检故障项） 2.如果存在以下DTC，车控健康中心界面会显示详细的DTC信息（故障标题、故障描述、故障处理建议、故障时间），消息通知也会显示相应的故障信息，SR-P界面的toast也会显示响应的故障信息，具体参考UX 故障ID"
+      },
+      {
+        "id": "CEA-UC-129654",
+        "title": "自定义音效选择",
+        "desc": "自定义音效选择 前置条件： 1.大屏处于正常亮屏工作状态； 2.读取AVAS配置字信息值为0x3 （AVAS_15W）； 3.音效清单条目不为空； 激活条件： 打开大屏车控车设“自定义音效库”区域。 基本事件流： 1.用户选择各个槽位，可从音效清单中进行选择各个场景需要播放的音效文件； 2.在选择后各槽位显示出文件名称，以示选择情况，同时在各功能区域显示出可操作的槽位； 3.用户点击再次选择需要更"
+      },
+      {
+        "id": "CEA-UC-129643",
+        "title": "故障消息通知",
+        "desc": "故障消息通知 故障推送副标题&amp;TTS播报文言优先级 1) 多个故障时，消息通知副标题&amp;TTS文言选取逻辑：最高等级第1个故障 多语言切换时，相应的文本信息会切换成对应的语言展示 \\ 仅有一项P1 多项P1故障 仅有一项P0 多项且存在P0故障 消息type Normal普通 Normal普通 Important重要 Important重要 声音 1次提醒 1次提醒 1次提醒 1次提"
+      },
+      {
+        "id": "CEA-UC-129653",
+        "title": "自定义音效文件传输",
+        "desc": "自定义音效文件传输 前置条件： 1.大屏处于正常亮屏工作状态； 2.读取AVAS配置字信息值为0x3 （AVAS_15W）； 3.WIFI AP可正常使用； 激活条件： 打开大屏车控车设“自定义音效库”区域。 基本事件流： 1.车机端可根据WIFI AP的名称和密码生成二维码图像； 2.手机APP扫码与车机建立WiFi传输，BYOD SDK将音频文件传输至CDCU指定存储路径（ 权限需求：车控车设"
+      },
+      {
+        "id": "CEA-UC-38627",
+        "title": "城市道路V模式",
+        "desc": "城市道路V模式 城市道路V模式 前置条件 车辆已上电， PowerMode ==local on||（ PowerMode =Remote ON&amp;&amp; CurMode ==auto drive mode enter success），触控屏在可用状态 灯光挡位为AUTO RDCU_CDCU_LightSwStFB == Auto 近光灯已点亮， LowBeamOutputSt =ac"
+      },
+      {
+        "id": "CEA-UC-38628",
+        "title": "乡村道路C模式",
+        "desc": "乡村道路C模式 乡村道路C模式 前置条件 车辆已上电， PowerMode ==local on||（ PowerMode =Remote ON&amp;&amp; CurMode ==auto drive mode enter success），触控屏在可用状态 灯光挡位为AUTO RDCU_CDCU_LightSwStFB == Auto 近光灯已点亮， LowBeamOutputSt =ac"
+      },
+      {
+        "id": "CEA-UC-38629",
+        "title": "高速公路E模式",
+        "desc": "高速公路E模式 高速公路E模式 前置条件 车辆已上电， PowerMode ==local on||（ PowerMode =Remote ON&amp;&amp; CurMode ==auto drive mode enter success），触控屏在可用状态 灯光挡位为AUTO RDCU_CDCU_LightSwStFB == Auto 近光灯已点亮， LowBeamOutputSt =ac"
+      },
+      {
+        "id": "CEA-UC-38630",
+        "title": "静态角灯模式",
+        "desc": "静态角灯模式 静态角灯模式 前置条件 车辆已上电， PowerMode ==local on||（ PowerMode =Remote ON&amp;&amp; CurMode ==auto drive mode enter success），触控屏在可用状态 灯光挡位为AUTO或近光 RDCU_CDCU_LightSwStFB == Auto|| Parking and low Beam 近光灯"
+      },
+      {
+        "id": "CEA-UC-38654",
+        "title": "倒车模式",
+        "desc": "倒车模式 倒车模式 前置条件 车辆已上电， PowerMode ==local on||（ PowerMode =Remote ON&amp;&amp; CurMode ==auto drive mode enter success），触控屏在可用状态 灯光挡位为AUTO或近光 RDCU_CDCU_LightSwStFB == Auto|| Parking and low Beam 近光灯已点亮，"
+      },
+      {
+        "id": "CEA-UC-45771",
+        "title": "再见提示音",
+        "desc": "前置条件： 中控屏再见提示音开关打开 激活条件： 挡位处于P挡&amp;安全带处于解开状态&amp;主驾车门处于打开状态&amp;主驾重力检测状态从有人变成无人 事件流： 1.CDCU收到P挡信号、主驾安全带解开信号、主驾车门打开信号和主驾座椅无人信号 2.CDCU发送内部控制信号，全车扬声器播放再见提示音 异常事件："
+      },
+      {
+        "id": "CEA-UC-129642",
+        "title": "SR-P故障通知",
+        "desc": "SR-P故障通知 1.故障文言提醒 1) 故障信息文言，Diagnose app需要结合故障知识库中的故障模块名称拼一段话告知SR，SR做显示 。多语言切换时，相应的文本信息会切换成对应的语言展示。 a. 单个故障：{故障标题} b. 多个故障：{故障标题}...，故障模块名称选取逻辑：最高等级第1个故障 2) 显示规则 a. Toast显示5s，如果5s内检测到新故障，立即显示最新检测出的故障。"
+      },
+      {
+        "id": "CEA-UC-45770",
+        "title": "提示音控制",
+        "desc": "前置条件： 车机上电，提示音开关控件打开 激活条件： 提示音主题选择 系统提示音打开 安全提示音小中大选择 空间提示音打开 事件流： 中控屏点击选择提示音主题；CDCU内部信号选择该提示音主题的音源；触发提示音时播放该提示音主题的音效 中控屏打开系统提示音；CDCU内部信号控制系统通道打开；触发系统提示音时播放音效 中控屏选择安全提示音音量小中大；CDCU内部信号下发指令到DSP调节仪表通道音量增"
+      },
+      {
+        "id": "CEA-UC-80886",
+        "title": "安全提示音音量",
+        "desc": "前置条件： 车机上电 激活条件： 触发安全提示音报警 基本事件流： 以固定音量音量播放 安全提示音音量在设置界面中无开关控制"
+      },
+      {
+        "id": "CEA-UC-65153",
+        "title": "导航时降音量开关",
+        "desc": "前置条件： 车机上电&amp;&amp;功放唤醒上电 激活条件： 1&amp;&amp;2 1. 大屏设置-声音-智能调节-打开导航时降音量开关 ，大屏正确显示当前系统提示音开关状态 2. 播放媒体音的过程中导航播报 基本事件流： 1. 满足激活条件后，导航按照设定音量播报，媒体音量降至1 ，大屏正确显示当前系统提示音开关状态 2. 导航播报结束后，媒体音量恢复 默认开，本地记忆和账号记忆"
+      },
+      {
+        "id": "CEA-UC-65151",
+        "title": "主驾开门降音量开关",
+        "desc": "前置条件： 车机上电&amp;&amp;功放唤醒上电 激活条件： 1&amp;&amp;2&amp;&amp;3 1. 大屏设置-声音-智能调节-打开主驾开门降音量开关 2. 播放媒体音 3. 主驾车门状态为打开状态 基本时间流： 1. 满足激活条件后，播放媒体音过程中打开主驾车门，媒体音降音播放 ，大屏正确显示当前系统提示音开关状态 默认开，本地记忆和账号记忆 CDCU记忆当前媒体音量值，并下发"
+      },
+      {
+        "id": "CEA-UC-65152",
+        "title": "倒车时降音量开关",
+        "desc": "前置条件： 车机上电&amp;&amp;功放唤醒上电 激活条件： 1&amp;&amp;2 1. 大屏设置-声音-智能调节-打开倒车时降音量开关 2. 挡位处于R挡 基本时间流： 1. 满足激活条件后，导航、语音、媒体降音播放 ，大屏正确显示当前系统提示音开关状态 默认开，本地记忆和账号记忆 CDCU记忆当前导航、语音、媒体音量值，并下发CDCU_AMP_MediaVolume=0x1，AMP降低"
+      }
+    ],
+    "others": [
+      {
+        "id": "CEA-ITC-131484",
+        "type": "functionREQTestCase",
+        "title": "钥匙遥控开启尾门-异常事件流-自动泊车在主动模式",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "VEEA-17368",
+    "title": "缩略词和术语",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17373",
+    "title": "需求输入",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17372",
+    "title": "引用文档和标准",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17388",
+    "title": "系统设计",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17365",
+    "title": "介绍",
+    "description": "",
+    "functions": [
+      {
+        "id": "CEA-FuncR-38722",
+        "title": "安全提示音音量大小设置",
+        "desc": "车辆故障与驾驶预警的提示音，可设置小、中、大三个挡位。 CDCU界面提供调整音量大小的挡位选择。CDCU内部进行信号的流转和控制。"
+      },
+      {
+        "id": "CEA-FuncR-92070",
+        "title": "音效模式",
+        "desc": "用户点击大屏选择音效，切换至选择的音效模式。 支持 支持Standard（经典旋律）、Speech（清澈人声）、Party（动感派对）三种模式。 音效和预设EQ可能会效果冲突，因此预设EQ效果只会叠加在Standard音效上。若先选择了非standard音效，再选择预设EQ时，音效将会自动选则standard音效；若先选择了某一个预设EQ，切换音效时，取消选择预设EQ。"
+      },
+      {
+        "id": "CEA-FuncR-45791",
+        "title": "音量抑制",
+        "desc": "中控屏选择打开或关闭倒车、 导航、 主驾开门降低音量。 CDCU根据内部反馈的状态信号显示开关状态。 记忆模式为本地记忆和账号记忆，上下电后恢复记忆。 默认均开启。"
+      },
+      {
+        "id": "CEA-FuncR-45793",
+        "title": "再见提示音开关",
+        "desc": "CDCU同时收到 LDCU_PGearVD=0x1、LDCU_DrvSeatOccupancySt=0x0、SRS_DrvSeatBeltBuckleSt=0x1、LDCU_DrvDoorAjarSt=0x1，通过system通道以固定音量（待标定）播放再见提示音 与语音、导航、通话、安全音混音播放；与媒体音一起播放时，媒体音降音至1播放"
+      }
+    ],
+    "usecases": [
+      {
+        "id": "CEA-UC-39241",
+        "title": "语音播报位置",
+        "desc": "CDCU需要根据语音的触发位置进行播报位置的控制，语音播报声场集中位置随SDS音区，可设置全车和区分音区。 用户可以通过大屏进行设置SDS播报的位置，CDCU内部信号控制讲SDS播报内容通过整车或者分音区播放。"
+      },
+      {
+        "id": "CEA-UC-39243",
+        "title": "离车音效",
+        "desc": "驾驶员离车时播放具有大众DNA的离车音效，默认打开，可选择关闭，以固定音量播放；判断条件是：车辆处于P档、安全带打开、车门打开、主驾座椅检测到驾驶员离开。CDCU需要判断后通过媒体类型，经过外置功放播放。 CDCU检测到车辆P档信号，安全带打开信号，车门打开信号，主驾传感器离开信号，CDCU通过内部信号控制播放大众离车提示音。"
+      }
+    ],
+    "others": []
+  },
+  {
+    "id": "VEEA-17406",
+    "title": "遥控钥匙键值检测",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17429",
+    "title": "To其他子系统需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17370",
+    "title": "RF遥控钥匙",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17391",
+    "title": "子系统接口",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17375",
+    "title": "来自整车功能的需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17378",
+    "title": "From《功能实现方案_尾门控制》",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17383",
+    "title": "性能要求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17382",
+    "title": "法规需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17385",
+    "title": "From UDS",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17371",
+    "title": "UWB遥控钥匙",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17389",
+    "title": "系统定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17390",
+    "title": "子系统功能",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17394",
+    "title": "功能分配",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17428",
+    "title": "内部接口",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17420",
+    "title": "信号处理需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17427",
+    "title": "Ethernet接口",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17421",
+    "title": "接口定义",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17425",
+    "title": "发送的CAN信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17414",
+    "title": "遥控钥匙电量低提醒",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17387",
+    "title": "交叉产品需求",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17392",
+    "title": "子系统逻辑架构",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17393",
+    "title": "逻辑部件描述",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17395",
+    "title": "子系统电气架构",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17377",
+    "title": "From《功能实现方案书_驾驶员信息显示》",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17379",
+    "title": "From《功能实现方案_车辆上下电》",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17367",
+    "title": "适用范围",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17369",
+    "title": "缩略词",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17376",
+    "title": "From《功能实现方案书_遥控钥匙控制》",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17422",
+    "title": "硬线接口",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17424",
+    "title": "接收的CAN信号",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  },
+  {
+    "id": "VEEA-17423",
+    "title": "CAN接口",
+    "description": "",
+    "functions": [],
+    "usecases": [],
+    "others": []
+  }
+]

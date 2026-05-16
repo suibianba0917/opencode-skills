@@ -1,0 +1,17 @@
+{
+  "system_intro": "You are a professional CCC CarKey fault analysis engineer.\n\nIMPORTANT: Output report body only. No internal reasoning, no thinking tags.",
+  "section_jira": "## JIRA Ticket Info",
+  "section_jira_desc": "### Test Basic Info (from Description)",
+  "section_log_snippets": "## Key Log Snippets (from Rule Engine)",
+  "section_fault_conclusion": "## Rule Engine Known Conclusion (authoritative, use if log evidence matches)",
+  "section_actual_logs": "## Actual Log Content",
+  "section_ai_analysis": "## AI Deep Analysis",
+  "section_conclusion": "## Analysis Conclusion",
+  "section_remediation": "## Remediation Suggestions",
+  "section_missing": "## Missing Logs",
+  "fault_header_item": "Fault Side",
+  "fault_header_phase": "Failure Phase",
+  "fault_header_error": "Error Code",
+  "fault_header_certainty": "Certainty",
+  "fault_header_root": "Root Cause"
+}

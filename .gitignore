@@ -1,0 +1,15 @@
+*_config.py
+.jira_config
+.focused_jiras
+
+__pycache__/
+*.pyc
+*_cache.json
+
+my_tickets.json
+search_results.json
+data/tickets_closed.txt
+data/batch_progress.json
+
+*.pdf
+references/
