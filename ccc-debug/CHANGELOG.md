@@ -56,99 +56,64 @@
 
 | Ticket | 附件数 | 解压数 | 日志情况 | 章节 | 大小 | 质量 | 根因 |
 |--------|-------:|-------:|----------|:----:|-----:|:----:|------|
-| VCTCEM-7531 | 12 | 1 | VW二进制(470MB) | 3/7 | 2.4KB | OK(简化) | 车企后台 Pretrack 服务未将分享钥匙的 keyId 下发到车端，车端无法识别分享钥匙（NFC 解闭锁失败），建议排查 Pretrack 服务日志确认 keyId 下发链路；注：仅有二进制 VW 日志，AI 生成 3 章简化报告 |
-| VCTCEM-9314 | 4 | 0 | OneApp.log+HTML+截图 | 7/7 | 2.8KB | OK | 车端存在脏数据（该车之前有数字钥匙数据未清理干净），共享钥匙处理逻辑通过 VIN 找到旧 keyId slot，导致分享钥匙拿到脏数据无法使用 |
-| VCTCEM-9316 | 8 | 0 | 8张截图 | 7/7 | 2.8KB | OK | DK 服务端已发出领取通知短信，但短信被运营商拦截/延迟，消息在消息中心长时间未处理完成，导致接收方超时未领取 |
-| VCTCEM-14302 | 0 | 0 | 无附件 | 7/7 | 3.2KB | OK | BLE 软件 MAC 地址上报配置有误，导致 CCC 分享钥匙仅有 NFC 功能但缺少 RKE 和 PEPS 功能（与 MiFi 认证流程相关） |
-| VCTCEM-22233 | 12 | 0 | 7z分卷(800MB)+视频+zip | 7/7 | 2.5KB | OK | 两台苹果手机使用同一 iCloud 账号登录，AirDrop 接收端未正确响应；手机死机也可能为触发因素，重启后可复测 |
-| VCTCEM-22690 | 12 | 31 | VW+OneApp+Flutter+TouchGo | 8/7 | 3.8KB | OK | 用户 uid:7167966776943219 与车辆 VIN:HVWPA3EG6S1300078 的绑定关系已在车企后台解绑，后台返回 ERROR_CODE_VEHICLE_RELATIONSHIP_UNBIND（90000008），钥匙分享被拒绝 |
-| VCTCEM-26376 | 5 | 0 | dk_service.log+截图+视频 | 7/7 | 2.7KB | OK | DK 后端 nginx 配置遗漏了部分车型的 CCC 访问路径配置，属于 corner case，导致钥匙分享后接收方领取请求被 404 |
-| VCTCEM-29194 | 22 | 6 | OneApp+Flutter+TouchGo | 7/7 | 7.0KB | OK | 用户在 App 内添加了数字钥匙但未完成苹果 CarKey 注册流程（LocalPassNotFound + data:false），CarKey Pass 未成功写入 Apple Wallet，建议联系苹果侧分析；Pretrack 返回 data:false + 99990004 |
-| VCTCEM-11021 | 1 | 0 | 1张截图 | 7/7 | 2.5KB | OK | 无日志，仅截图显示无法共享凭证；可能涉及手机端钥匙存储数量限制（最多 16 把）或 iOS 系统版本兼容性问题，需补充系统日志排查 |
+| VCTCEM-7531 | 12 | 1 | VW二进制(470MB) | 3/7 | 2.4KB | OK(简化) | 车企后台 Pretrack 服务未将分享钥匙的 keyId 下发到车端，车端无法识别分享钥匙（NFC 解闭锁失败），建议排查 Pretrack 服务日志确认 keyId 下发链路；注：仅有二进制 VW 日志，AI 生成 3 章简化报告 | |
+| VCTCEM-9314 | 4 | 0 | OneApp.log+HTML+截图 | 7/7 | 2.8KB | OK | | |
+| VCTCEM-9316 | 8 | 0 | 8张截图 | 7/7 | 2.8KB | OK | | |
+| VCTCEM-14302 | 0 | 0 | 无附件 | 7/7 | 3.2KB | OK | | |
+| VCTCEM-22233 | 12 | 0 | 7z分卷(800MB)+视频+zip | 7/7 | 2.5KB | OK | | |
+| VCTCEM-22690 | 12 | 31 | VW+OneApp+Flutter+TouchGo | 8/7 | 3.8KB | OK | | |
+| VCTCEM-26376 | 5 | 0 | dk_service.log+截图+视频 | 7/7 | 2.7KB | OK | | |
+| VCTCEM-29194 | 22 | 6 | OneApp+Flutter+TouchGo | 7/7 | 7.0KB | OK | | |
+| VCTCEM-11021 | 1 | 0 | 1张截图 | 7/7 | 2.5KB | OK | | |
 
 > 2026-05-14 批量验证钥匙分享失败9个，8 OK / 1 WARN。7531=二进制VW仅3章；29194=重跑后7章节完整。
 
-### 配对/创建失败（26个）批量下载完成
 
-| Ticket | 附件数 | 日志类型 |
-|--------|-------:|----------|
-| VCTCEM-6549 | 15 | ubin+OneApp.log+截图 |
-| VCTCEM-7900 | 3 | 截图+xlsx |
-| VCTCEM-9461 | 3 | csv+html+截图 |
-| VCTCEM-10130 | 8 | zip+log+截图 |
-| VCTCEM-10825 | 11 | ubin+zip+log+截图+7z分卷 |
-| VCTCEM-12144 | 2 | log+视频 |
-| VCTCEM-14321 | 6 | 视频+log+截图 |
-| VCTCEM-14482 | 2 | log+截图 |
-| VCTCEM-14519 | 5 | zip+log+截图 |
-| VCTCEM-17212 | 9 | 截图+7z分卷(3) |
-| VCTCEM-17996 | 12 | zip+视频(2)+7z+截图 |
-| VCTCEM-19504 | 4 | 视频+zip+7z |
-| VCTCEM-20449 | 1 | log |
-| VCTCEM-20667 | 9 | zip(2)+视频+7z+截图 |
-| VCTCEM-20677 | 15 | zip(2)+视频+7z(2) |
-| VCTCEM-21031 | 4 | log+zip+视频(2) |
-| VCTCEM-21967 | 8 | 视频+截图(4) |
-| VCTCEM-22135 | 14 | zip+视频(2)+7z+截图 |
-| VCTCEM-27525 | 5 | 视频+tar.gz(2)+zip |
-| VCTCEM-28325 | 7 | zip+截图+视频+7z分卷 |
-| VCTCEM-30734 | 13 | zip(2)+视频+7z+截图 |
-| VCTCEM-22248 | 3 | zip+视频+截图 |
-| VCTCEM-35791 | 2 | zip+视频 |
-| VCTCEM-13300 | 10 | 截图+7z分卷(3) |
-| VCTCEM-14346 | 12 | zip+视频+7z(2)+截图 |
-| VCTCEM-15923 | 9 | 视频+7z(2)+截图 |
-
-> 2026-05-14 下载完成，26 个全部有附件或确认无附件。下一步：批量跑分析。
-
-### 配对/创建失败（26个）批量验证详情
+### 配对/创建失败（25个）批量验证详情
 
 | Ticket | 附件数 | 提取数 | 日志类型 | 章节 | 大小 | 质量 | 根因 |
 |--------|-------:|-------:|---------|:----:|-----:|:----:|------|
-| VCTCEM-6549 | 15 | 4 | .vw+.log+.asc+.ubin | 7 | 4.2KB | OK | 车端 - NFC SE Applet cccop=2 只读模式，sw=0x6400，Phase 2 配对失败 |
-| VCTCEM-7900 | 3 | 0 | 截图+xlsx | 7 | 2.8KB | 无日志 | 无日志 - NFC 传感器 MFi 认证不通过 |
-| VCTCEM-9461 | 3 | 0 | csv+html | 7 | 2.5KB | 无日志 | 无日志 - NFC 版本旧 |
-| VCTCEM-10130 | 8 | 13 | .log+.clog+.txt | 7 | 4.0KB | OK | 车企后台 - getKeyInfoList 返回 data:false 导致 Android SDK JSON 解析崩溃 (99990004) |
-| VCTCEM-10825 | 11 | 9 | .vw+.log+.ubin+.asc | 7 | 3.5KB | OK | 车企后台 - 车辆与用户关系已解绑 (90000008) |
-| VCTCEM-12144 | 2 | 1 | .log | 7 | 2.3KB | OK | 钥匙注销 - 车门开启后钥匙自动删除（非配对失败，需调整分类） |
-| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | 车端 - SE Applet 返回 sw=0x6400，Phase 2 Auth1 认证失败 |
-| VCTCEM-14482 | 2 | 1 | .log | 7 | 1.5KB | OK | 车端 - SE Applet sw=0x6400，Auth1 验证失败 |
-| VCTCEM-14519 | 5 | 114 | .log+.clog+.txt | 7 | 3.3KB | OK | 手机端 - 大屏删除钥匙后 OneApp SDK 缓存未同步，使用旧 KeyID 发起配对 |
-| VCTCEM-17212 | 9 | 9 | .log+.clog+.txt+.vw | 7 | 1.4KB | 简化 | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-17996 | 12 | 1 | .ubin | 7 | 2.7KB | OK | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-19504 | 4 | 169 | 多类型 | 7 | 1.5KB | 简化 | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-20449 | 1 | 1 | .log | 7 | 9.1KB | OK | 车端 - TBOX 无法解析后台域名，DNS 解析失败 (curl: Couldn't resolve host name) |
-| VCTCEM-20667 | 9 | 14 | .log+.clog+.txt+.vw | 7 | 4.0KB | OK | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-20677 | 15 | 18 | .vw+.log+.clog+.txt+.ubin | 7 | 3.7KB | WARN | 需补充日志 - 缺失 17pm iOS sysdiagnose |
-| VCTCEM-21031 | 4 | 2 | .log+.txt | 7 | 3.4KB | OK | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-21967 | 8 | 52 | .log+.clog+.txt | 7 | 4.0KB | OK | 双重 - 车端 SE 未配置 ECP (nfcKeyFunState=-1) + 后台 OAuth 401 (90000011) |
-| VCTCEM-22135 | 14 | 5 | .ubin+.log+.txt | 7 | 3.5KB | OK | 双重 - 后台订阅 API 401 (90000011) + 缺少 iOS 日志确认 6A80 |
-| VCTCEM-27525 | 5 | 7 | .log+.txt | 7 | 0.8KB | 简化 | 车企后台 - 后台返回 REJECTED_BY_BACKEND |
-| VCTCEM-28325 | 7 | 12 | .vw+.log+.clog+.txt | 7 | 3.0KB | OK | 苹果后台 - Profile 签名验证失败（苹果更换测试 Profile） |
-| VCTCEM-30734 | 13 | 1 | .vw | 7 | 2.3KB | OK | 车企后台 - CEA Profile 状态异常，KTS 无法完成钥匙下发 |
-| VCTCEM-22248 | 3 | 9 | .log+.clog+.txt | 7 | 2.4KB | WARN | 日志时间不匹配 - 需补充 17:46 日志 |
-| VCTCEM-35791 | 2 | 12 | .log | 7 | 2.8KB | OK | 车企后台 - Failed to check permission，Profile 未下发 |
-| VCTCEM-13300 | 10 | 1 | .vw | 7 | 3.8KB | OK | 车企后台 - 人车关系已解绑 (90000008) |
-| VCTCEM-14346 | 12 | 1 | .vw | 7 | 1.3KB | 简化 | 知识库模式 - 无实际日志分析 |
-| VCTCEM-15923 | 9 | 1 | .ubin | 7 | 0.9KB | 简化 | 知识库模式 - 无实际日志分析 |
+| VCTCEM-6549 | 15 | 4 | .vw+.log+.asc+.ubin | 7 | 4.2KB | OK | | |
+| VCTCEM-7900 | 3 | 0 | 截图+xlsx | 7 | 2.8KB | 无日志 | | |
+| VCTCEM-9461 | 3 | 0 | csv+html | 7 | 2.5KB | 无日志 | | |
+| VCTCEM-10130 | 8 | 13 | .log+.clog+.txt | 7 | 4.0KB | OK | | |
+| VCTCEM-10825 | 11 | 9 | .vw+.log+.ubin+.asc | 7 | 3.5KB | OK | | |
+| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | | |
+| VCTCEM-14482 | 2 | 1 | .log | 7 | 1.5KB | OK | | |
+| VCTCEM-14519 | 5 | 114 | .log+.clog+.txt | 7 | 3.3KB | OK | | |
+| VCTCEM-17212 | 9 | 9 | .log+.clog+.txt+.vw | 7 | 1.4KB | 简化 | | |
+| VCTCEM-17996 | 12 | 1 | .ubin | 7 | 2.7KB | OK | | |
+| VCTCEM-19504 | 4 | 169 | 多类型 | 7 | 1.5KB | 简化 | | |
+| VCTCEM-20449 | 1 | 1 | .log | 7 | 9.1KB | OK | | |
+| VCTCEM-20667 | 9 | 14 | .log+.clog+.txt+.vw | 7 | 4.0KB | OK | | |
+| VCTCEM-20677 | 15 | 18 | .vw+.log+.clog+.txt+.ubin | 7 | 3.7KB | WARN | | |
+| VCTCEM-21031 | 4 | 2 | .log+.txt | 7 | 3.4KB | OK | | |
+| VCTCEM-21967 | 8 | 52 | .log+.clog+.txt | 7 | 4.0KB | OK | | |
+| VCTCEM-22135 | 14 | 5 | .ubin+.log+.txt | 7 | 3.5KB | OK | | |
+| VCTCEM-27525 | 5 | 7 | .log+.txt | 7 | 0.8KB | 简化 | | |
+| VCTCEM-28325 | 7 | 12 | .vw+.log+.clog+.txt | 7 | 3.0KB | OK | | |
+| VCTCEM-30734 | 13 | 1 | .vw | 7 | 2.3KB | OK | | |
+| VCTCEM-22248 | 3 | 9 | .log+.clog+.txt | 7 | 2.4KB | WARN | | |
+| VCTCEM-35791 | 2 | 12 | .log | 7 | 2.8KB | OK | | |
+| VCTCEM-13300 | 10 | 1 | .vw | 7 | 3.8KB | OK | | |
+| VCTCEM-14346 | 12 | 1 | .vw | 7 | 1.3KB | 简化 | | |
+| VCTCEM-15923 | 9 | 1 | .ubin | 7 | 0.9KB | 简化 | | |
 
-> 2026-05-15 重跑后根因修正：配对/创建失败 26 个
+> 2026-05-15 重跑后根因修正（v4.7 验证前），配对/创建失败 25 个
 >
 > 修正 4 个：6549(后台→车端)、10825(车端→后台)、14482(后台→车端)、20667(未改但根因细化)
->
-> 根因分布：车企后台 12 个 | 车端 7 个 | 手机端 2 个 | 苹果后台 1 个 | 双重 2 个 | 钥匙注销 1 个 | 待补充 4 个
 
 **根因分类汇总**：
 
 | 故障端 | 数量 | 根因模式 |
 |--------|-----:|----------|
-| **车企后台** | 12 | 90000008 车辆关系解绑、99990004 API 错误、Profile 未下发、90000011 OAuth 失败 |
-| **车端** | 7 | sw=0x6400、cccop=2、keyid blacklist、NFC 未上电、nfcKeyFunState=-1、TBOX DNS、receipt签名 |
-| **手机端** | 2 | SDK 缓存未刷新、6A80 安全错误 |
-| **苹果后台** | 1 | Profile 签名验证失败 |
-| **双重** | 2 | 车端 SE + 后台 OAuth 双重问题 |
+| **车企后台** | 待确认 | 90000008、99990004、Profile 相关、90000011 |
+| **车端** | 待确认 | sw=0x6400、cccop=2、nfcKeyFunState=-1、TBOX DNS |
+| **手机端** | 待确认 | SDK 缓存未刷新、6A80 安全错误 |
+| **苹果后台** | 待确认 | Profile 签名验证失败 |
+| **双重** | 待确认 | 车端 SE + 后台 OAuth 双重问题 |
 | **钥匙注销** | 1 | 车门开启触发钥匙自动删除（非配对） |
-| 待补充 | 4 | 日志缺失或时间不匹配 |
+| 待补充 | 待确认 | 日志缺失或时间不匹配 |
 
 > 2026-05-16 修正：VCTCEM-12144 从"手机端(AES解密)"更正为"钥匙注销/删除异常"（车门开启后钥匙自动删除，非配对失败）。
 
