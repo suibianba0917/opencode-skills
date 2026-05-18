@@ -169,8 +169,8 @@ def format_jira_context_for_prompt(jira_context):
     comments = jira_context.get('comments', [])
     if comments:
         lines.append("")
-        lines.append("### JIRA 评论 (最新)")
-        for c in reversed(comments[-5:]):
+        lines.append("### JIRA 评论 (全部 {count} 条，仅供参考，需日志验证)".format(count=len(comments)))
+        for c in comments:
             body = c.get('body', {})
             created = c.get('created', '')[:16]
             author = c.get('author', {}).get('displayName', 'Unknown')
@@ -179,9 +179,9 @@ def format_jira_context_for_prompt(jira_context):
                 for block in body.get('content', []):
                     for content_item in block.get('content', []):
                         comment_text += content_item.get('text', '')
-                lines.append(f"- **{author}** [{created}]: {comment_text[:300]}")
+                lines.append(f"- **{author}** [{created}]: {comment_text[:300]} [需日志验证]")
             else:
-                lines.append(f"- **{author}** [{created}]: {str(body)[:300]}")
+                lines.append(f"- **{author}** [{created}]: {str(body)[:300]} [需日志验证]")
 
     return '\n'.join(lines)
 

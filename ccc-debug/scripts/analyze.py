@@ -1135,6 +1135,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 6. 基于提供的日志内容给出真实分析结论，不要输出"无日志无法分析"等放弃性结论
 7. 日志片段必须填入第三章，禁止省略或用"无日志"跳过
 8. 分析时如需参考知识库中的特定章节，可在报告中注明"参考 {文件} {章节}"，供工程师深入查阅
+9. JIRA 评论仅作为排查方向参考，不作为最终结论依据，需结合日志证据交叉验证。若评论与日志矛盾，以日志证据为准，在报告中说明"
 
 """
     full_prompt = header + jira_section + "\n\n---\n\n"
