@@ -16,7 +16,7 @@
 | Phase 1 | 初始化 / 检测 | 手机 + 车 | 蓝牙 / NFC 连接建立 | — |
 | Phase 2 | 设备认证 | 手机 + 车 | SPAKE2+ 密钥交换 | SELECT → Auth0 → Exchange |
 | Phase 3 | 证书交换 | 手机 + 车 + 后台 | 证书链校验 | Auth1 → Control Flow |
-| Phase 4 | KTS 注册 | 手机 + 苹果后台 + 车企后台 | KTS 请求 / 响应、ABR 配置 | Standard Transaction |
+| Phase 4 | KTS 注册 | 手机 + 苹果后台 + 车企后台 | KTS 请求发起（Phase 3 证书交换期间）→ ABR 路由 → 响应写入 SE；ABR 配置 | Standard Transaction |
 | Phase 5 | 钥匙写入 | 手机 + 车 | SE 写入、密钥存储 | — |
 
 > **Phase ↔ Pairstatus 对照**：Pairstatus=0~4 对应 Phase 1~5，见第 2 章「配对阶段状态机」。
@@ -66,12 +66,19 @@ Friend Device 和车建立蓝牙连接后，需完成一次 Standard Transaction
 
 搜索方式：车端日志中搜索 `opcontrol_cmd: 000B0004803Cxxxx`
 
-| 日志标记 | 含义 | 对应 Phase | 对应 Pairstatus |
-|----------|------|-----------|-----------------|
-| `803C1001` | 手机已 Create Digital Key，Phase2 第一次 Transaction 完成 | Phase 2 | 1~2 |
-| `803C1111` | Phase2 全部完成，KeyID 已生成 | Phase 2→Phase 3 | 2→3 |
-| `803C0181` | Phase3 车端部分已完成 | Phase 3 | 3 |
-| `803C0190` | **Phase4 结束，整个 Owner Pairing 成功完成** | Phase 4 | 4 |
+| 日志标记 | 含义 | 对应 Phase | 对应 Pairstatus | 来源验证 |
+|----------|------|-----------|-----------------|----------|
+| `803C1001` | Phase2 第一次 Transaction 完成 | Phase 2 | 1~2 | VCTCEM-6549/10825/14321 |
+| `803C1002` | Phase2 第二次 Transaction 完成 | Phase 2 | 1~2 | VCTCEM-6549/10825/14321 |
+| `803C1111` | Phase2 全部完成，KeyID 已生成 | Phase 2→Phase 3 | 2→3 | VCTCEM-6549/10825/14321 |
+| `803C0181` | Phase3 车端部分已完成 | Phase 3 | 3 | VCTCEM-6549/10825/14321 |
+| `803C4088` | Phase4 步骤1（KTS 注册开始）| Phase 4 | 4 | VCTCEM-10825/14321 |
+| `803C4081` | Phase4 步骤2 | Phase 4 | 4 | VCTCEM-10825/14321 |
+| `803C4082` | Phase4 步骤3 | Phase 4 | 4 | VCTCEM-10825/14321 |
+| `803C0190` | **Phase4 结束，整个 Owner Pairing 成功完成** | Phase 4 | 4 | VCTCEM-10825/14321 |
+| `803C01B0` | 钥匙写入阶段 | Phase 5 | 4~5 | VCTCEM-14321 |
+| `803C0100` | 配对结束/进入 Polling 状态 | Phase 5 | 5 | VCTCEM-10825/14321 |
+| `803C0000` | 配对失败 | - | - | VCTCEM-6549/14321 |
 
 ### 配对阶段状态机（Pairstatus）
 
@@ -85,9 +92,24 @@ Friend Device 和车建立蓝牙连接后，需完成一次 Standard Transaction
 | 3 | Phase 3 | 证书交换 | KTS/ABR 异常 |
 | 4 | Phase 4~5 | 配对成功 | — |
 
+### Control Flow p1/p2 状态码
+
+> 来自 dk_service.log `transaction.cpp:534` 的日志：`control flow:p1=0xX,p2=0xXX`
+
+| p1 | p2 | 含义 | 来源验证 |
+|----|----|------|----------|
+| 0 | 0 | **配对失败**（auth1 或 Phase 2/3 失败）| VCTCEM-6549/14321 |
+| 1 | 0x81 | Phase 3 车端部分完成 | VCTCEM-10825/14321 |
+| 0x40 | 0x88 | Phase 4 步骤1 | VCTCEM-10825/14321 |
+| 0x40 | 0x81 | Phase 4 步骤2 | VCTCEM-10825/14321 |
+| 0x40 | 0x82 | Phase 4 步骤3 | VCTCEM-10825/14321 |
+| 1 | 0x90 | **Phase 4 成功**，整个配对完成 | VCTCEM-10825/14321 |
+| 1 | 0xb0 | 钥匙写入阶段 | VCTCEM-14321 |
+| 1 | 0 | **配对结束**，进入 Polling 状态 | VCTCEM-10825/14321 |
+
 ### NFC ECP cccop 只读模式
 
-**日志关键词**：`NFC_iN ecp[4] = 8,conf->cccop = 2`
+**日志关键词**：`NFC_iN ecp[4] = X,conf->cccop = 2`（ecp[4] 值平台相关，多数平台为 8，VW MEB 平台为 1）
 
 `cccop` 决定 NFC ECP 读写模式：
 - `cccop=1` = 读写模式（正常）
@@ -118,7 +140,7 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 |----------|----------|----------|
 | cccop=2 + sw=0x6400（配对时） | NFC ECP 只读模式，SE 写入失败 | 检查 ACOSe ECP 参数是否正确写入 NFC 固件，确认 cccop 默认值为 1 |
 | cccop=2 + sw=0x6400（刷卡时） | ECP 配置配对后丢失，SE 读取失败 | 检查 ECP 参数是否持久化到 NVCM |
-| sw=0x6400（无 cccop=2） | SE Applet 未初始化/只读模式 | 检查 SE 生命周期管理，SE 是否被锁定或未正确初始化 |
+| sw=0x6400（无 cccop=2） | SE Applet 未初始化/只读模式，可发生在 Phase 2 或 Phase 3 的 Auth1 流程 | 检查 SE 生命周期管理，SE 是否被锁定或未正确初始化 |
 | keyid in blacklist | 钥匙 KeyID 被车端列入黑名单 | 检查车端 KeyID 黑名单机制，确认 KeyID 清理逻辑 |
 | NFC_SysSt=全0 | NFC 控制器未完成初始化，chip status error active | 检查 NFC 固件配置，确认电源/时钟/初始化时序 |
 | nfcKeyFunState=-1 | SE 未配置 ECP，NFC 发现阶段阻断 | 检查 SE ECP 参数配置是否正确下发并持久化 |
@@ -144,7 +166,7 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 | 错误特征 | 可能原因 |
 |----------|----------|
 | KTS 请求无响应 | ABR 配置错误 / 网络不通 |
-| 后端未收到 KTS 请求 | ABR 路由配置错误 |
+| 后端未收到 KTS 请求 | 需区分：(1) ABR 路由配置错误，KTS 请求被阻断（独立根因）；(2) Phase 2/3 已失败，流程未到达 KTS 阶段（结果，非原因）| 
 | KTS 超时 | ABR 配置错误 |
 | 90000011 (OAuth鉴权失败) | 用户与车辆订阅关系缺失，touchgo 接口返回 401 |
 
@@ -293,4 +315,4 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 
 ---
 
-*最后更新：2026-05-14*
+*最后更新：2026-05-18*（v4.8 新增 803C1002/4088/81/82/01B0/0100/0000 状态码 + Control Flow p1/p2 状态码表 + ecp[4] 平台差异说明）

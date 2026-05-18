@@ -4,10 +4,10 @@
 
 ---
 
-## 当前状态（v4.7）
+## 当前状态（v4.8）
 
-- **版本**：v4.7（2026-05-16）
-- **前版本**：v4.6（2026-05-15）
+- **版本**：v4.8（2026-05-18）
+- **前版本**：v4.7（2026-05-16）
 - **核心脚本**：`scripts/analyze.py` / `scripts/analyze_debug.py`
 - **知识库**：`knowledge/` 目录（6 个故障域文档）
 - **知识摘要**：`scripts/cache/knowledge_summaries.json`（6 文件 ~5KB 摘要，标注 reliability+source，每次分析自动注入 AI prompt）
@@ -20,6 +20,7 @@
 
 | 版本 | 日期 | 里程碑 |
 |------|------|--------|
+| v4.8 | 2026-05-18 | **知识库验证与修正**：通过 VCTCEM-6549/10825/14321 三个 ticket 交叉验证，修正 `ccc_pairing.md` 知识库；(1) 803C 状态码从 4 个扩展到 11 个，新增 1002/4088/4081/4082/01B0/0100/0000，每条标注来源 ticket；(2) 新增 Control Flow p1/p2 状态码表（8 种状态），明确失败→Phase3→Phase4→成功映射；(3) 修正 ecp[4] 值描述（平台相关：多数=8，VW MEB=1）；**批量验证**：已完成 6/25（6549/10130/10825/14321/7900/9461 均为车端问题）|
 | v4.7 | 2026-05-16 | 新增知识库摘要自动注入：6个 knowledge 文件生成 ~4KB 摘要（`cache/knowledge_summaries.json`），每次分析时注入 AI prompt，AI 可自主引用知识域；每个知识域/章节标注 reliability (high/medium/low) + source 来源；AI prompt 新增约束第8条（引用知识库章节）+ 可信度提示；`analyze.py` 新增 `load_knowledge_summaries()` 函数；**BugFix**：`analyze.py` opencode 路径错误修复（`node opencode` → `opencode.exe`），修复后 AI 分析正常返回报告；**BugFix**：`Jira_access/get_ticket_detail.py` 评论获取添加分页参数，修复评论获取不完整；**优化**：`analyze_debug.py` 评论取全部 + 标注"[需日志验证]"；AI prompt 新增约束第9条：评论仅供参考，需结合日志交叉验证 |
 | v4.6 | 2026-05-15 | 根因分布修正：配对失败26个重跑（车企后台12/车端7/手机端3/苹果后台1/双重2）；修正4个根因（6549/10825/14482/20667）；重跑后7章完整 |
 | v4.5 | 2026-05-14 | 修复二进制 VW 文件导致乱码（排除 .vw）；扩展跳章节修复；批量验证钥匙分享失败 9 个（8 OK / 1 WARN）；知识库更新：新增 90000008/99990004 错误码、车端脏数据、LocalPassNotFound、nginx 配置遗漏；细化 Pretrack keyId 未下发/BLE MAC RKE-PEPS/短信延迟；修复 knowledge-platform debug.py 路径（analyze_debug.py 从 Jira_access 改为 ccc-debug/scripts）；增强 AI header 禁止 think 输出；新增后处理过滤 Chinese think 文本（"让我先查看"等）；批量下载配对/创建失败 26 个 tickets |
@@ -74,7 +75,7 @@
 | Ticket | 附件数 | 提取数 | 日志类型 | 章节 | 大小 | 质量 | 问题端 | 根因 |
 |--------|-------:|-------:|---------|:----:|-----:|:----:|:------:|------|
 | **已验证** | | | | | | | | |
-| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | 车企后台 | 后台 - KTS请求未到达(评论确认)，ABR配置问题 |
+| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | 车端 | 车端 - NFC ECP cccop=2只读模式，sw=0x6400，Phase2失败 |
 | VCTCEM-10130 | 8 | 13 | .log+.clog+.txt | 7 | 4.0KB | OK | 车企后台 | 后台 - Pretrack服务返回99990004 DEFAULT_ERROR，data:false |
 | VCTCEM-10825 | 11 | 9 | .vw+.log+.ubin+.asc | 7 | 3.5KB | OK | 车端 | 车端 - 配置字cccop=2 + CWCD v08检测逻辑错误(已修复) |
 | VCTCEM-6549 | 15 | 4 | .vw+.log+.asc+.ubin | 7 | 4.2KB | OK | 车端 | 车端 - NFC ECP cccop=2只读模式，sw=0x6400，Phase2失败 |
