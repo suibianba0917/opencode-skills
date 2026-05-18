@@ -57,25 +57,55 @@ def get_ticket_detail(key):
     
     data = resp.json()
     
-    comments_url = f"{JIRA_URL}/rest/api/2/issue/{key}/comment?fields=created,updated,author,body"
+    comments_url = f"{JIRA_URL}/rest/api/2/issue/{key}/comment?startAt=0&maxResults=100&expand=renderedBody"
     comments_resp = session.get(comments_url, headers=headers, timeout=30)
-    
+
     comments = []
     if comments_resp.status_code == 200:
-        comments = comments_resp.json().get('comments', [])
+        resp_data = comments_resp.json()
+        comments = resp_data.get('comments', [])
+        total = resp_data.get('total', 0)
+        if total > len(comments):
+            all_comments = list(comments)
+            while len(all_comments) < total:
+                start = len(all_comments)
+                next_url = f"{JIRA_URL}/rest/api/2/issue/{key}/comment?startAt={start}&maxResults=100&expand=renderedBody"
+                next_resp = session.get(next_url, headers=headers, timeout=30)
+                if next_resp.status_code == 200:
+                    next_data = next_resp.json()
+                    batch = next_data.get('comments', [])
+                    if not batch:
+                        break
+                    all_comments.extend(batch)
+                else:
+                    break
+            comments = all_comments
     
     return {'detail': data, 'comments': comments}
 
 def format_description(desc):
     if not desc:
         return "(No description)"
-    
+
     if isinstance(desc, dict):
         lines = []
-        for block in desc.get('content', []):
-            for item in block.get('content', []):
-                lines.append(item.get('text', ''))
-        return '\n'.join(lines)
+
+        def extract_text(obj):
+            if isinstance(obj, str):
+                return obj
+            if isinstance(obj, dict):
+                text = obj.get('text', '')
+                if text:
+                    return text
+                result = ''
+                for v in obj.values():
+                    result += extract_text(v)
+                return result
+            if isinstance(obj, list):
+                return ''.join(extract_text(v) for v in obj)
+            return ''
+
+        return extract_text(desc)
     return desc
 
 def status_color(status):
