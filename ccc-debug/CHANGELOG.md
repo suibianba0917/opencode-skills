@@ -76,9 +76,9 @@
 | VCTCEM-6549 | 15 | 4 | .vw+.log+.asc+.ubin | 7 | 4.2KB | OK | 车端 | 车端 - NFC ECP cccop=2只读模式，sw=0x6400，Phase2失败 | |
 | VCTCEM-7900 | 3 | 0 | 截图+xlsx | 7 | 2.8KB | 无日志 | 车端 | 车端 - NFC天线距离不满足MFi要求(≥4cm)，硬件设计问题 | |
 | VCTCEM-9461 | 3 | 0 | csv+html | 7 | 2.5KB | 无日志 | 车端 | 车端 - NFC使用旧版本(007)，VR36/013版本才支持CCC spec | |
-| VCTCEM-10130 | 8 | 13 | .log+.clog+.txt | 7 | 4.0KB | OK | | |
-| VCTCEM-10825 | 11 | 9 | .vw+.log+.ubin+.asc | 7 | 3.5KB | OK | | |
-| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | | |
+| VCTCEM-10130 | 8 | 13 | .log+.clog+.txt | 7 | 4.0KB | OK | 车企后台 | 后台 - Pretrack服务返回99990004 DEFAULT_ERROR，data:false |
+| VCTCEM-10825 | 11 | 9 | .vw+.log+.ubin+.asc | 7 | 3.5KB | OK | 车端 | 车端 - 配置字cccop=2 + CWCD v08检测逻辑错误(已修复) |
+| VCTCEM-14321 | 6 | 65 | .log+.clog+.txt | 7 | 2.7KB | OK | 车企后台+车端 | 后台 - ABR配置异常KTS密钥协商失败 + 车端多重异常 |
 | VCTCEM-14482 | 2 | 1 | .log | 7 | 1.5KB | OK | | |
 | VCTCEM-14519 | 5 | 114 | .log+.clog+.txt | 7 | 3.3KB | OK | | |
 | VCTCEM-17212 | 9 | 9 | .log+.clog+.txt+.vw | 7 | 1.4KB | 简化 | | |
