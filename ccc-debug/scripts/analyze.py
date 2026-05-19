@@ -23,6 +23,9 @@ import tempfile
 from datetime import datetime
 import time
 
+# AI 模型配置
+DEFAULT_MODEL = "LiteLLM/MiniMax-M2.5"
+
 def _ensure_complete_sections(report_text, jira_context=None):
     SECTION_NORM = [
         ('一', '## 一、JIRA 信息'),
@@ -1023,6 +1026,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         "",
         "## 日志文件内容",
     ]
+    log_text_size = 0  # 统计实际日志文本大小
     if no_logs:
         prompt_lines.append("(无日志附件，以下分析基于 JIRA 描述 + 知识库)")
     else:
@@ -1037,11 +1041,13 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
                     try:
                         with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
                             content = f.read(20 * 1024)
+                        log_text_size += len(content)
                         prompt_lines.append(f"\n### {rel} (首20KB)")
                         prompt_lines.append("```")
                         prompt_lines.append(content[:5000])
                         prompt_lines.append("```")
                     except Exception as e:
+                        log_text_size += 50
                         prompt_lines.append(f"  [read error: {e}]")
             else:
                 try:
@@ -1051,6 +1057,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
                     else:
                         with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
                             content = f.read(50000)
+                        log_text_size += len(content)
                         prompt_lines.append(f"\n### {rel}")
                         prompt_lines.append("```")
                         if is_dk_service:
@@ -1058,6 +1065,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
                         prompt_lines.append(content[-5000:])
                         prompt_lines.append("```")
                 except Exception as e:
+                    log_text_size += 50
                     prompt_lines.append(f"- {rel} [read error: {e}]")
     print(f"      读取完成: {time.time()-t_read:.1f}s")
 
@@ -1087,7 +1095,48 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 
     prompt_text = '\n'.join(prompt_lines)
 
+    LOG_SIZE_THRESHOLD = 1024
+    is_low_log = log_text_size < LOG_SIZE_THRESHOLD and not no_logs
+    skip_ai = log_text_size == 0 and not no_logs
+
     knowledge_section = load_knowledge_summaries()
+
+    # 日志为 0 时直接生成报告，无需 AI
+    if skip_ai:
+        print(f"    [跳过 AI] 日志文本=0字节，仅基于规则引擎生成报告")
+        report = f"""## 一、JIRA 信息
+{jira_section}
+
+## 二、分析结论
+**故障端**: 日志缺失
+**根因**: 无可用日志，无法定位。附件内容为二进制文件（.vw/.ubin），无可读文本。
+
+## 三、关键日志片段
+无有效日志（附件为二进制格式）
+
+## 四、根因分析
+由于所有附件均为二进制文件（.vw/.ubin），无法提取可读文本内容进行 AI 分析。
+建议下次提单时附上 .log / .txt / .clog 等文本格式日志。
+
+## 五、整改建议
+| 归属端 | 建议 |
+|--------|------|
+| 用户提单 | 附上 dk_service.log / security-sysdiagnose.txt 等文本日志 |
+| 用户提单 | 附上 OneApp Android 日志（.log / .txt） |
+
+## 六、补充说明
+**日志完整性**: D级（无文本日志）
+**解压文件数**: {len(log_files) if 'log_files' in dir() else 'N/A'}，全部为二进制格式
+
+## 七、结论
+**日志严重缺失**，所有附件均为二进制格式，无可读文本。无法进行有效的 CCC CarKey 配对失败分析。建议用户重新提单并附上文本格式日志。
+"""
+        ts = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        output_file = os.path.join(analysis_output_dir, f'{ticket_key}_完整分析报告_{ts}.md')
+        with open(output_file, 'w', encoding='utf-8-sig') as f:
+            f.write(report)
+        print(f"    [生成跳过报告] {output_file}")
+        return report, None
 
     knowledge_context = """## 报告输出要求
 
@@ -1146,6 +1195,22 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         full_prompt += knowledge_section + "\n\n---\n\n"
     full_prompt += knowledge_context + "\n\n---\n\n" + "## 日志文件内容\n\n" + prompt_text
 
+    # 日志过少时使用简化 prompt（跳过知识库，AI 快速返回）
+    if is_low_log:
+        print(f"    [日志过少] 文本={log_text_size}字节 < 1KB，使用简化 prompt")
+        short_header = """你是 CCC CarKey 数字钥匙故障分析工程师。
+基于 JIRA ticket 信息输出 7 章节完整分析报告（如日志确实不足，在各章节如实说明）。
+
+重要约束：
+1. 仅输出报告正文，禁止内部思考
+2. 每个章节（## 一~七）只能出现一次，禁止重复
+3. 禁止复制占位符文字（如"待补充"、"见上方"）
+4. 第二章必须包含故障端+根因摘要
+5. 第七章必须输出一段总结性文字
+
+"""
+        full_prompt = short_header + jira_section + "\n\n---\n\n" + knowledge_context + "\n\n---\n\n日志文件内容（极少或为二进制）：\n" + prompt_text
+
     try:
         MAX_TOKENS = 160000
         estimated_tokens = len(full_prompt) // 4
@@ -1164,13 +1229,13 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         fallback = 'opencode'
         exe_path = node_exe if os.path.exists(node_exe) else fallback
         with open(ps_script_file, 'w', encoding='utf-8-sig') as f:
-            f.write(f'Get-Content -LiteralPath "{prompt_file}" -Raw -Encoding UTF8 | & "{exe_path}" run --format json 2>$null')
+            f.write(f'Get-Content -LiteralPath "{prompt_file}" -Raw -Encoding UTF8 | & "{exe_path}" run --model {DEFAULT_MODEL} --format json 2>$null')
 
-        print(f"    [调用 opencode] prompt_size={len(full_prompt)/1024:.0f}KB")
+        print(f"    [调用 opencode] prompt_size={len(full_prompt)/1024:.0f}KB model={DEFAULT_MODEL}")
         t_opencode = time.time()
         result = subproc.run(
             ['powershell', '-ExecutionPolicy', 'Bypass', '-File', ps_script_file],
-            capture_output=True, text=True, timeout=600
+            capture_output=True, text=True, timeout=900
         )
         print(f"      opencode返回: {time.time()-t_opencode:.1f}s")
 
