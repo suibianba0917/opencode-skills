@@ -1,7 +1,7 @@
 ---
 name: ccc-debug
 description: 专项分析CCC CarKey数字钥匙配对失败日志，精准定位手机端/车端/车企后台/苹果后台故障根因
-version: 4.7
+version: 4.8
 author: 组内共享
 ---
 
@@ -21,15 +21,15 @@ python "C:\Users\WP6KCF2\.config\opencode\skills\ccc-debug\scripts\analyze.py" V
 ```
 
 输出文件：
-- `分析过程/完整分析报告_YYYY-MM-DD_HH-MM-SS.md` - AI 完整分析报告（结构化，含根因+证据+建议，按时间戳存档）
-- `分析过程/规则分析报告_YYYY-MM-DD_HH-MM-SS.md` - 规则引擎分析报告（关键词匹配结果，辅助参考）
+- `分析过程/{ticket_key}_完整分析报告_YYYY-MM-DD_HH-MM-SS.md` - AI 完整分析报告（结构化，含根因+证据+建议，按时间戳存档）
+- `分析过程/{ticket_key}_规则分析报告_YYYY-MM-DD_HH-MM-SS.md` - 规则引擎分析报告（关键词匹配结果，辅助参考）
 
 功能：
 - 日志类型识别 (iOS/Android/CAN/Backend)
 - 关键词匹配 + 故障模式分类
 - DBC 信号参考预解析（225 条 CAN 消息）
 - AI 深度分析（调用 opencode AI）
-- 知识库摘要自动注入（6 个故障域 ~12KB 摘要，AI 每次分析均可参考）
+- 知识库摘要自动注入（6 个故障域 ~4.5KB 摘要，AI 每次分析均可参考）
 
 ---
 
@@ -213,4 +213,4 @@ Y:\JIRA_Logs\
 
 ---
 
-*版本：4.6 | 更新日期：2026-05-15*
+*版本：4.8 | 更新日期：2026-05-18*
