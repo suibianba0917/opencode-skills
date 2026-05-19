@@ -66,17 +66,13 @@ def send_email(subject, body, ticket_key=None, ticket_summary=None):
         html_body = html_body.replace('<body>', f'<body><p><strong>JIRA:</strong> {jira_link}</p><hr>', 1)
     else:
         html_body = md_to_html(body)
-
-    subject_escaped = subject.replace('"', '`"').replace('`', '``')
-    html_body_escaped = html_body.replace('"', '`"').replace('`', '``')
+    html_body = html_body.replace('"', '&quot;').replace('\n', '&#10;')
 
     ps_script = f'''
 $ol = New-Object -ComObject Outlook.Application
 $mail = $ol.CreateItem(0)
-$mail.Subject = "{subject_escaped}"
-$mail.HTMLBody = @"
-{html_body_escaped}
-"@
+$mail.Subject = "{subject}"
+$mail.HTMLBody = "{html_body}"
 $mail.To = "{EMAIL_RECIPIENT}"
 $mail.Send()
 '''
@@ -430,11 +426,12 @@ def main():
     t_email = time.time()
     report_file = ai_path if ai_path else report_path
     if report_file and os.path.exists(report_file):
-        report_filename = os.path.basename(report_file)
+        report_basename = os.path.basename(report_file)
+        report_name = report_basename.rsplit('.', 1)[0]
         with open(report_file, 'r', encoding='utf-8') as f:
             body = f.read()
         ticket_summary = jira_context.get('summary', '') if jira_context else ''
-        send_email(f"{ticket_key}【分析报告】 - {ticket_summary}", body, ticket_key)
+        send_email(f"{report_name} - {ticket_summary}", body, ticket_key)
         print(f"  [邮件耗时] {time.time()-t_email:.1f}s")
     else:
         print("  [跳过] 报告文件不存在")

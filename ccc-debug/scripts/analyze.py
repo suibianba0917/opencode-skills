@@ -940,7 +940,7 @@ def load_knowledge_summaries():
     if not os.path.exists(summaries_file):
         return ""
     try:
-        with open(summaries_file, 'r', encoding='utf-8') as f:
+        with open(summaries_file, 'r', encoding='utf-8-sig') as f:
             summaries = json.load(f)
     except Exception:
         return ""
@@ -1131,11 +1131,14 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 2. 禁止输出 ```response``` 代码块
 3. 报告必须从 ## 一、JIRA 信息 开始
 4. 每个章节（## 一~七）只能出现一次，禁止重复，禁止跳过编号
-5. 禁止复制模板中的占位符文字（如"（报告中未包含...）"、"（见上方...）"、"待补充"等）
+5. 禁止复制模板中的占位符文字（如"（报告中未包含...）"、"（见上方...）"、"待补充"、"分析结论待补充"、"结论见以上分析"、"补充说明见其他章节"、"JIRA 信息见上方"、"根因分析见第二章"等）
 6. 基于提供的日志内容给出真实分析结论，不要输出"无日志无法分析"等放弃性结论
 7. 日志片段必须填入第三章，禁止省略或用"无日志"跳过
 8. 分析时如需参考知识库中的特定章节，可在报告中注明"参考 {文件} {章节}"，供工程师深入查阅
-9. JIRA 评论仅作为排查方向参考，不作为最终结论依据，需结合日志证据交叉验证。若评论与日志矛盾，以日志证据为准，在报告中说明"
+9. JIRA 评论仅作为排查方向参考，不作为最终结论依据，需结合日志证据交叉验证。若评论与日志矛盾，以日志证据为准，在报告中说明
+10. 第一章"JIRA 信息"必须从 prompt 中的 JIRA Ticket 信息里提取并填写（标题、描述、状态、报告人、负责人），不能留空或写"见上方"
+11. 第七章"结论"必须输出一段总结性文字，不能写"见以上分析"或"[结论见以上分析]"
+12. 第二章"分析结论"必须包含：故障端+错误码+根因一句话摘要，不能写"待补充"
 
 """
     full_prompt = header + jira_section + "\n\n---\n\n"
