@@ -4,7 +4,7 @@ r"""
 CCC Debug 分析入口
 假设附件已下载解压到 extracted/ 目录。
 解压流程由 Jira_access 负责（download_jira_attachments.py）。
-输出: Y:\JIRA_Logs\{ticket_key}\分析过程\完整分析报告_YYYY-MM-DD_HH-MM-SS.md
+输出: Y:\JIRA_Logs\{ticket_key}\分析过程\{ticket_key}_完整分析报告_YYYY-MM-DD_HH-MM-SS.md
 """
 import os
 import sys
@@ -15,6 +15,85 @@ import tempfile
 import time
 
 from analyze import generate_report, run_ai_analysis
+
+EMAIL_RECIPIENT = "le.xing@volkswagen-tech.com"
+JIRA_BROWSE_URL = "https://devstack.vgc.com.cn/jira/browse/"
+
+
+def md_to_html(md_text):
+    """将 Markdown 转换为 HTML（用于 Outlook 邮件）"""
+    try:
+        import markdown
+        import re
+        html_body = markdown.markdown(
+            md_text,
+            extensions=['tables', 'fenced_code', 'nl2br'],
+            output_format='html'
+        )
+        return f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {{ font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #333; max-width: 900px; }}
+pre {{ background-color: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 12px; }}
+code {{ background-color: #f0f0f0; padding: 2px 4px; border-radius: 2px; font-family: Consolas, monospace; font-size: 13px; }}
+table {{ border-collapse: collapse; width: 100%; margin: 10px 0; }}
+th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
+th {{ background-color: #f2f2f2; font-weight: bold; }}
+h1, h2, h3, h4 {{ color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 5px; }}
+blockquote {{ border-left: 4px solid #ddd; margin: 10px 0; padding-left: 15px; color: #666; }}
+hr {{ border: none; border-top: 1px solid #ddd; margin: 15px 0; }}
+a {{ color: #0066cc; text-decoration: none; }}
+</style>
+</head>
+<body>
+{html_body}
+</body>
+</html>"""
+    except ImportError:
+        return f"<html><body><pre>{md_text}</pre></body></html>"
+
+
+def send_email(subject, body, ticket_key=None, ticket_summary=None):
+    """通过 Outlook 发送 HTML 邮件"""
+    import re
+    if ticket_summary:
+        subject = f"{ticket_key} - {ticket_summary}"
+    if ticket_key:
+        jira_link = f'<a href="{JIRA_BROWSE_URL}{ticket_key}">{ticket_key}</a>'
+        html_body = md_to_html(body)
+        html_body = html_body.replace('<body>', f'<body><p><strong>JIRA:</strong> {jira_link}</p><hr>', 1)
+    else:
+        html_body = md_to_html(body)
+
+    subject_escaped = subject.replace('"', '`"').replace('`', '``')
+    html_body_escaped = html_body.replace('"', '`"').replace('`', '``')
+
+    ps_script = f'''
+$ol = New-Object -ComObject Outlook.Application
+$mail = $ol.CreateItem(0)
+$mail.Subject = "{subject_escaped}"
+$mail.HTMLBody = @"
+{html_body_escaped}
+"@
+$mail.To = "{EMAIL_RECIPIENT}"
+$mail.Send()
+'''
+    try:
+        result = subproc.run(
+            ['powershell', '-ExecutionPolicy', 'Bypass', '-Command', ps_script],
+            capture_output=True, text=True, timeout=60
+        )
+        if result.returncode == 0:
+            print(f"  [邮件] 已发送到 {EMAIL_RECIPIENT}")
+            return True
+        else:
+            print(f"  [邮件] 失败: {result.stderr[:200] if result.stderr else 'unknown'}")
+            return False
+    except Exception as e:
+        print(f"  [邮件] 异常: {e}")
+        return False
 
 
 def check_extracted(extracted_dir):
@@ -238,7 +317,7 @@ def main():
         os.makedirs(output_dir, exist_ok=True)
         from datetime import datetime as _dt
         ts = _dt.now().strftime('%Y-%m-%d_%H-%M-%S')
-        output_file = os.path.join(output_dir, f'完整分析报告_{ts}.md')
+        output_file = os.path.join(output_dir, f'{ticket_key}_完整分析报告_{ts}.md')
 
         fault_side = fault_info[0].get('fault_side', '需补充日志') if fault_info else '需补充日志'
         fault_phase = fault_info[0].get('fault_phase', '日志缺失') if fault_info else '日志缺失'
@@ -345,6 +424,20 @@ def main():
         'no_logs': no_logs,
     }
     print(f"[完成] {json.dumps(summary)}")
+
+    print("="*50)
+    print("3. 发送邮件...")
+    t_email = time.time()
+    report_file = ai_path if ai_path else report_path
+    if report_file and os.path.exists(report_file):
+        report_filename = os.path.basename(report_file)
+        with open(report_file, 'r', encoding='utf-8') as f:
+            body = f.read()
+        ticket_summary = jira_context.get('summary', '') if jira_context else ''
+        send_email(f"{ticket_key}【分析报告】 - {ticket_summary}", body, ticket_key)
+        print(f"  [邮件耗时] {time.time()-t_email:.1f}s")
+    else:
+        print("  [跳过] 报告文件不存在")
 
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ CCC CarKey Debug 分析引擎
 4. 报告生成 (generate_report)
 5. AI 深度分析 (run_ai_analysis)
 
-输出: Y:\JIRA_Logs\{ticket_key}\分析过程\分析过程说明.md + 完整分析报告.md
+输出: Y:\JIRA_Logs\{ticket_key}\分析过程\{ticket_key}_完整分析报告.md + {ticket_key}_规则分析报告.md
 """
 import os
 import sys
@@ -889,7 +889,7 @@ def generate_report(ticket_key, extracted_dir, analysis_output_dir, jira_context
     )
 
     ts = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    rule_report_file = os.path.join(analysis_output_dir, f'规则分析报告_{ts}.md')
+    rule_report_file = os.path.join(analysis_output_dir, f'{ticket_key}_规则分析报告_{ts}.md')
     t_write = time.time()
     with open(rule_report_file, 'w', encoding='utf-8') as fh:
         fh.write(report)
@@ -1121,7 +1121,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 """
 
     ts_ai = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    output_file = os.path.join(analysis_output_dir, f'完整分析报告_{ts_ai}.md')
+    output_file = os.path.join(analysis_output_dir, f'{ticket_key}_完整分析报告_{ts_ai}.md')
     knowledge_context = knowledge_context.format(ticket_key=ticket_key).replace('\uff1a', ':').replace('\uff0c', ',').replace('\u3002', '.').replace('\u3001', ',').replace('\uff08', '(').replace('\uff09', ')').replace('\u201c', '"').replace('\u201d', '"')
 
     header = """你是 CCC CarKey 数字钥匙故障分析工程师。
