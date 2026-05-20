@@ -53,6 +53,7 @@ def search_email_chain(keyword, max_results=100):
                 try:
                     if email.Subject and keyword.lower() in email.Subject.lower():
                         sent_time = getattr(email, "SentOn", None) or getattr(email, "ReceivedTime", None)
+                        from datetime import datetime as dt
                         results.append({
                             "subject": email.Subject,
                             "normalized": normalize_subject(email.Subject),
@@ -76,6 +77,8 @@ def search_email_chain(keyword, max_results=100):
             continue
 
     results.sort(key=lambda x: x["time_dt"] if x["time_dt"] else datetime.min, reverse=True)
+    for r in results:
+        r.pop("time_dt", None)
 
     if not results:
         return {"status": "not_found", "keyword": keyword}
@@ -116,7 +119,7 @@ def build_email_chain_tree(chain):
     if not chain:
         return []
 
-    chain_sorted = sorted(chain, key=lambda x: x["time_dt"] if x["time_dt"] else datetime.min)
+    chain_sorted = sorted(chain, key=lambda x: x["time"])
 
     output = []
     for i, email in enumerate(chain_sorted):
