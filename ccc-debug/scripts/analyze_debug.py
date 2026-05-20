@@ -14,7 +14,7 @@ from datetime import datetime
 import tempfile
 import time
 
-from analyze import generate_report, run_ai_analysis
+from analyze import generate_report, run_ai_analysis, parse_time_range_from_str
 
 EMAIL_RECIPIENT = "le.xing@volkswagen-tech.com"
 JIRA_BROWSE_URL = "https://devstack.vgc.com.cn/jira/browse/"
@@ -264,18 +264,21 @@ def format_jira_context_for_prompt(jira_context):
 def main():
     t0 = time.time()
     if len(sys.argv) < 2:
-        print("Usage: python analyze_debug.py <ticket_key> [--extracted-dir <path>] [--output-dir <path>]")
+        print("Usage: python analyze_debug.py <ticket_key> [--extracted-dir <path>] [--output-dir <path>] [--skip-rule]")
         sys.exit(1)
 
     ticket_key = sys.argv[1]
     extracted_dir = None
     output_dir = None
+    skip_rule = False
 
     for i in range(2, len(sys.argv)):
         if sys.argv[i] == '--extracted-dir' and i + 1 < len(sys.argv):
             extracted_dir = sys.argv[i + 1]
         elif sys.argv[i] == '--output-dir' and i + 1 < len(sys.argv):
             output_dir = sys.argv[i + 1]
+        elif sys.argv[i] == '--skip-rule':
+            skip_rule = True
 
     if not extracted_dir:
         base = r'Y:\JIRA_Logs'
@@ -304,14 +307,65 @@ def main():
         print(f"  建议：补充日志附件后重新分析以获得更精确结论")
 
     print("="*50)
-    print("1. 生成规则匹配报告...")
-    t_rule = time.time()
-    report_path, report_content, log_snippets, fault_info = generate_report(ticket_key, extracted_dir, output_dir, jira_context_str, no_logs=no_logs)
-    print(f"  [耗时] {time.time() - t_rule:.1f}s")
+    from datetime import datetime as _dt, timedelta
+
+    exact_start, exact_end, _ = parse_time_range_from_str(jira_context_str)
+    if exact_start and exact_end:
+        print(f"[时间过滤] JIRA 时间范围: {exact_start.strftime('%H:%M')}-{exact_end.strftime('%H:%M')}")
+        window_configs = [
+            ("精确时间", (exact_start, exact_end)),
+            ("±5分钟", (exact_start - timedelta(minutes=5), exact_end + timedelta(minutes=5))),
+            ("±15分钟", (exact_start - timedelta(minutes=15), exact_end + timedelta(minutes=15))),
+        ]
+    elif exact_start:
+        print(f"[时间过滤] JIRA 问题时间: {exact_start.strftime('%H:%M')}")
+        window_configs = [
+            ("问题时间±5min", (exact_start - timedelta(minutes=5), exact_start + timedelta(minutes=5))),
+            ("问题时间±15min", (exact_start - timedelta(minutes=15), exact_start + timedelta(minutes=15))),
+            ("全天", None),
+        ]
+    else:
+        print("[时间过滤] JIRA 无问题时间，使用全天日志")
+        window_configs = [
+            ("全天", None),
+        ]
+
+    report_path, report_content, log_snippets, fault_info = None, None, [], []
+    final_time_range = None
+
+    if no_logs:
+        pass  # 跳过自适应窗口，直接到无日志处理
+    elif skip_rule:
+        print("  跳过规则匹配报告")
+    else:
+        for attempt_label, time_range in window_configs:
+            print(f"\n  [尝试{attempt_label}]", end="", flush=True)
+            t_rule = time.time()
+            rp, rc, ls, fi = generate_report(
+                ticket_key, extracted_dir, output_dir,
+                jira_context_str, no_logs=False,
+                time_range_override=time_range
+            )
+            elapsed = time.time() - t_rule
+
+            total_snippet_lines = sum(len(v) if isinstance(v, list) else 0 for v in [ls]) if ls else 0
+            has_findings = fi and any(f.get('id', 0) < 900 for f in fi)
+            has_snippets = total_snippet_lines > 0
+
+            print(f" {elapsed:.1f}s | findings={len(fi) if fi else 0} | snippets={total_snippet_lines}")
+
+            if has_findings or has_snippets:
+                print(f"    ✅ 足够，停止扩展")
+                report_path, report_content, log_snippets, fault_info = rp, rc, ls, fi
+                final_time_range = time_range
+                break
+            else:
+                print(f"    ⚠️ 日志不足，继续扩展")
+                report_path, report_content, log_snippets, fault_info = rp, rc, ls, fi
+                final_time_range = time_range
 
     if no_logs:
         os.makedirs(output_dir, exist_ok=True)
-        from datetime import datetime as _dt
         ts = _dt.now().strftime('%Y-%m-%d_%H-%M-%S')
         output_file = os.path.join(output_dir, f'{ticket_key}_完整分析报告_{ts}.md')
 
@@ -408,7 +462,7 @@ def main():
     print("="*50)
     print("2. 启动 AI 深度分析...")
     t_ai = time.time()
-    ai_path, ai_content = run_ai_analysis(ticket_key, extracted_dir, output_dir, jira_context_str, log_snippets, fault_info)
+    ai_path, ai_content = run_ai_analysis(ticket_key, extracted_dir, output_dir, jira_context_str, log_snippets, fault_info, time_range_override=final_time_range)
     print(f"  [AI耗时] {time.time() - t_ai:.1f}s")
     print(f"  [总耗时] {time.time() - t0:.1f}s")
 

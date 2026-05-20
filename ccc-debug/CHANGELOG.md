@@ -4,18 +4,18 @@
 
 ---
 
-## 当前状态（v4.8）
+## 当前状态（v4.10）
 
-- **版本**：v4.8（2026-05-19）
-- **前版本**：v4.7（2026-05-16）
+- **版本**：v4.10（2026-05-20）
+- **前版本**：v4.9（2026-05-19）
 - **核心脚本**：`scripts/analyze.py` / `scripts/analyze_debug.py`
 - **知识库**：`knowledge/` 目录（6 个故障域文档）
-- **知识摘要**：`scripts/cache/knowledge_summaries.json`（6 文件 ~5KB 摘要，标注 reliability+source，每次分析自动注入 AI prompt）
-- **DBC 缓存**：`scripts/cache/dbc_cache.json`（225 条 CAN 消息）
+- **知识摘要**：`scripts/cache/knowledge_summaries.json`（6 文件 ~5KB 摘要，按问题类型按需注入）
+- **DBC 缓存**：`scripts/cache/dbc_cache.json`（225 条 CAN 消息，按需加载）
 - **AI 模型**：`LiteLLM/MiniMax-M2.5`（timeout 900s）
-- **性能**：规则报告生成 ~1-5s，AI 分析 ~120-210s，总耗时 ~15-220s（视日志量）
-- **批量验证**：配对/创建失败 25 个全部完成（20 有根因 / 5 日志缺失）
-- **日志优化**：日志文本为 0 时跳过 AI，直接生成规则报告（3-15s 快速返回）
+- **时间过滤**：L2 自适应窗口（精确时间 → ±5min → ±15min）
+- **日志优化**：日志文本为 0 时跳过 AI；按需选择性注入知识库和 DBC
+- **Prompt 精简**：知识摘要按问题类型 + DBC 按需判断，预期减少 50% prompt 体积
 
 ---
 
@@ -23,7 +23,8 @@
 
 | 版本 | 日期 | 里程碑 |
 |------|------|--------|
-| v4.9 | 2026-05-19 | **模型优化**：指定 `--model LiteLLM/MiniMax-M2.5`，timeout 900s，解决超时问题；**日志优化**：日志文本为 0 时跳过 AI 分析，直接生成规则报告（3-15s），避免超时；日志 < 1KB 时使用简化 prompt；**批量完成**：配对/创建失败 25 个全部完成，其中 20 个有根因定位，5 个日志缺失（.vw/.ubin 二进制格式）；**API Key**：切换到 `sk-A0faKwUmUjLP9xFt_eRyiA` |
+| v4.10 | 2026-05-20 | **时间过滤 L2 自适应窗口**：从 JIRA 提取精确时间段（16:33-16:34），精确够用则停止，不够再扩展（±5min → ±15min）；新增 `parse_time_range_from_str()` 解析时间段格式；`detect_issue_type_from_jira()` 从 JIRA 摘要关键词兜底检测问题类型；**AI Prompt 按需注入**：知识摘要按问题类型选择（只注入 uwb_ranging / ccc_pairing 等 1-2 个相关文件）；DBC 按需判断（问题涉及 CAN + 日志有 ASC/BLF 才加载）；Snippets > 30 行时减少原始日志读取（15文件→5文件）；**流式时间过滤**：大文件不再 `readlines()` 一次性加载，改用逐行流式读取 + 行号索引，解决 37MB CAN 文件超时问题；**AI 重试机制**：最多 3 次指数退避重试（5s/10s）；验证 VCTCEM-13403：总耗时 135s（AI 127s），prompt 21KB |
+| v4.9 | 2026-05-19 | **模型优化**：指定 `--model LiteLLM/MiniMax-M2.5`，timeout 900s，解决超时问题；**日志优化**：日志文本为 0 时跳过 AI 分析，直接生成规则报告（3-15s），避免超时；日志 < 1KB 时使用简化 prompt；**时间过滤 v1**：新增 `extract_problem_time()` + `is_in_time_window()`，5 个日志读取函数支持时间窗口过滤（默认 ±30 分钟）；**批量完成**：配对/创建失败 25 个全部完成，其中 20 个有根因定位，5 个日志缺失（.vw/.ubin 二进制格式）；**API Key**：切换到 `sk-A0faKwUmUjLP9xFt_eRyiA` |
 | v4.8 | 2026-05-18 | **知识库验证与修正**：通过 VCTCEM-6549/10825/14321 三个 ticket 交叉验证，修正 `ccc_pairing.md` 知识库；(1) 803C 状态码从 4 个扩展到 11 个，新增 1002/4088/4081/4082/01B0/0100/0000，每条标注来源 ticket；(2) 新增 Control Flow p1/p2 状态码表（8 种状态），明确失败→Phase3→Phase4→成功映射；(3) 修正 ecp[4] 值描述（平台相关：多数=8，VW MEB=1）；**BugFix**：`knowledge_summaries.json` 读取编码修复（utf-8 → utf-8-sig），修复后知识摘要正常注入 AI prompt；**邮件功能**：分析完成后自动发送 HTML 邮件（含 JIRA 超链接）；**AI 约束增强**：新增第 10-12 条强制填写真实内容；**批量验证**：已完成 19/25 |
 | v4.7 | 2026-05-16 | 新增知识库摘要自动注入：6个 knowledge 文件生成 ~4KB 摘要（`cache/knowledge_summaries.json`），每次分析时注入 AI prompt，AI 可自主引用知识域；每个知识域/章节标注 reliability (high/medium/low) + source 来源；AI prompt 新增约束第8条（引用知识库章节）+ 可信度提示；`analyze.py` 新增 `load_knowledge_summaries()` 函数；**BugFix**：`analyze.py` opencode 路径错误修复（`node opencode` → `opencode.exe`），修复后 AI 分析正常返回报告；**BugFix**：`Jira_access/get_ticket_detail.py` 评论获取添加分页参数，修复评论获取不完整；**优化**：`analyze_debug.py` 评论取全部 + 标注"[需日志验证]"；AI prompt 新增约束第9条：评论仅供参考，需结合日志交叉验证 |
 | v4.6 | 2026-05-15 | 根因分布修正：配对失败26个重跑（车企后台12/车端7/手机端3/苹果后台1/双重2）；修正4个根因（6549/10825/14482/20667）；重跑后7章完整 |
@@ -127,10 +128,10 @@
 
 | 优先级 | 事项 | 状态 |
 |--------|------|------|
-| P0 | ASC 时间戳搜索：按问题时间点定位 CAN 日志片段 | ⬜ 待优化 |
+| P0 | ASC 时间戳搜索：按问题时间点定位 CAN 日志片段 | ✅ 已优化（时间过滤 L2 自适应窗口） |
 | P1 | AI 报告仍输出内部推理（ response） | ✅ 已优化（正则过滤 `` + 开篇废话） |
 | P1 | 同一证据分类多处文件重复 | ⬜ 待优化 |
-| P1 | AI 超时不稳定 | ✅ 已优化（prompt 300KB截断） |
+| P1 | AI 超时不稳定 | ✅ 已优化（按需注入知识库+DBC，预期减少 50% prompt） |
 | P2 | `classify_fault()` 从 `knowledge/*.md` 动态加载故障模式 | ⬜ 待优化 |
 | P2 | Polarion 对接 | ⬜ 待处理 |
 | P2 | 批量重跑 52 个历史 ticket 验证分析质量 | 🔄 进行中（钥匙分享9个✓，配对26个待分析） |
@@ -138,4 +139,4 @@
 
 ---
 
-*更新日期：2026-05-19*
+*更新日期：2026-05-20*

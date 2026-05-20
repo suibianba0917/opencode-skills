@@ -314,7 +314,131 @@ def classify_logs(extracted_dir):
     return types
 
 
-def read_ios_logs(extracted_dir, max_size_kb=5120):
+def parse_log_time(line):
+    """从日志行提取时间戳，返回 datetime 或 None"""
+    import re
+    from datetime import datetime
+    patterns = [
+        (r'(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})', '%Y-%m-%d %H:%M:%S'),
+        (r'(\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})', '%m-%d %H:%M:%S'),
+        (r'(\d{2}:\d{2}:\d{2})', '%H:%M:%S'),
+    ]
+    for pat, fmt in patterns:
+        m = re.search(pat, line)
+        if m:
+            try:
+                ts_str = m.group(1)
+                if len(ts_str.split('-')[0]) == 2:
+                    ts_str = '2026-' + ts_str
+                return datetime.strptime(ts_str, fmt)
+            except:
+                pass
+    return None
+
+
+def parse_time_range_from_str(jira_str):
+    """从 JIRA context 字符串解析时间范围
+    
+    支持格式:
+    - "2025/10/30 16:33-16:34" → (start_dt, end_dt, None)
+    - "2025/10/30 16:33" → (start_dt, start_dt, 5)  # 默认 5 分钟窗口
+    - "16:33-16:34" → (today 16:33, today 16:34, None)
+    - 无时间 → (None, None, 15)
+    
+    返回: (start_datetime, end_datetime, default_window_minutes)
+    """
+    import re
+    from datetime import datetime, timedelta
+    
+    if not jira_str:
+        return None, None, 15
+    
+    # 匹配 "2025/10/30 16:33-16:34" 或 "2025/10/30 16:33"
+    m = re.search(r'(\d{4}[-/]\d{1,2}[-/]\d{1,2})\s+(\d{1,2}:\d{2})(?:-(\d{1,2}:\d{2}))?', jira_str)
+    if m:
+        date_str = m.group(1)
+        time_start = m.group(2)
+        time_end = m.group(3) or time_start
+        
+        try:
+            start_dt = datetime.strptime(f"{date_str} {time_start}", "%Y/%m/%d %H:%M")
+            if time_end != time_start:
+                end_dt = datetime.strptime(f"{date_str} {time_end}", "%Y/%m/%d %H:%M")
+            else:
+                end_dt = start_dt + timedelta(minutes=1)  # 单时间点默认 1 分钟窗口
+            return start_dt, end_dt, None
+        except:
+            pass
+    
+    # 匹配 "16:33-16:34" (无日期)
+    m = re.search(r'^(\d{1,2}:\d{2})-(\d{1,2}:\d{2})', jira_str, re.MULTILINE)
+    if m:
+        time_start = m.group(1)
+        time_end = m.group(2)
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        start_dt = today.replace(hour=int(time_start.split(':')[0]), minute=int(time_start.split(':')[1]))
+        end_dt = today.replace(hour=int(time_end.split(':')[0]), minute=int(time_end.split(':')[1]))
+        return start_dt, end_dt, None
+    
+    # 无时间，返回默认窗口
+    return None, None, 15
+
+
+def is_in_time_range(line, time_range):
+    """检查日志行是否在时间范围内
+    
+    time_range: (start_datetime, end_datetime) 元组
+    如果为 None，返回 True（不过滤）
+    """
+    if not time_range or time_range[0] is None:
+        return True
+    
+    start_dt, end_dt = time_range
+    log_ts = parse_log_time(line)
+    if not log_ts:
+        return True
+    
+    # 处理只有日期没有时间的日志（默认当天）
+    if log_ts.year == 1900:
+        log_ts = log_ts.replace(year=start_dt.year, month=start_dt.month, day=start_dt.day)
+    
+    return start_dt <= log_ts <= end_dt
+
+
+def is_in_time_window(line, problem_time, window_minutes, time_range=None):
+    """检查日志行是否在问题时间窗口内
+    
+    优先级: time_range (start, end) > problem_time + window_minutes
+    """
+    if time_range and time_range[0] is not None:
+        return is_in_time_range(line, time_range)
+    
+    if not problem_time:
+        return True
+    from datetime import datetime, timedelta
+    import re
+    try:
+        prob_ts = None
+        for fmt in ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S', '%Y-%m-%d %H:%M', '%Y/%m/%d %H:%M']:
+            try:
+                prob_ts = datetime.strptime(problem_time, fmt)
+                break
+            except:
+                continue
+        if not prob_ts:
+            return True
+        log_ts = parse_log_time(line)
+        if not log_ts:
+            return True
+        if log_ts.year == 1900:
+            log_ts = log_ts.replace(year=prob_ts.year)
+        diff = abs((log_ts - prob_ts).total_seconds() / 60)
+        return diff <= window_minutes
+    except:
+        return True
+
+
+def read_ios_logs(extracted_dir, max_size_kb=5120, problem_time=None, time_window=30, time_range=None):
     results = {}
     if not os.path.exists(extracted_dir):
         return results
@@ -331,7 +455,7 @@ def read_ios_logs(extracted_dir, max_size_kb=5120):
                 for kw in keywords:
                     kw_lower = kw.lower()
                     for i, line in enumerate(lines):
-                        if kw_lower in line.lower():
+                        if kw_lower in line.lower() and is_in_time_window(line, problem_time, time_window, time_range):
                             content = line.rstrip('\n\r')
                             if '>>:' in content:
                                 continue
@@ -345,7 +469,7 @@ def read_ios_logs(extracted_dir, max_size_kb=5120):
     return results
 
 
-def read_android_logs(extracted_dir, max_size_kb=5120):
+def read_android_logs(extracted_dir, max_size_kb=5120, problem_time=None, time_window=30, time_range=None):
     results = {}
     if not os.path.exists(extracted_dir):
         return results
@@ -369,7 +493,7 @@ def read_android_logs(extracted_dir, max_size_kb=5120):
                 for kw in keywords:
                     kw_lower = kw.lower()
                     for i, line in enumerate(lines):
-                        if kw_lower in line.lower():
+                        if kw_lower in line.lower() and is_in_time_window(line, problem_time, time_window, time_range):
                             content = line.rstrip('\n\r')
                             if '>>:' in content:
                                 continue
@@ -383,7 +507,7 @@ def read_android_logs(extracted_dir, max_size_kb=5120):
     return results
 
 
-def analyze_backend_logs(extracted_dir, max_size_kb=5120):
+def analyze_backend_logs(extracted_dir, max_size_kb=5120, problem_time=None, time_window=30, time_range=None):
     results = {}
     for pattern_name, keywords in BACKEND_PATTERNS:
         results[pattern_name] = []
@@ -406,7 +530,7 @@ def analyze_backend_logs(extracted_dir, max_size_kb=5120):
                     for kw in keywords:
                         kw_lower = kw.lower()
                         for i, line in enumerate(lines):
-                            if kw_lower in line.lower():
+                            if kw_lower in line.lower() and is_in_time_window(line, problem_time, time_window, time_range):
                                 content = line.rstrip('\n\r')
                                 if '>>:' in content:
                                     continue
@@ -418,7 +542,7 @@ def analyze_backend_logs(extracted_dir, max_size_kb=5120):
     return results
 
 
-def read_vehicle_logs(extracted_dir, max_size_kb=5000):
+def read_vehicle_logs(extracted_dir, max_size_kb=5000, problem_time=None, time_window=30, time_range=None):
     results = {}
     if not os.path.exists(extracted_dir):
         return results
@@ -454,7 +578,7 @@ def read_vehicle_logs(extracted_dir, max_size_kb=5000):
                 for kw in keywords:
                     kw_lower = kw.lower()
                     for i, line in enumerate(lines):
-                        if kw_lower in line.lower():
+                        if kw_lower in line.lower() and is_in_time_window(line, problem_time, time_window, time_range):
                             content2 = line.rstrip('\n\r')
                             entry = f"{rel}:{i+1}: {content2}"
                             if entry not in matched and len(matched) < 20:
@@ -476,7 +600,7 @@ DK_SERVICE_PATTERNS = [
 ]
 
 
-def read_dk_service_logs(extracted_dir, max_lines_per_file=5000):
+def read_dk_service_logs(extracted_dir, max_lines_per_file=5000, problem_time=None, time_window=30, time_range=None):
     results = {}
     for pname, _ in DK_SERVICE_PATTERNS:
         results[pname] = []
@@ -508,7 +632,7 @@ def read_dk_service_logs(extracted_dir, max_lines_per_file=5000):
                 for pname, keywords in DK_SERVICE_PATTERNS:
                     for i, line in enumerate(lines):
                         for kw in keywords:
-                            if kw in line:
+                            if kw in line and is_in_time_window(line, problem_time, time_window, time_range):
                                 content = line.rstrip('\n\r')
                                 if '>>:' in content:
                                     continue
@@ -729,8 +853,42 @@ def classify_fault(ios_data, backend_data, vehicle_data, android_data=None):
             })
 
     return findings
-def generate_report(ticket_key, extracted_dir, analysis_output_dir, jira_context=None, no_logs=False):
+def extract_problem_time(jira_context):
+    """从 jira_context 提取问题时间"""
+    import re
+    if not jira_context:
+        return None
+    if isinstance(jira_context, str):
+        match = re.search(r'(\d{4}[-/]\d{1,2}[-/]\d{1,2}\s+\d{1,2}:\d{2})', jira_context)
+        return match.group(1) if match else None
+    all_fields = jira_context.get('all_fields', {})
+    desc = all_fields.get('description', '') or ''
+    test_time = all_fields.get('customfield_20760') or all_fields.get('test_time')
+    if test_time:
+        return test_time
+    match = re.search(r'(\d{4}[-/]\d{1,2}[-/]\d{1,2}\s+\d{1,2}:\d{2})', desc)
+    if match:
+        return match.group(1)
+    return None
+
+
+def generate_report(ticket_key, extracted_dir, analysis_output_dir, jira_context=None, no_logs=False, time_range_override=None):
+    """生成规则引擎分析报告
+    
+    time_range_override: (start_datetime, end_datetime) 元组
+        - 如果传入，优先使用此时间范围
+        - 不传则从 jira_context 解析
+    """
     os.makedirs(analysis_output_dir, exist_ok=True)
+
+    if time_range_override and time_range_override[0] is not None:
+        time_range = time_range_override
+        problem_time = None
+        time_window = 15
+    else:
+        problem_time = extract_problem_time(jira_context)
+        time_range = None
+        time_window = 30
     print("    [目录扫描]")
     t0 = time.time()
     if no_logs:
@@ -786,11 +944,11 @@ def generate_report(ticket_key, extracted_dir, analysis_output_dir, jira_context
         else:
             completeness = 'A - All four sides'
 
-        ios_data = _timed("read_ios_logs", read_ios_logs, extracted_dir)
-        android_data = _timed("read_android_logs", read_android_logs, extracted_dir)
-        backend_data = _timed("analyze_backend_logs", analyze_backend_logs, extracted_dir)
-        vehicle_data = _timed("read_vehicle_logs", read_vehicle_logs, extracted_dir)
-        dk_data = _timed("read_dk_service_logs", read_dk_service_logs, extracted_dir)
+        ios_data = _timed("read_ios_logs", read_ios_logs, extracted_dir, problem_time=problem_time, time_window=time_window, time_range=time_range)
+        android_data = _timed("read_android_logs", read_android_logs, extracted_dir, problem_time=problem_time, time_window=time_window, time_range=time_range)
+        backend_data = _timed("analyze_backend_logs", analyze_backend_logs, extracted_dir, problem_time=problem_time, time_window=time_window, time_range=time_range)
+        vehicle_data = _timed("read_vehicle_logs", read_vehicle_logs, extracted_dir, problem_time=problem_time, time_window=time_window, time_range=time_range)
+        dk_data = _timed("read_dk_service_logs", read_dk_service_logs, extracted_dir, problem_time=problem_time, time_window=time_window, time_range=time_range)
         for key, vals in dk_data.items():
             if key not in vehicle_data:
                 vehicle_data[key] = []
@@ -902,8 +1060,88 @@ def generate_report(ticket_key, extracted_dir, analysis_output_dir, jira_context
     return rule_report_file, report, log_snippets, findings
 
 
-def load_dbc_info():
-    """加载 DBC 缓存并格式化为 AI 可读的摘要"""
+def detect_issue_type_from_jira(jira_context_str):
+    """从 JIRA context 字符串检测问题类型（兜底补充）
+    
+    当规则引擎未命中相关证据分类时，从 JIRA 摘要/描述中关键词补充知识库
+    """
+    if not jira_context_str:
+        return []
+    
+    text = jira_context_str.lower()
+    needed = []
+    
+    uwb_keywords = ['tof', 'tofw', 'uwb', '测距', '测距值', '定位', 'ranging',
+                    '无tof', '无uwb', 'pe不解锁', '走近不解锁', 'passive entry']
+    nfc_keywords = ['nfc', '刷卡', '弹窗', '无弹窗', 'ecp', 'iso7816']
+    pairing_keywords = ['配对', 'pairing', 'pair', '分享', 'sharing', 'friend',
+                        'invite', '钥匙分享', 'first friend', 'kts', '注册失败']
+    ble_keywords = ['ble', '蓝牙', '断开', 'reason=62', '连接失败', 'carkeyerrorcode']
+    backend_keywords = ['http', '404', 'pretrack', '后台', 'backend', 'abx',
+                        'kts timeout', '90000008', '90000011', '99990004']
+    
+    for kw in uwb_keywords:
+        if kw in text:
+            needed.append('uwb_ranging')
+            break
+    for kw in nfc_keywords:
+        if kw in text:
+            needed.append('nfc_ecp')
+            break
+    for kw in pairing_keywords:
+        if kw in text:
+            needed.append('ccc_pairing')
+            break
+    for kw in ble_keywords:
+        if kw in text:
+            needed.append('ble_connection')
+            break
+    for kw in backend_keywords:
+        if kw in text:
+            needed.append('backend')
+            break
+    
+    return list(set(needed))
+
+
+def should_include_dbc(fault_info, log_types):
+    """判断是否需要加载 DBC 参考信息
+    
+    条件：问题涉及 CAN 信号 + 日志有 ASC/BLF 文件
+    """
+    can_related_categories = {'can_id', 'uwb', 'digital_key', 'pe_unlock', 'rssi'}
+    needs_can = False
+    if fault_info and isinstance(fault_info, list):
+        for f in fault_info:
+            cats = f.get('evidence_categories', [])
+            for cat in cats:
+                if cat in can_related_categories:
+                    needs_can = True
+                    break
+            if needs_can:
+                break
+    
+    if not needs_can:
+        return False
+    
+    has_can_logs = any(
+        f.lower().endswith(('.asc', '.blf')) or 'can' in os.path.basename(f).lower()
+        for f in log_types.get('vehicle', [])
+    )
+    
+    return has_can_logs
+
+
+def load_dbc_info(issue_type=None, fault_info=None):
+    """加载 DBC 缓存并格式化为 AI 可读的摘要
+    
+    按问题类型选择性加载:
+    - uwb: 只加载 UWB 相关 (0x12DD5xx / 0x283)
+    - pairing/pe_unlock: 加载配对相关 (0x21C, 0x224, 0x625)
+    - 默认: 加载通用数字钥匙信号
+    
+    使用 should_include_dbc() 判断是否需要加载
+    """
     cache_file = os.path.join(os.path.dirname(__file__), 'cache', 'dbc_cache.json')
     if not os.path.exists(cache_file):
         return ""
@@ -912,9 +1150,24 @@ def load_dbc_info():
         with open(cache_file, 'r', encoding='utf-8') as f:
             data = _json.load(f)
         msgs = data.get('messages', {})
-        KEY_MSGS = [643, 1577, 540, 548, 552, 657, 662, 628]
+        
+        # 按问题类型选择 CAN 消息
+        if issue_type in ('uwb', 'uwb_ranging'):
+            KEY_MSGS = [1577]  # 0x12DD5xx UWBKey
+        elif issue_type in ('pairing', 'nfc', 'ccc_pairing'):
+            KEY_MSGS = [552, 657, 662]  # 0x21C, 0x291, 0x296
+        elif issue_type in ('pe_unlock',):
+            KEY_MSGS = [628, 643]  # 0x274 PEUnlock, 0x283 DigitalKey
+        elif issue_type == 'ble':
+            KEY_MSGS = [540]  # 0x21C BLE info
+        else:
+            # 默认加载通用数字钥匙相关
+            KEY_MSGS = [643, 1577, 540, 548, 552, 657, 662, 628]
+        
         lines = ["## DBC 数字钥匙信号参考(预解析)"]
         lines.append(f"* 来源: {data.get('source_dir', '')} / {data.get('generated_at', '')}")
+        if issue_type:
+            lines.append(f"* 按问题类型筛选: {issue_type}")
         lines.append("")
         for mid in KEY_MSGS:
             if str(mid) not in msgs:
@@ -938,7 +1191,19 @@ def load_dbc_info():
     except Exception:
         return ""
 
-def load_knowledge_summaries():
+def load_knowledge_summaries(issue_type=None, fault_info=None, jira_issue_types=None):
+    """按需加载知识库摘要
+
+    优先级：issue_type > fault_info 推断 > jira_issue_types 关键词检测
+
+    映射关系:
+      nfc_ecp/se_error/nfc  → nfc_ecp
+      uwb/can_id/pe_unlock  → uwb_ranging
+      pairing/kts/carkey/sharing/pairstatus → ccc_pairing
+      ble_error/bluetooth/key_info → ble_connection
+      abx/config/error/auth → backend
+      digital_key/android   → mdk_ops（兜底）
+    """
     summaries_file = os.path.join(os.path.dirname(__file__), 'cache', 'knowledge_summaries.json')
     if not os.path.exists(summaries_file):
         return ""
@@ -948,11 +1213,47 @@ def load_knowledge_summaries():
     except Exception:
         return ""
 
+    target_keys = set()
+
+    # 1. fault_info 推断
+    if fault_info and isinstance(fault_info, list):
+        for f in fault_info:
+            cats = f.get('evidence_categories', [])
+            for cat in cats:
+                if cat in ('nfc_ecp', 'se_error', 'nfc'):
+                    target_keys.add('nfc_ecp')
+                elif cat in ('uwb', 'can_id', 'pe_unlock'):
+                    target_keys.add('uwb_ranging')
+                elif cat in ('pairing', 'kts', 'carkey', 'sharing', 'pairstatus'):
+                    target_keys.add('ccc_pairing')
+                elif cat in ('ble_error', 'bluetooth', 'key_info'):
+                    target_keys.add('ble_connection')
+                elif cat in ('abx', 'config', 'auth'):
+                    target_keys.add('backend')
+                elif cat in ('error', 'digital_key'):
+                    target_keys.add('mdk_ops')
+
+    # 2. JIRA 关键词兜底（规则引擎未命中时补充）
+    if jira_issue_types and isinstance(jira_issue_types, list):
+        target_keys.update(jira_issue_types)
+
+    # 3. issue_type 显式指定（最高优先级）
+    if issue_type:
+        if isinstance(issue_type, str):
+            target_keys.add(issue_type)
+        elif isinstance(issue_type, list):
+            target_keys.update(issue_type)
+
     reliability_note = {
         "high": "【官方/权威】",
         "medium": "【经验/参考】",
         "low": "【待验证】"
     }
+
+    if not target_keys:
+        return ""
+
+    summaries = {k: v for k, v in summaries.items() if k in target_keys}
 
     lines = ["## 故障域知识库摘要"]
     lines.append("")
@@ -972,12 +1273,13 @@ def load_knowledge_summaries():
         lines.append("")
     return '\n'.join(lines)
 
-def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context=None, log_snippets=None, fault_info=None, no_logs=False):
+def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context=None, log_snippets=None, fault_info=None, no_logs=False, time_range_override=None):
     print("[AI] 开始 opencode AI 深度分析...")
     t_ai_total = time.time()
     print("    [扫描日志文件]")
     t_scan = time.time()
     log_files = []
+    log_types = {'vehicle': [], 'ios': [], 'backend': [], 'android': [], 'unknown': []}
     if no_logs:
         log_tree = ["(日志目录为空，未获取到任何附件日志)"]
         log_summary = "Log types: 无日志附件"
@@ -1009,7 +1311,34 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         jira_section = f"""{jira_context}
 """
 
-    dbc_section = load_dbc_info()
+    # DBC 按需判断：问题涉及 CAN + 日志有 ASC/BLF
+    include_dbc = should_include_dbc(fault_info, log_types)
+    if include_dbc:
+        # 从 fault_info 推断需要的 DBC 类型
+        issue_type = None
+        if fault_info and isinstance(fault_info, list):
+            for f in fault_info:
+                cats = f.get('evidence_categories', [])
+                if 'uwb' in cats:
+                    issue_type = 'uwb'
+                    break
+                elif 'can_id' in cats or 'pe_unlock' in cats:
+                    issue_type = 'pe_unlock'
+                    break
+                elif 'nfc_ecp' in cats or 'pairing' in cats:
+                    issue_type = 'pairing'
+                    break
+        dbc_section = load_dbc_info(issue_type=issue_type)
+        print(f"    [DBC] 按需加载: {issue_type or '默认'}")
+    else:
+        dbc_section = ""
+        print(f"    [DBC] 跳过 (问题不涉及 CAN 或无 CAN 日志)")
+
+    # 知识摘要按需加载（fault_info 推断 + JIRA 关键词兜底）
+    jira_issue_types = detect_issue_type_from_jira(jira_context)
+    knowledge_section = load_knowledge_summaries(fault_info=fault_info, jira_issue_types=jira_issue_types)
+    knowledge_size = len(knowledge_section)
+    print(f"    [知识库] 按需注入: {knowledge_size} 字符 (jira关键词: {jira_issue_types})")
 
     print("    [读取日志内容]")
     t_read = time.time()
@@ -1027,15 +1356,93 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
         "## 日志文件内容",
     ]
     log_text_size = 0  # 统计实际日志文本大小
+    
+    # Snippets 充足时减少原始日志读取
+    snippet_count = len(log_snippets) if log_snippets else 0
+    max_log_files = 15
+    max_raw_size = 50000
+    if snippet_count > 50:
+        max_log_files = 5
+        max_raw_size = 20000
+        print(f"    [原始日志] Snippets 充足({snippet_count}条)，减少读取: {max_log_files}文件, {max_raw_size/1024:.0f}KB")
+    elif snippet_count > 30:
+        max_log_files = 8
+        max_raw_size = 30000
+        print(f"    [原始日志] Snippets 充足({snippet_count}条)，适当减少: {max_log_files}文件")
+    
     if no_logs:
         prompt_lines.append("(无日志附件，以下分析基于 JIRA 描述 + 知识库)")
     else:
-        for fp, note in log_files[:15]:
+        for fp, note in log_files[:max_log_files]:
             rel = os.path.relpath(fp, extracted_dir)
             ext = os.path.splitext(fp)[1].lower()
             is_can_file = ext in ('.asc', '.blf') or 'can' in os.path.basename(fp).lower()
             is_dk_service = os.path.basename(fp) == 'dk_service.log'
-            if note:
+            
+            if time_range_override and time_range_override[0] is not None:
+                # 策略1: 时间过滤读取（流式，逐行处理，不全部加载内存）
+                try:
+                    size_mb = os.path.getsize(fp) / 1024 / 1024
+                    # 大文件限制行数，避免 OOM 和超时
+                    max_lines = 200000 if size_mb > 10 else 50000
+                    
+                    matched_lines = []  # (line_no, content)
+                    bytes_read = 0
+                    line_no = 0
+                    
+                    with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
+                        for line in f:
+                            line_no += 1
+                            if line_no > max_lines:
+                                break
+                            bytes_read += len(line)
+                            if bytes_read > 2 * 1024 * 1024:
+                                break
+                            if is_in_time_range(line, time_range_override):
+                                matched_lines.append((line_no, line.rstrip('\n\r')))
+                    
+                    # 保留匹配行及其前后各2行（前后上下文）
+                    matched_set = set()
+                    final_lines = []
+                    for ln, content in matched_lines:
+                        for j in range(max(1, ln - 2), ln + 3):
+                            if j not in matched_set:
+                                matched_set.add(j)
+                                final_lines.append((j, None))  # placeholder
+                    
+                    # 重新读取上下文行（流式二次扫描）
+                    context_lines = {}
+                    scan_count = 0
+                    with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
+                        for line in f:
+                            scan_count += 1
+                            if scan_count > max_lines:
+                                break
+                            if scan_count in matched_set:
+                                context_lines[scan_count] = line.rstrip('\n\r')
+                    
+                    content_lines = [context_lines[i] for i in sorted(context_lines.keys()) if i in context_lines]
+                    content = '\n'.join(content_lines[:200])
+                    
+                    if not content.strip():
+                        # 兜底：读首部 5KB
+                        with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
+                            content = f.read(5000)
+                        prompt_lines.append(f"\n### {rel} (时间窗口内无日志，读取首部5KB)")
+                        prompt_lines.append("```")
+                        prompt_lines.append(content[:5000])
+                        prompt_lines.append("```")
+                    else:
+                        log_text_size += len(content)
+                        prompt_lines.append(f"\n### {rel} (时间过滤, {len(content_lines)}行)")
+                        prompt_lines.append("```")
+                        prompt_lines.append(content[:8000])
+                        prompt_lines.append("```")
+                except Exception as e:
+                    log_text_size += 50
+                    prompt_lines.append(f"- {rel} [read error: {e}]")
+            elif note:
+                # 策略2: 无时间过滤，按原逻辑（大小限制的 head/tail）
                 prompt_lines.append(f"- {rel} {note}")
                 if is_can_file:
                     try:
@@ -1050,19 +1457,22 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
                         log_text_size += 50
                         prompt_lines.append(f"  [read error: {e}]")
             else:
+                # 策略3: 无时间过滤，按原逻辑（末尾5KB）
                 try:
                     size_mb = os.path.getsize(fp) / 1024 / 1024
                     if size_mb > 10:
                         prompt_lines.append(f"- {rel} [{size_mb:.0f}MB - skipped]")
                     else:
                         with open(fp, 'r', encoding='utf-8', errors='ignore') as f:
-                            content = f.read(50000)
+                            content = f.read(max_raw_size)
                         log_text_size += len(content)
                         prompt_lines.append(f"\n### {rel}")
                         prompt_lines.append("```")
                         if is_dk_service:
                             prompt_lines.append("[dk_service.log 过大,按关键词全文搜索关键片段]")
-                        prompt_lines.append(content[-5000:])
+                        # Snippets 充足时只取末尾 3KB，否则末尾 5KB
+                        tail_size = 3000 if snippet_count > 30 else 5000
+                        prompt_lines.append(content[-tail_size:])
                         prompt_lines.append("```")
                 except Exception as e:
                     log_text_size += 50
@@ -1098,8 +1508,6 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
     LOG_SIZE_THRESHOLD = 1024
     is_low_log = log_text_size < LOG_SIZE_THRESHOLD and not no_logs
     skip_ai = log_text_size == 0 and not no_logs
-
-    knowledge_section = load_knowledge_summaries()
 
     # 日志为 0 时直接生成报告，无需 AI
     if skip_ai:
@@ -1173,23 +1581,7 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
     output_file = os.path.join(analysis_output_dir, f'{ticket_key}_完整分析报告_{ts_ai}.md')
     knowledge_context = knowledge_context.format(ticket_key=ticket_key).replace('\uff1a', ':').replace('\uff0c', ',').replace('\u3002', '.').replace('\u3001', ',').replace('\uff08', '(').replace('\uff09', ')').replace('\u201c', '"').replace('\u201d', '"')
 
-    header = """你是 CCC CarKey 数字钥匙故障分析工程师。
-
-重要约束：
-1. 仅输出报告正文，禁止输出任何内部思考、推理步骤、分析过程
-2. 禁止输出 ```response``` 代码块
-3. 报告必须从 ## 一、JIRA 信息 开始
-4. 每个章节（## 一~七）只能出现一次，禁止重复，禁止跳过编号
-5. 禁止复制模板中的占位符文字（如"（报告中未包含...）"、"（见上方...）"、"待补充"、"分析结论待补充"、"结论见以上分析"、"补充说明见其他章节"、"JIRA 信息见上方"、"根因分析见第二章"等）
-6. 基于提供的日志内容给出真实分析结论，不要输出"无日志无法分析"等放弃性结论
-7. 日志片段必须填入第三章，禁止省略或用"无日志"跳过
-8. 分析时如需参考知识库中的特定章节，可在报告中注明"参考 {文件} {章节}"，供工程师深入查阅
-9. JIRA 评论仅作为排查方向参考，不作为最终结论依据，需结合日志证据交叉验证。若评论与日志矛盾，以日志证据为准，在报告中说明
-10. 第一章"JIRA 信息"必须从 prompt 中的 JIRA Ticket 信息里提取并填写（标题、描述、状态、报告人、负责人），不能留空或写"见上方"
-11. 第七章"结论"必须输出一段总结性文字，不能写"见以上分析"或"[结论见以上分析]"
-12. 第二章"分析结论"必须包含：故障端+错误码+根因一句话摘要，不能写"待补充"
-
-"""
+    header = "You are a CCC CarKey digital key fault analysis engineer.\n\nOutput a 7-section report in Chinese. Section format:\n## 一、JIRA 信息\n## 二、分析结论 (fault side, error code, root cause)\n## 三、关键日志片段\n## 四、根因分析\n## 五、整改建议 (table format)\n## 六、补充说明\n## 七、结论\n\nConstraints: No placeholders like 'to be filled', no 'see above'. Analyze based on logs."
     full_prompt = header + jira_section + "\n\n---\n\n"
     if knowledge_section:
         full_prompt += knowledge_section + "\n\n---\n\n"
@@ -1233,16 +1625,42 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
 
         print(f"    [调用 opencode] prompt_size={len(full_prompt)/1024:.0f}KB model={DEFAULT_MODEL}")
         t_opencode = time.time()
-        result = subproc.run(
-            ['powershell', '-ExecutionPolicy', 'Bypass', '-File', ps_script_file],
-            capture_output=True, text=True, timeout=900
-        )
-        print(f"      opencode返回: {time.time()-t_opencode:.1f}s")
+        
+        MAX_RETRIES = 3
+        result = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                result = subproc.run(
+                    ['powershell', '-ExecutionPolicy', 'Bypass', '-File', ps_script_file],
+                    capture_output=True, text=True, timeout=900
+                )
+                if result.returncode == 0 and result.stdout and result.stdout.strip():
+                    print(f"      opencode返回: {time.time()-t_opencode:.1f}s (尝试 {attempt}/{MAX_RETRIES})")
+                    break
+                else:
+                    print(f"      [尝试{attempt}] 返回码={result.returncode}, 重试中...")
+                    if attempt < MAX_RETRIES:
+                        time.sleep(5 * attempt)
+            except subproc.TimeoutExpired:
+                print(f"      [尝试{attempt}] 超时 (>15min), 重试中...")
+                if attempt < MAX_RETRIES:
+                    time.sleep(10 * attempt)
+                result = None
+            except Exception as e:
+                print(f"      [尝试{attempt}] 异常: {e}, 重试中...")
+                if attempt < MAX_RETRIES:
+                    time.sleep(5 * attempt)
+                result = None
 
         for fp in (prompt_file, ps_script_file):
             if os.path.exists(fp):
                 try: os.remove(fp)
                 except: pass
+
+        if not result or result.returncode != 0 or not result.stdout:
+            print(f"[AI] opencode 全部 {MAX_RETRIES} 次尝试失败")
+            print(f"    [AI总计] {time.time()-t_ai_total:.1f}s")
+            return None, None
 
         if result.returncode == 0 and result.stdout:
             ai_text = []
@@ -1351,18 +1769,9 @@ def run_ai_analysis(ticket_key, extracted_dir, analysis_output_dir, jira_context
             print("[AI] No valid analysis content")
             print(f"    [AI总计] {time.time()-t_ai_total:.1f}s")
             return None, None
-        else:
-            print(f"[AI] opencode returned: returncode={result.returncode}")
-            if result.stderr:
-                print(f"[AI] stderr: {result.stderr[:300]}")
-            print(f"    [AI总计] {time.time()-t_ai_total:.1f}s")
-            return None, None
-
-    except subproc.TimeoutExpired:
-        print("[AI] opencode timeout (>10min)")
-        print(f"    [AI总计] {time.time()-t_ai_total:.1f}s")
-        return None, None
     except Exception as e:
         print(f"[AI] opencode error: {e}")
+        import traceback
+        print(f"    [详细] {traceback.format_exc()[:300]}")
         print(f"    [AI总计] {time.time()-t_ai_total:.1f}s")
         return None, None
