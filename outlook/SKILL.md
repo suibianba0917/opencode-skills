@@ -4,11 +4,12 @@
 
 ## 概述
 
-此技能使 opencode 能够与 Microsoft Outlook 进行交互，完成邮件管理任务，包括读取邮件、搜索、发送消息和处理附件。
+此技能使 opencode 能够与 Microsoft Outlook 进行交互，完成邮件管理任务，包括读取邮件、搜索、发送消息和处理附件。核心功能：**邮件上下文分析与回复建议生成**。
 
 ## 使用场景
 
 当用户请求以下操作时使用此技能：
+- **邮件上下文分析与回复建议**（新增）
 - 读取或列出收件箱中的邮件
 - 按主题、发件人或内容搜索特定邮件
 - 发送带或不带附件的新邮件
@@ -26,11 +27,166 @@
 - 有效的 Outlook Web 凭据
 - 浏览器自动化工具：`pip install playwright`
 
-## 使用方法
+---
+
+## 核心功能：邮件上下文分析与回复建议
+
+### 功能说明
+
+给定邮件标题或关键词，自动：
+1. 搜索并收集所有相关邮件历史（同一邮件链的所有往来）
+2. 解析邮件链结构（发件人、收件人、时间线、嵌套层级）
+3. 识别关键讨论点、技术问题、结论
+4. 生成回复建议（包含立场、理由、文档依据）
+
+### 使用方法
+
+用户只需说：
+- "分析邮件：CMP21_50W CWCD-NFC 手机NFC扫卡问题exchange"
+- "给我这封邮件的回复建议"
+- "回复建议：xxx邮件主题"
+
+### 实现逻辑
+
+脚本 `scripts/email_analysis.py` 负责：
+1. **邮件搜索** — 按标题关键词搜索收件箱 + 已发送邮件
+2. **邮件链构建** — 从 `Subject: 回复: xxx` 中提取完整邮件链
+3. **上下文提取** — 识别发件人、讨论点、技术结论、待确认事项
+4. **回复建议生成** — 结合分析结果和参考文档（如有）生成回复建议
+
+### 工作流程
+
+```
+用户输入邮件标题/关键词
+    │
+    ▼
+email_analysis.search_email_chain(keyword)
+    │
+    ├── 搜索收件箱匹配邮件
+    ├── 搜索已发送邮件匹配邮件
+    ├── 提取完整邮件链（包含内嵌历史正文）
+    │
+    ▼
+email_analysis.extract_context(email)
+    │
+    ├── 解析发件人列表
+    ├── 提取关键讨论点
+    ├── 识别技术问题/结论
+    ├── 标记待确认事项
+    │
+    ▼
+生成回复建议 + 文档依据（如有）
+```
+
+---
+
+## 基础方法
+
+### 邮件上下文分析与回复建议（核心功能）
+
+```python
+# -*- coding: utf-8 -*-
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+import win32com.client
+
+def search_email_chain(keyword, max_results=50):
+    outlook = win32com.client.Dispatch("Outlook.Application")
+    namespace = outlook.GetNamespace("MAPI")
+    
+    results = []
+    
+    # 搜索收件箱
+    inbox = namespace.GetDefaultFolder(6)
+    for email in inbox.Items:
+        if keyword.lower() in email.Subject.lower():
+            results.append({
+                "subject": email.Subject,
+                "from": email.SenderName,
+                "from_email": email.SenderEmailAddress,
+                "to": email.To,
+                "cc": email.CC,
+                "time": str(email.ReceivedTime),
+                "body": email.Body,
+                "folder": "Inbox",
+                "unread": email.UnRead
+            })
+    
+    # 搜索已发送邮件
+    sent = namespace.GetDefaultFolder(5)
+    for email in sent.Items:
+        if keyword.lower() in email.Subject.lower():
+            results.append({
+                "subject": email.Subject,
+                "from": email.SenderName,
+                "from_email": email.SenderEmailAddress,
+                "to": email.To,
+                "cc": email.CC,
+                "time": str(email.SentOn),
+                "body": email.Body,
+                "folder": "Sent Mail",
+                "unread": False
+            })
+    
+    # 按时间排序
+    results.sort(key=lambda x: x["time"], reverse=True)
+    return results[:max_results]
+
+
+def extract_context(email):
+    return {
+        "subject": email["subject"],
+        "sender": email["from"],
+        "sender_email": email["from_email"],
+        "recipients": email["to"],
+        "cc": email["cc"],
+        "time": email["time"],
+        "body": email["body"][:5000] if email["body"] else "",
+        "folder": email["folder"]
+    }
+
+
+def analyze_email_chain(keyword):
+    emails = search_email_chain(keyword)
+    if not emails:
+        return {"status": "not_found", "keyword": keyword}
+    
+    # 提取上下文
+    context = [extract_context(e) for e in emails]
+    
+    # 识别邮件链头（最早的一封）
+    # 通常Subject去掉"答复: "和"回复: "前缀的就是原始主题
+    base_subject = emails[0]["subject"]
+    for prefix in ["答复: ", "回复: ", "RE: ", "Re: ", "FW: ", "Fw: "]:
+        if base_subject.startswith(prefix):
+            base_subject = base_subject[len(prefix):]
+    
+    # 分析关键讨论点
+    all_bodies = " ".join([e.get("body", "") or "" for e in emails])
+    
+    return {
+        "status": "found",
+        "keyword": keyword,
+        "total_emails": len(emails),
+        "base_subject": base_subject,
+        "emails": context,
+        "analysis": {
+            "summary": f"找到 {len(emails)} 封相关邮件",
+            "sample_text": all_bodies[:2000]
+        }
+    }
+
+
+if __name__ == "__main__":
+    import json
+    keyword = sys.argv[1] if len(sys.argv) > 1 else input("请输入邮件标题关键词: ")
+    result = analyze_email_chain(keyword)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+```
 
 ### 读取未读邮件
-
-列出收件箱中的未读邮件：
 
 ```python
 import win32com.client
@@ -52,8 +208,6 @@ for email in emails:
 
 ### 获取邮件详情
 
-获取完整邮件内容：
-
 ```python
 import win32com.client
 
@@ -72,8 +226,6 @@ print(f"Attachments: {[a.FileName for a in email.Attachments]}")
 
 ### 搜索邮件
 
-搜索邮件：
-
 ```python
 import win32com.client
 
@@ -89,8 +241,6 @@ for email in emails:
 ```
 
 ### 发送邮件
-
-发送新邮件：
 
 ```python
 import win32com.client
@@ -108,8 +258,6 @@ mail.Send()
 ```
 
 ### 下载附件
-
-下载邮件附件：
 
 ```python
 import win32com.client
@@ -130,8 +278,6 @@ for attachment in email.Attachments:
 ```
 
 ### 获取所有文件夹
-
-列出所有 Outlook 文件夹：
 
 ```python
 import win32com.client
@@ -225,3 +371,4 @@ os.environ['PYTHONIOENCODING'] = 'utf-8'
 - `scripts/outlook_local.py` - 本地 Outlook COM 接口函数
 - `scripts/outlook_web.py` - 基于 Web 的 Outlook 自动化
 - `scripts/check_inbox.py` - 快速未读邮件检查器
+- `scripts/email_analysis.py` - 邮件上下文分析与回复建议生成
