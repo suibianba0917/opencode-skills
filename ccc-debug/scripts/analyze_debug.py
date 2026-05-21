@@ -114,8 +114,8 @@ def fetch_jira_context(ticket_key, output_dir):
     get_detail_script = os.path.join(script_dir, 'get_ticket_detail.py')
 
     if not os.path.exists(get_detail_script):
-        print(f"    [跳过] 未找到 get_ticket_detail.py")
-        return None
+        print(f"    [错误] 未找到 get_ticket_detail.py，停止分析")
+        sys.exit(1)
 
     try:
         result = subproc.run(
@@ -133,17 +133,17 @@ def fetch_jira_context(ticket_key, output_dir):
             print(f"    [成功] JIRA 信息已获取")
             return jira_context
         else:
-            print(f"    [跳过] 获取失败: {result.stderr[:100] if result.stderr else 'unknown'}")
-            return None
+            print(f"    [错误] 获取失败: {result.stderr[:100] if result.stderr else 'unknown'}，停止分析")
+            sys.exit(1)
     except subproc.TimeoutExpired:
-        print(f"    [跳过] 获取超时")
-        return None
+        print(f"    [错误] 获取超时，停止分析")
+        sys.exit(1)
     except json.JSONDecodeError as e:
-        print(f"    [跳过] JSON解析失败: {e}")
-        return None
+        print(f"    [错误] JSON解析失败: {e}，停止分析")
+        sys.exit(1)
     except Exception as e:
-        print(f"    [跳过] 错误: {e}")
-        return None
+        print(f"    [错误] {e}，停止分析")
+        sys.exit(1)
 
 
 def parse_description(desc_text):
@@ -294,6 +294,9 @@ def main():
     print("0. 获取 JIRA Ticket 信息...")
     t_jira = time.time()
     jira_context = fetch_jira_context(ticket_key, output_dir)
+    if jira_context is None:
+        print("  [错误] JIRA 信息获取失败，无法继续分析")
+        sys.exit(1)
     jira_context_str = format_jira_context_for_prompt(jira_context)
     print(f"  [耗时] {time.time() - t_jira:.1f}s")
 
@@ -311,7 +314,7 @@ def main():
 
     exact_start, exact_end, _ = parse_time_range_from_str(jira_context_str)
     if exact_start and exact_end:
-        print(f"[时间过滤] JIRA 时间范围: {exact_start.strftime('%H:%M')}-{exact_end.strftime('%H:%M')}")
+        print(f"[时间过滤] JIRA 时间范围: {exact_start.strftime('%Y-%m-%d %H:%M')}-{exact_end.strftime('%H:%M')}")
         window_configs = [
             ("精确时间", (exact_start, exact_end)),
             ("±5分钟", (exact_start - timedelta(minutes=5), exact_end + timedelta(minutes=5))),
@@ -339,14 +342,16 @@ def main():
         print("  跳过规则匹配报告")
     else:
         for attempt_label, time_range in window_configs:
-            print(f"\n  [尝试{attempt_label}]", end="", flush=True)
+            print(f"\n  [尝试{attempt_label}]")
             t_rule = time.time()
+            print(f"    [list_extracted_files]", end="", flush=True)
             rp, rc, ls, fi = generate_report(
                 ticket_key, extracted_dir, output_dir,
                 jira_context_str, no_logs=False,
                 time_range_override=time_range
             )
             elapsed = time.time() - t_rule
+            print(f"    [generate_report总计] {elapsed:.1f}s")
 
             total_snippet_lines = sum(len(v) if isinstance(v, list) else 0 for v in [ls]) if ls else 0
             has_findings = fi and any(f.get('id', 0) < 900 for f in fi)
