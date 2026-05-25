@@ -51,27 +51,37 @@
     "file": "ccc_pairing.md",
     "title": "CCC 配对流程 / 钥匙分享",
     "reliability": "high",
-    "source": "Apple Spec R4 Ch3.2/Ch4.6/Ch5/Ch6/Ch7",
-    "summary": "本知识域覆盖 CCC CarKey 配对5阶段和钥匙分享全流程。核心知识：1) Owner Pairing 5阶段：Phase1初始化/检测→Phase2设备认证(SPAKE2+)→Phase3证书交换→Phase4 KTS注册→Phase5钥匙写入SE；2) Key Sharing 5阶段：发起分享→邀请发送→接收端处理→KTS注册→首次车辆交易(First Friend Approach)；3) 车端关键日志标记：803C1001=Phase2完成、803C1111=Phase2→3、803C0181=Phase3完成、803C0190=Phase4成功配对完成；4) Pairstatus 0~4 对应 Phase 1~5；5) KTS 超时/Certificate链校验失败/CheckIDSRegistration失败分别对应不同阶段故障。故障特征：配对失败、分享失败、KTS超时、证书校验失败(-365/TrustResult 4/5)。",
+    "source": "Apple Spec R4 Ch3.2/Ch4.6/Ch5/Ch6/Ch7 + 8个Ticket交叉验证",
+    "summary": "本知识域覆盖 CCC CarKey 配对5阶段和钥匙分享全流程。核心知识：1) Owner Pairing 5阶段：Phase1初始化/检测→Phase2 SPAKE2+认证(SELECT→Auth0→Exchange)→Phase3证书交换(Auth1)→Phase4 KTS注册→Phase5钥匙写入SE；2) Key Sharing 5阶段：发起分享→邀请发送→接收端处理→KTS注册→首次车辆交易(First Friend Approach)；3) 803C状态码格式=803Cxyzz(xy=阶段编号,zz=步骤编号)：803C1001=Phase2第1次交易完成、803C1002=Phase2第2次交易完成、803C1111=Phase2结束KeyID生成、803C0181=Phase3车端完成、803C4088=Phase4 KTS注册开始、803C4081/4082=Phase4步骤、803C0190=Phase4结束配对成功、803C0100=Phase5配对完全成功；4) ISO 7816错误码：6A82=文件/AID未找到(证书问题)、6A80=参数不正确(Profile不对齐)、6A83=认证失败、6A88=KeyID黑名单、6A89=用户认证失败、6A8B= GPO失败(BLE断开)、6A8C=P1P2参数错误(BLE数据异常)；5) 常见故障序列：无ccc--nfc pair+bindkeyid2mac error=Phase1阻断；803C1001后无1111+6A82=Phase2证书问题；803C1111后无0181+sw=0x6400=Phase3 SE只读；803C4088反复无0190=KTS注册失败(后台500)。故障特征：配对失败、分享失败、KTS超时、证书校验失败(-365/TrustResult 4/5)。",
     "sections": [
       {
         "id": "基础知识",
-        "content": "OP 5阶段、Key Sharing 5阶段、First Friend Approach、密钥生命周期",
+        "content": "OP 5阶段、Key Sharing 5阶段、First Friend Approach、密钥生命周期、APP发起配对方式",
         "reliability": "high"
       },
       {
         "id": "车端日志标记",
-        "content": "OP Phase 日志标记(803C系列)、配对阶段状态机(Pairstatus)",
+        "content": "803C状态码(803Cxyzz格式)、ccc--日志前缀(ccc--nfc pair/ccc--statemachine/ccc--BLE_DISCONNECTED等)、Pairstatus状态机、bindkeyid2mac error(BLE断开)、recv_cb error",
+        "reliability": "medium"
+      },
+      {
+        "id": "ISO 7816 错误码",
+        "content": "6A82(AID不匹配)、6A80(Profile不对齐)、6A83(认证失败)、6A88(KeyID黑名单)、6A8B( GPO失败)、6A8C(P1P2参数错误)——均来自SE APDU响应",
+        "reliability": "medium"
+      },
+      {
+        "id": "故障序列速查",
+        "content": "Phase1阻断→无ccc--nfc pair；Phase2证书→6A82大量；Phase3 SE只读→sw=0x6400；Phase4 KTS→803C4088反复+后台500；分享Ranging卡住→ccc--statemachine--in ranging持续",
         "reliability": "medium"
       },
       {
         "id": "iOS证书问题",
-        "content": "证书链校验、TrustResult、CheckIDS、Profile签名",
+        "content": "证书链校验、TrustResult、CheckIDS、Profile签名、-365 CheckIDSRegistration失败",
         "reliability": "medium"
       },
       {
         "id": "钥匙分享故障模式",
-        "content": "Pretrack检查要点、90000008解绑、99990004、分享钥匙keyId未下发",
+        "content": "Pretrack检查要点、90000008解绑、99990004、分享钥匙keyId未下发、First Friend Approach失败",
         "reliability": "medium"
       }
     ]

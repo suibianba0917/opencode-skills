@@ -117,14 +117,27 @@ def fetch_jira_context(ticket_key, output_dir):
         print(f"    [错误] 未找到 get_ticket_detail.py，停止分析")
         sys.exit(1)
 
+    env = os.environ.copy()
+
     try:
         result = subproc.run(
-            ['python', get_detail_script, ticket_key, '--json'],
+            [sys.executable, get_detail_script, ticket_key, '--json'],
             capture_output=True, text=True, timeout=30,
-            cwd=jira_access_dir
+            cwd=jira_access_dir,
+            env=env
         )
+        print(f"    [调试] returncode={result.returncode}")
+        print(f"    [调试] stdout len={len(result.stdout)}, stderr len={len(result.stderr)}")
+        if result.stderr:
+            print(f"    [调试] stderr: {result.stderr[:200]}")
         if result.returncode == 0 and result.stdout.strip():
-            jira_context = json.loads(result.stdout)
+            try:
+                jira_context = json.loads(result.stdout)
+            except json.JSONDecodeError as e:
+                print(f"    [调试] JSON错误: {e}")
+                print(f"    [调试] stdout前100字符: {repr(result.stdout[:100])}")
+                print(f"    [错误] JIRA API 返回错误，停止分析")
+                sys.exit(1)
 
             # 保存到文件
             context_file = os.path.join(tempfile.gettempdir(), 'jira_context_{ticket_key}.json')
@@ -154,14 +167,14 @@ def parse_description(desc_text):
     fields = {}
 
     patterns = {
-        'test_time': re.compile(r'Test/Error time.*?:\s*([^\r\n]+)', re.IGNORECASE),
-        'short_text': re.compile(r'Short Text:\s*([^\r\n]+)', re.IGNORECASE),
-        'precondition': re.compile(r'Precondition:\s*([^\r\n]+)', re.IGNORECASE),
-        'action': re.compile(r'Action:\s*([^\r\n]+)', re.IGNORECASE),
-        'actual_result': re.compile(r'Actual result:\s*([^\r\n]+)', re.IGNORECASE),
-        'expected_result': re.compile(r'Expected result:\s*([^\r\n]+)', re.IGNORECASE),
-        'healing': re.compile(r'Healing:\s*([^\r\n*][^\r\n]*?)(?=\n\s*\*{1,2}|\n[A-Z]|\Z)', re.IGNORECASE),
-        'tester': re.compile(r'Tester/Location:\s*([^\r\n]+)', re.IGNORECASE),
+        'test_time': re.compile(r'Test/Error time.*?[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'short_text': re.compile(r'Short Text[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'precondition': re.compile(r'Precondition[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'action': re.compile(r'Action[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'actual_result': re.compile(r'Actual result[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'expected_result': re.compile(r'Expected result[:：]\s*([^\r\n]+)', re.IGNORECASE),
+        'healing': re.compile(r'Healing[:：]\s*([^\r\n*][^\r\n]*?)(?=\n\s*\*{1,2}|\n[A-Z]|\Z)', re.IGNORECASE),
+        'tester': re.compile(r'Tester/Location[:：]\s*([^\r\n]+)', re.IGNORECASE),
         'device': re.compile(r'测试手机型号\s*[^0-9]*([^\s,，。\r\n]+)', re.IGNORECASE),
     }
 

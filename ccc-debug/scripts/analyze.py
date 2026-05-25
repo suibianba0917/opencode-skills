@@ -254,8 +254,8 @@ ANDROID_KEYWORDS = [
 ]
 
 BACKEND_PATTERNS = [
-    ('abx', ['ABR', 'KTS request', 'KTS response', 'pretrack', 'trackKey']),
-    ('auth', ['certificate', 'provisioning', 'auth', 'token', 'session']),
+    ('abx', ['ABR', 'KTS request', 'KTS response', 'pretrack', 'trackKey', 'certificate/preset', 'factory/certificate']),
+    ('auth', ['certificate', 'provisioning', 'auth', 'token', 'session', 'vehicleCert', 'vehicleSk']),
     ('sharing', ['friend', 'sharing', 'invite']),
     ('http', ['400', '401', '403', '404', '500', '502', '503']),
     ('config', ['TBOX_ACCOUT_REQ_URL_PATH', 'URL_PATH', 'NVRAM_SET']),
@@ -268,7 +268,7 @@ VEHICLE_KEYWORDS = [
     ('can_id', [' 283 ', ' 625 ', ' 21C ', ' 224 ', ' 12DD5', '0x283', '0x625', '0x21C']),
     ('error', ['error', 'fail', 'timeout', 'Error', 'Fault', 'fail', 'Auth1失败']),
     ('rssi', ['RSSI', 'rssi', 'signal', 'BLE']),
-    ('nfc_ecp', ['cccop', 'NFC_iN', 'NFC_oN', 'ecp[', 'getdata_rsp sw=', 'cccparse', 'ccc--bleERROR', 'ccc--bleParse_Notify', 'getdata_rsp error']),
+    ('nfc_ecp', ['cccop', 'NFC_iN', 'NFC_oN', 'ecp[', 'getdata_rsp sw=', 'cccparse', 'ccc--bleERROR', 'ccc--bleParse_Notify', 'getdata_rsp error', 'preset============================', 'ccc preset', 'ble preset', 'vehicleCert']),
     ('ble_error', ['disconnected,reason=', 'recv_cb error', 'NotifyToVeh error', 'bleERROR']),
     ('pairing', ['Pairstatus', 'pairing', 'pair']),
 ]
@@ -353,28 +353,29 @@ def parse_time_range_from_str(jira_str):
     if not jira_str:
         return None, None, 15
     
-    # 匹配 "2025/10/30 16:33-16:34" 或 "2025/10/30 16:33"
-    m = re.search(r'(\d{4}[-/]\d{1,2}[-/]\d{1,2})\s+(\d{1,2}:\d{2})(?:-(\d{1,2}:\d{2}))?', jira_str)
+    # 匹配 "2025/10/30 16:33-16:34" 或 "2025/10/30 16:33" 或 "2026.5.22 19:25"
+    # 支持全角冒号（：）和半角冒号（:）在时间值中
+    m = re.search(r'(\d{4}[-/\.]\d{1,2}[-/\.]\d{1,2})\s+(\d{1,2}:[：:]\d{2})(?:-(\d{1,2}:[：:]\d{2}))?', jira_str)
     if m:
-        date_str = m.group(1)
-        time_start = m.group(2)
-        time_end = m.group(3) or time_start
-        
+        date_str = m.group(1).replace('.', '/')
+        time_start = m.group(2).replace('：', ':')
+        time_end = (m.group(3) or time_start).replace('：', ':')
+
         try:
             start_dt = datetime.strptime(f"{date_str} {time_start}", "%Y/%m/%d %H:%M")
             if time_end != time_start:
                 end_dt = datetime.strptime(f"{date_str} {time_end}", "%Y/%m/%d %H:%M")
             else:
-                end_dt = start_dt + timedelta(minutes=1)  # 单时间点默认 1 分钟窗口
+                end_dt = start_dt + timedelta(minutes=1)
             return start_dt, end_dt, None
         except:
             pass
-    
+
     # 匹配 "16:33-16:34" (无日期)
-    m = re.search(r'^(\d{1,2}:\d{2})-(\d{1,2}:\d{2})', jira_str, re.MULTILINE)
+    m = re.search(r'^(\d{1,2}:[：:]\d{2})-(\d{1,2}:[：:]\d{2})', jira_str, re.MULTILINE)
     if m:
-        time_start = m.group(1)
-        time_end = m.group(2)
+        time_start = m.group(1).replace('：', ':')
+        time_end = m.group(2).replace('：', ':')
         today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         start_dt = today.replace(hour=int(time_start.split(':')[0]), minute=int(time_start.split(':')[1]))
         end_dt = today.replace(hour=int(time_end.split(':')[0]), minute=int(time_end.split(':')[1]))
@@ -593,10 +594,11 @@ def read_vehicle_logs(extracted_dir, max_size_kb=5000, problem_time=None, time_w
 
 
 DK_SERVICE_PATTERNS = [
-    ('nfc_ecp', ['cccop', 'NFC_iN', 'NFC_oN', 'ecp[', 'cccparse', 'ccc--bleERROR', 'ccc--bleParse_Notify', 'ccc--bleparse', 'nfc_pairing error']),
+    ('nfc_ecp', ['cccop', 'NFC_iN', 'NFC_oN', 'ecp[', 'cccparse', 'ccc--bleERROR', 'ccc--bleParse_Notify', 'ccc--bleparse', 'nfc_pairing error', 'ccc preset', 'ble preset', 'preset============================', 'vehicleCert']),
     ('se_error', ['sw=0x6400', 'getdata_rsp sw=', 'getdata_rsp error', 'auth1_rsp error', 'sw=6400']),
-    ('key_info', ['pollingsw', 'polling_unlock_mode', 'BleDirection', 'bindkeyid2mac']),
+    ('key_info', ['pollingsw', 'polling_unlock_mode', 'BleDirection', 'bindkeyid2mac', 'slotIds']),
     ('ble_error', ['recv_cb error', 'NotifyToVeh error', 'bleERROR', 'ntf parse error']),
+    ('abx', ['factory/certificate/preset', 'certificate/preset', 'factory/certificate']),
 ]
 
 

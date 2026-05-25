@@ -60,53 +60,6 @@ Friend Device 和车建立蓝牙连接后，需完成一次 Standard Transaction
 
 ## 2. 车端日志标记
 
-### OP Phase 日志标记（Control Flow 状态码）
-
-> 以下为内部调试发现的 dk_service.log 关键标记，可精确定位配对卡在哪一阶段。
-
-搜索方式：车端日志中搜索 `opcontrol_cmd: 000B0004803Cxxxx`
-
-| 日志标记 | 含义 | 对应 Phase | 对应 Pairstatus | 来源验证 |
-|----------|------|-----------|-----------------|----------|
-| `803C1001` | Phase2 第一次 Transaction 完成 | Phase 2 | 1~2 | VCTCEM-6549/10825/14321 |
-| `803C1002` | Phase2 第二次 Transaction 完成 | Phase 2 | 1~2 | VCTCEM-6549/10825/14321 |
-| `803C1111` | Phase2 全部完成，KeyID 已生成 | Phase 2→Phase 3 | 2→3 | VCTCEM-6549/10825/14321 |
-| `803C0181` | Phase3 车端部分已完成 | Phase 3 | 3 | VCTCEM-6549/10825/14321 |
-| `803C4088` | Phase4 步骤1（KTS 注册开始）| Phase 4 | 4 | VCTCEM-10825/14321 |
-| `803C4081` | Phase4 步骤2 | Phase 4 | 4 | VCTCEM-10825/14321 |
-| `803C4082` | Phase4 步骤3 | Phase 4 | 4 | VCTCEM-10825/14321 |
-| `803C0190` | **Phase4 结束，整个 Owner Pairing 成功完成** | Phase 4 | 4 | VCTCEM-10825/14321 |
-| `803C01B0` | 钥匙写入阶段 | Phase 5 | 4~5 | VCTCEM-14321 |
-| `803C0100` | 配对结束/进入 Polling 状态 | Phase 5 | 5 | VCTCEM-10825/14321 |
-| `803C0000` | 配对失败 | - | - | VCTCEM-6549/14321 |
-
-### 配对阶段状态机（Pairstatus）
-
-> 注：Pairstatus 1/2 对应 Phase 2 写入/读取子阶段定义需参考车端 nfc.cpp 代码，暂未确认。
-
-| Pairstatus | 对应 Phase | 含义 | 卡住时的根因 |
-|------------|-----------|------|-------------|
-| 0 | Phase 1 | 初始化 | NFC/BLE 连接未建立 |
-| 1 | Phase 2 | 设备认证 | SE/NFC 配置异常 |
-| 2 | Phase 2→3 | 证书交换 | cccop/ECP 配置异常 |
-| 3 | Phase 3 | 证书交换 | KTS/ABR 异常 |
-| 4 | Phase 4~5 | 配对成功 | — |
-
-### Control Flow p1/p2 状态码
-
-> 来自 dk_service.log `transaction.cpp:534` 的日志：`control flow:p1=0xX,p2=0xXX`
-
-| p1 | p2 | 含义 | 来源验证 |
-|----|----|------|----------|
-| 0 | 0 | **配对失败**（auth1 或 Phase 2/3 失败）| VCTCEM-6549/14321 |
-| 1 | 0x81 | Phase 3 车端部分完成 | VCTCEM-10825/14321 |
-| 0x40 | 0x88 | Phase 4 步骤1 | VCTCEM-10825/14321 |
-| 0x40 | 0x81 | Phase 4 步骤2 | VCTCEM-10825/14321 |
-| 0x40 | 0x82 | Phase 4 步骤3 | VCTCEM-10825/14321 |
-| 1 | 0x90 | **Phase 4 成功**，整个配对完成 | VCTCEM-10825/14321 |
-| 1 | 0xb0 | 钥匙写入阶段 | VCTCEM-14321 |
-| 1 | 0 | **配对结束**，进入 Polling 状态 | VCTCEM-10825/14321 |
-
 ### NFC ECP cccop 只读模式
 
 **日志关键词**：`NFC_iN ecp[4] = X,conf->cccop = 2`（ecp[4] 值平台相关，多数平台为 8，VW MEB 平台为 1）
@@ -124,15 +77,136 @@ Friend Device 和车建立蓝牙连接后，需完成一次 Standard Transaction
 
 ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初始化阶段增加 ECP 参数加载日志确认。
 
-### bindkeyid2mac error（次生问题）
+### 配对阶段状态机（Pairstatus）
 
-**日志关键词**：`bindkeyid2mac error: mac[xx:xx:xx:xx:xx:xx] not found`
+> 注：Pairstatus 与 Phase 编号对应关系需参考车端 nfc.cpp 代码，以下为推测。
 
-出现在 Phase 2 失败后的 BLE fallback 流程。**不是独立根因**——它是配对失败后 OneApp 走 BLE 兜底时的连带现象，KeyID→MAC 绑定尚未建立。
+| Pairstatus | 对应 Phase | 含义 | 卡住时的根因 |
+|------------|-----------|------|-------------|
+| 0 | Phase 1 | 初始化 | NFC/BLE 连接未建立 |
+| 1 | Phase 2 | 设备认证（SPAKE2+ 写入阶段）| SE/NFC 配置异常 |
+| 2 | Phase 2~3 | 设备认证（读取阶段）→ 证书交换 | cccop/ECP 配置异常 |
+| 3 | Phase 3~4 | 证书交换 → KTS 注册 | KTS/ABR 异常 |
+| 4 | Phase 4~5 | 配对成功 | — |
 
 ---
 
-## 3. 配对故障模式
+## 3. dk_service.log 日志速查
+
+### 3.1 ccc-- 日志前缀速查
+
+> 来源：8 个 Ticket（6549/10130/10825/14321/14482/20449/21031/26376）交叉验证
+
+| ccc-- 前缀 | 含义 | 阶段 |
+|-----------|------|------|
+| `ccc--nfc pair` | NFC 配对 transaction 开始 | Phase 2 启动 |
+| `ccc--nfc pair--behind PAIRING22` | 开始 NFC 配对流程 | Phase 2 |
+| `ccc--nfc pair--pair.status != PAIRED` | 检测到未配对，启动配对 | Phase 2 |
+| `ccc--NFC` | NFC 模块操作/轮询 | Phase 1~3 |
+| `ccc--write` | 写入证书/数据到 SE | Phase 2~5 |
+| `ccc--read` | 读取 SE 数据 | Phase 2~3 |
+| `ccc--statemachine` | 配对状态机运行 | Phase 2~4 |
+| `ccc--statemachine--in ranging` | **开始 UWB 定位** | Phase 2→3 |
+| `ccc--PubCb` | 定位 callback（locked/power 状态） | Phase 2→3 |
+| `ccc--setuwb` | 设置 UWB 参数 | Phase 2→3 |
+| `ccc--build_ragingsessionreq` | 构建 ranging session | Phase 2→3 |
+| `ccc--finduwbsession` | 查找 UWB session | Phase 2→3 |
+| `ccc--standard_transaction_step1to6` | NFC 标准交易步骤（1-6） | Phase 2~4 |
+| `ccc--CCCKeydata` | 钥匙数据交换/持久化 | Phase 3~5 |
+| `ccc--sync_capbilityrsp` | 交换能力信息 | Phase 2~3 |
+| `ccc--del_statemachine` | 配对结束，清理状态机 | Phase 5 结束 |
+| `ccc--BLE_DISCONNECTED` | BLE 连接断开 | 任意阶段 |
+| `ccc--BLEBUSSEvent` | BLE 总线事件 | 任意阶段 |
+| `ccc--ble` | BLE 操作（read/write/connect）| 任意阶段 |
+| `ccc--bleSTDTRANSAC` | BLE 标准交易 | 任意阶段 |
+| `ccc--app_set` | APP 配置下发/操作 | 任意阶段 |
+| `ccc--busywait` | 等待忙 | 任意阶段 |
+| `ccc--checktime` | 时间校验 | 任意阶段 |
+| `ccc--setCCCUwbRangingParamSupported` | UWB 参数协商 | 任意阶段 |
+| `ccc--ranging_noact` | UWB 无活动 | 任意阶段 |
+| `recv_cb error:it's not in transaction or pairing` | 交易正常结束回调 | **无害，正常** |
+| `recv_cb error: recv len=0` | **BLE 连接断开** | Phase 1 阻断 |
+
+### 3.2 803C 状态码格式
+
+`803Cxyzz` = 控制流状态码，格式为：
+- **xy** = 配对阶段编号
+- **zz** = 该阶段步骤编号
+
+### 3.3 各阶段 803C 状态码序列
+
+| 状态码 | 含义 | 对应 Phase | 验证 Ticket |
+|--------|------|-----------|------------|
+| `803C1001` | Phase 2 第一次 Transaction 完成（SELECT + Auth0）| Phase 2 | 6549/10825/14321/14482 |
+| `803C1002` | Phase 2 第二次 Transaction 完成（Exchange 1） | Phase 2 | 6549/10825/14321 |
+| `803C1111` | **Phase 2 结束，KeyID 已生成** | Phase 2→3 | 6549/10825/14321/14482 |
+| `803C0181` | **Phase 3 车端完成，证书链校验通过** | Phase 3 | 10825/14321/14482 |
+| `803C4088` | Phase 4 开始（KTS 注册请求） | Phase 4 | 10825/14482 |
+| `803C4081` | Phase 4 步骤 2 | Phase 4 | 14482 |
+| `803C4082` | Phase 4 步骤 3 | Phase 4 | 14482 |
+| `803C0190` | **Phase 4 结束，KTS 注册成功** | Phase 4 | 10825/14482 |
+| `803C01B0` | 钥匙写入 SE | Phase 5 | 14321 |
+| `803C0100` | **配对完全成功，进入 Polling 状态** | Phase 5 | 10825/14321 |
+| `803C0000` | 配对失败 | - | 14482/20449 |
+
+### 3.4 完整配对成功序列
+
+```
+配对开始
+  ├─ ccc--nfc pair
+  └─ 803C1001 → 803C1002 → 803C1111  (Phase 2 结束)
+      ├─ ccc--statemachine--in ranging  (手机进入车内)
+      └─ 803C0181  (Phase 3 结束)
+          └─ 803C4088 → 803C4081 → 803C4082 → 803C0190  (Phase 4 结束)
+              └─ 803C01B0 → 803C0100  (Phase 5 结束，配对成功)
+```
+
+### 3.5 常见故障序列速查
+
+| 日志序列特征 | 停在 | 根因 |
+|-------------|------|------|
+| **无** `ccc--nfc pair` + `bindkeyid2mac error` + `recv_cb error` | Phase 1 之前 | keyid 与 MAC 绑定丢失，BLE 断开 |
+| 只有 `803C1001`，无 1002/1111 + `6A80`/`6A8C` 大量 | Phase 2 第1次交易 | Profile/证书环境不对齐 |
+| `803C1001→1002→1111` 后无 `803C0181` + `6A82` 大量(100+次) | Phase 2→3 | 证书交换失败（AID 不匹配）|
+| `803C1111→0181` 后无 `803C4088` + `sw=0x6400`(4次) | Phase 3→4 | SE Applet 处于只读/锁定状态 |
+| `803C4088` 反复出现，无 `803C0190` | Phase 4 | KTS 注册失败（后台 500 / 99990004）|
+| `803C4088→0190` 完整，但无 `803C0100` | Phase 4→5 | 钥匙写入 SE 失败 |
+| 有 `ccc--statemachine--in ranging`（持续每2秒）无 NFC 交易 | Phase 2→3 | UWB 定位失败（手机位置不对）|
+| 大量 `report2cloud XPNFC_ACTIVE fail code:500` | Phase 4 | 后台 XPNFC_ACTIVE 服务异常 |
+| `curl_easy_perform() failed: Couldn't resolve host name` | 任意 | TBOX DNS 解析失败 |
+
+### 3.6 ISO 7816 错误码（6Axx）
+
+> 来源：NFC 交易中 SE 返回的 APDU 响应状态码
+
+| 状态码 | 含义 | 阶段 | 根因 |
+|--------|------|------|------|
+| `6A82` | **文件/应用未找到（AID 不匹配）** | Phase 2~3 | 证书或 AID 配置问题，Profile 环境不对齐 |
+| `6A80` | **数据域参数不正确** | Phase 2~3 | Profile/证书环境不对齐（CCC联调Knowhow Page 1）|
+| `6A81` | 功能不支持 | Phase 2~3 | SE Applet 版本问题 |
+| `6A83` | 认证失败（Record not found） | Phase 2~3 | 证书校验失败 |
+| `6A84` | 引用数据已失效 | Phase 3 | 证书过期或被吊销 |
+| `6A88` | 引用数据未找到（KeyID 黑名单）| Phase 2~3 | KeyID 在车端黑名单 |
+| `6A89` | 用户认证失败 | Phase 3 | SPAKE2+ 认证失败 |
+| `6A8A` | 超出使用次数限制 | Phase 3 | KTS 试用次数耗尽 |
+| `6A8B` | GPO 失败（BLE 断开导致）| Phase 2~3 | BLE 连接丢失 |
+| `6A8C` | P1P2 参数错误（BLE 数据接收异常）| Phase 1~2 | BLE 连接丢失或数据不完整 |
+| `6A8E` | 允许的剩余次数为 0 | Phase 3 | 钥匙试用次数耗尽 |
+
+### 3.7 各故障类型的完整日志特征
+
+| 故障类型 | dk_service.log 特征 | 对应 Ticket |
+|---------|---------------------|------------|
+| **Phase 1 阻断** | 无 `ccc--nfc pair`，`bindkeyid2mac error`，`recv_cb error`，`803C1001` 后卡住 | 45795, 21031 |
+| **Phase 2 证书问题** | `6A82`(100+次) 反复出现，`803C1001` 后无 1002/1111 | 6549, 10825 |
+| **Phase 3 SE 只读** | `sw=0x6400`(4次)，`803C0181` 后无 4088，`ccc--CCCKeydata`(634次) | 14482 |
+| **Phase 4 后台 500** | `report2cloud XPNFC_ACTIVE fail code:500` 反复，`803C4088` 无 0190 | 21031 |
+| **Phase 4 TBOX DNS** | `curl_easy_perform: Couldn't resolve host name`，`ccc--BLE_DISCONNECTED` | 20449 |
+| **分享 Ranging 卡住** | `ccc--statemachine--in ranging`（持续60+秒每2秒一次），`ccc--PubCb--still not change` | 26376 |
+
+---
+
+## 4. 配对故障模式
 
 ### 车端故障
 
@@ -189,8 +263,8 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 - `ccc--bleERROR` — BLE 协议层异常
 - `PairPhase2_1` / `PairPhase2_2` — Phase 2 失败
 - `frist_ownerparing_stdtransaction` — BLE fallback 失败
-- `bindkeyid2mac error` — KeyID-MAC 绑定丢失（次生问题）
-- `recv_cb error` — BLE 接收回调异常
+- `bindkeyid2mac error` — KeyID-MAC 绑定丢失（Phase 1 阻断触发点）
+- `recv_cb error` — BLE 接收回调异常（Phase 1 阻断常见表现）
 
 **车企后台日志关键词**：
 - `ABR` — Apple Backend Routing 配置
@@ -201,7 +275,7 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 
 ---
 
-## 4. 钥匙分享故障模式
+## 5. 钥匙分享故障模式
 
 ### Pretrack 检查要点（关键！）
 
@@ -315,4 +389,4 @@ ECP 配置丢失说明配置未持久化（NVCM 未保存），需要在 NFC 初
 
 ---
 
-*最后更新：2026-05-18*（v4.8 新增 803C1002/4088/81/82/01B0/0100/0000 状态码 + Control Flow p1/p2 状态码表 + ecp[4] 平台差异说明）
+*最后更新：2026-05-25*（v4.9 新增 803C 状态码完整格式说明 + 24 种 ccc-- 前缀速查 + 6Axx ISO 错误码体系 + 6 个故障类型的完整日志特征 + 8 个 Ticket 交叉验证；修复 Pairstatus 表格 + 章节重复问题）
