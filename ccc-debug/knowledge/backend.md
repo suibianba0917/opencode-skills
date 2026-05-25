@@ -48,6 +48,48 @@
 | 短信被运营商拦截/延迟 | DK 服务端发出领取通知短信，但被运营商拦截或消息中心长时间未处理，导致接收方超时未领取 | 后台（运营商/短信平台）|
 | nginx 路径配置遗漏 | DK 后端 nginx 配置遗漏部分车型的 CCC 访问路径（corner case），导致钥匙分享后领取请求被 404 | 后台 |
 
+### 预置证书相关
+
+> 车辆预置证书是车端 SE（安全芯片）中预烧录的证书，用于后台验证车辆身份。
+
+| 错误特征 | 可能原因 | 归属端 |
+|----------|----------|--------|
+| "车辆未预制证书" | 后台查询 VIN 对应的预置证书失败：①SE 未烧录证书 ②后台未找到证书配置 ③证书已过期/吊销 | 车端(SE未烧录) / 后台(配置缺失) |
+| 预置证书 API 404 | `/xp-smart-digital-key-boot/v1/factory/certificate/preset` 路径未部署 | 后台 |
+| 预置证书响应 code≠200 | 后台返回错误码（如 400/500），证书未成功下发 | 后台 |
+| 证书链验证失败 | `Verifying X.509 certificate...verify fail` | 车端(SE证书格式问题) / 苹果后台(根证书问题) |
+
+**预置证书检查流程**（dk_service.log）：
+```
+1. 请求 API: /factory/certificate/preset
+   URL:https://.../xp-smart-digital-key-boot/v1/factory/certificate/preset
+
+2. 后台响应成功:
+   response:{"code":200,"msg":"success","data":{"ccc":{"vehicleCert":"...","vehicleSk":"...","slotIds":[...]}}}
+
+3. 车端加载并验证:
+   ccc preset============================>
+   oemCA->Vehcert: Verifying X.509 certificate...verify ok
+   ble preset userkey============================>
+   ble preset testkey============================>
+```
+
+**日志关键词**：
+| 关键词 | 含义 |
+|--------|------|
+| `certificate/preset` | 预置证书 API 路径 |
+| `vehicleCert` | 车辆证书（后台返回） |
+| `vehicleSk` | 车辆私钥（后台返回） |
+| `slotIds` | 可用钥匙槽位列表 |
+| `ccc preset============================>` | CCC 预置证书加载 |
+| `Verifying X.509 certificate...verify ok` | 证书验证成功 |
+| `Verifying X.509 certificate...verify fail` | 证书验证失败 |
+
+**排查方向**：
+1. 确认车辆 SE 是否烧录了预置证书（需车端日志 `dk_service.log`）
+2. 确认后台是否为该 VIN 下发了预置证书（查后台服务日志）
+3. 检查证书链是否完整（根证书/中间证书/车辆证书）
+
 ### nginx 配置遗漏导致 404
 
 - **场景**：钥匙分享后，接收方领取请求返回 HTTP 404

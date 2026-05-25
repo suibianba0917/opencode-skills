@@ -24,6 +24,7 @@
 
 | 版本 | 日期 | 里程碑 |
 |------|------|--------|
+| v4.12 | 2026-05-22 | **预置证书检测**：新增 `DK_SERVICE_PATTERNS` 关键词 `factory/certificate/preset`、`vehicleCert`、`ccc preset`、`ble preset`；新增 `backend.md` 预置证书章节，含 API 路径、日志特征、成功/失败判断<br>**BugFix**：`analyze_debug.py` 函数内 `import os` 导致变量覆盖错误 |
 | v4.11 | 2026-05-21 | **JIRA 强依赖**：JIRA 获取失败（超时/解析错误/脚本缺失）直接 `sys.exit(1)` 退出，不再跳过继续分析<br>**时间过滤优化**：解析到精确时间后，结束时间增加 1 分钟缓冲，确保包含结束分钟的日志<br>**批量验证**：10 个 tickets 重跑验证（配对失败 3 个、钥匙分享 3 个、NFC刷卡 3 个、UWB测距 1 个），平均耗时 54s |
 | v4.10 | 2026-05-20 | **时间过滤 L2 自适应窗口**：从 JIRA 提取精确时间段（16:33-16:34），精确够用则停止，不够再扩展（±5min → ±15min）<br>新增 `parse_time_range_from_str()` 解析时间段格式<br>`detect_issue_type_from_jira()` 从 JIRA 摘要关键词兜底检测问题类型<br>**AI Prompt 按需注入**：知识摘要按问题类型选择（只注入 1-2 个相关文件）<br>DBC 按需判断（问题涉及 CAN + 日志有 ASC/BLF 才加载）<br>Snippets > 30 行时减少原始日志读取（15文件→5文件）<br>**流式时间过滤**：逐行流式读取 + 行号索引，解决 37MB CAN 超时问题<br>**AI 重试机制**：最多 3 次指数退避重试（5s/10s）<br>验证 VCTCEM-13403：总耗时 135s（AI 127s），prompt 21KB |
 | v4.9 | 2026-05-19 | **模型优化**：指定 `--model LiteLLM/MiniMax-M2.5`，timeout 900s<br>**日志优化**：日志文本为 0 时跳过 AI 分析，直接生成规则报告<br>日志 < 1KB 时使用简化 prompt<br>**时间过滤 v1**：新增 `extract_problem_time()` + `is_in_time_window()`，5 个日志读取函数支持时间窗口过滤<br>**批量完成**：配对/创建失败 25 个全部完成，其中 20 个有根因定位<br>**API Key**：切换到 `sk-A0faKwUmUjLP9xFt_eRyiA` |
